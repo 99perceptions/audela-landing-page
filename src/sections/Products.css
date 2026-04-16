@@ -1,0 +1,150 @@
+.products-section {
+  background-color: var(--bg-primary);
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  grid-auto-flow: dense;
+}
+
+.bento-item {
+  display: flex;
+}
+
+.bento-item.span-2 {
+  grid-column: span 2;
+}
+
+.bento-item.span-1 {
+  grid-column: span 1;
+}
+
+.product-card {
+  padding: var(--padding-card);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-primary); 
+}
+
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(195, 209, 223, 0.15), transparent 40%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.product-card:hover::before {
+  opacity: 1;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-4);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Abstract 3D Generated Assets Styling */
+.product-abstract-wrapper {
+  position: absolute;
+  bottom: -5%;
+  right: -5%;
+  width: 60%;
+  height: 90%;
+  z-index: 0;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 30%);
+  mask-image: linear-gradient(to right, transparent, black 30%);
+}
+
+.product-abstract-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom right;
+  opacity: 0.95;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.product-card:hover .product-abstract-img {
+  transform: scale(1.03) translate(-10px, -10px);
+}
+
+.product-content-overlay {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  max-width: 100%; 
+}
+
+.bento-item.span-2 .product-content-overlay {
+  max-width: 60%; /* Only constrain text on wide cards with abstract backgrounds */
+}
+
+.product-text-logo-wrapper {
+  margin-bottom: var(--padding-card);
+}
+
+.product-text-logo-img {
+  height: auto;
+  max-width: 200px;
+  max-height: 40px;
+  object-fit: contain;
+}
+
+.product-full-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-2);
+  margin-bottom: 1rem;
+}
+
+.product-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+  .bento-item.span-2, .bento-item.span-1 {
+    grid-column: span 1;
+  }
+  
+  /* Prevent text bleeding on mobile */
+  .product-content-overlay {
+    max-width: 100%;
+    z-index: 2;
+  }
+  
+  /* Completely hide absolute 3D bg on compact mobile screens to resolve severe legibility issues */
+  .product-abstract-wrapper {
+    display: none !important;
+  }
+}
