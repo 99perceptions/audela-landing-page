@@ -48,17 +48,17 @@ export const Platform = () => {
                 </div>
                 
                 <div className="pv-stat-row">
-                  <div className="pv-meta"><span>ShiftIQ — Scheduling Accuracy</span><span>94%</span></div>
+                  <div className="pv-meta"><span>Shift — Scheduling Accuracy</span><span>94%</span></div>
                   <div className="pv-bar-wrap"><div className="pv-bar" style={{width: '94%'}}></div></div>
                 </div>
                 
                 <div className="pv-stat-row">
-                  <div className="pv-meta"><span>RevenIQ — Denial Reduction</span><span>87%</span></div>
+                  <div className="pv-meta"><span>Reven — Denial Reduction</span><span>87%</span></div>
                   <div className="pv-bar-wrap"><div className="pv-bar" style={{width: '87%'}}></div></div>
                 </div>
                 
                 <div className="pv-stat-row">
-                  <div className="pv-meta"><span>VigilIQ — Anomaly Detection</span><span>98%</span></div>
+                  <div className="pv-meta"><span>Vigi — Anomaly Detection</span><span>98%</span></div>
                   <div className="pv-bar-wrap"><div className="pv-bar" style={{width: '98%'}}></div></div>
                 </div>
               </div>
