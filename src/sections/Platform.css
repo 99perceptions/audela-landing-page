@@ -28,6 +28,10 @@
   align-items: flex-start;
 }
 
+.pf > div {
+  min-width: 0;
+}
+
 .pf-dot {
   width: 14px;
   height: 14px;
@@ -155,5 +159,16 @@
   .platform-wrap {
     grid-template-columns: 1fr;
     gap: 4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .mini-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .platform-section {
+    padding-top: 6rem; /* Account for fixed navbar overlapping the tag */
   }
 }
