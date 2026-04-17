@@ -58,7 +58,7 @@ export const Platform = () => {
                 </div>
                 
                 <div className="pv-stat-row">
-                  <div className="pv-meta"><span>Vigi — Anomaly Detection</span><span>98%</span></div>
+                  <div className="pv-meta"><span>Vigil — Anomaly Detection</span><span>98%</span></div>
                   <div className="pv-bar-wrap"><div className="pv-bar" style={{width: '98%'}}></div></div>
                 </div>
               </div>

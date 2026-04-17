@@ -23,7 +23,7 @@ export const Footer = () => {
               <li><a href="#">Lens™</a></li>
               <li><a href="#">Aisle™</a></li>
               <li><a href="#">Flow™</a></li>
-              <li><a href="#">Vigi™</a></li>
+              <li><a href="#">Vigil™</a></li>
               <li><a href="#">Care™</a></li>
             </ul>
           </div>
