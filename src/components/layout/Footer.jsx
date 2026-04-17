@@ -16,11 +16,15 @@ export const Footer = () => {
           <div className="footer-col">
             <h4>Products</h4>
             <ul>
-              <li><a href="#">ShiftIQ™</a></li>
-              <li><a href="#">RevenIQ™</a></li>
-              <li><a href="#">VelocIQ™</a></li>
+              <li><a href="#">Shift™</a></li>
+              <li><a href="#">Reven™</a></li>
+              <li><a href="#">Veloc™</a></li>
               <li><a href="#">AutoVault™</a></li>
-              <li><a href="#">LensIQ™</a></li>
+              <li><a href="#">Lens™</a></li>
+              <li><a href="#">Aisle™</a></li>
+              <li><a href="#">Flow™</a></li>
+              <li><a href="#">Vigi™</a></li>
+              <li><a href="#">Care™</a></li>
             </ul>
           </div>
           
