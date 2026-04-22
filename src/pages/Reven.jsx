@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { SEO } from '../components/ui/SEO';
 import { AnimatedSection } from '../components/ui/AnimatedSection';
 import { ContactForm } from '../sections/ContactForm';
 import '../sections/ProductPage.css';
@@ -70,6 +71,11 @@ const related = [
 export const Reven = () => {
   return (
     <>
+      <SEO
+        title="Reven™ — AI Revenue Cycle Management"
+        description="Reven delivers AI-powered claim submission, denial management, fraud detection and full revenue cycle reconciliation for healthcare organisations."
+        path="/reven"
+      />
       {/* Breadcrumb */}
       <nav className="pp-breadcrumb" aria-label="Breadcrumb">
         <div className="container pp-breadcrumb-inner">

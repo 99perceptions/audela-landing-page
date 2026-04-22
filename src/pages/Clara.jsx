@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { SEO } from '../components/ui/SEO';
 import { AnimatedSection } from '../components/ui/AnimatedSection';
 import { ContactForm } from '../sections/ContactForm';
 import '../sections/ProductPage.css';
@@ -73,6 +74,11 @@ const related = [
 export const Clara = () => {
   return (
     <>
+      <SEO
+        title="Clara™ — AI-Powered Finance Operations"
+        description="Clara automates accounts payable, accounts receivable, reconciliation and financial close end-to-end. Faster cycles, fewer errors, zero manual bottlenecks."
+        path="/clara"
+      />
       {/* Breadcrumb */}
       <nav className="pp-breadcrumb" aria-label="Breadcrumb">
         <div className="container pp-breadcrumb-inner">

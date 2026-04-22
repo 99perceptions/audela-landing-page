@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { SEO } from '../components/ui/SEO';
 import { AnimatedSection } from '../components/ui/AnimatedSection';
 import './Contact.css';
 
@@ -85,6 +86,11 @@ const ContactForm = () => {
 export const Contact = () => {
   return (
     <>
+      <SEO
+        title="Contact Audela — Request a Demo or Get in Touch"
+        description="Have a question or want to see Audela's AI solutions in action? Reach out to our team and we'll get back to you within one business day."
+        path="/contact"
+      />
       {/* Hero */}
       <section className="contact-hero">
         <HeroGeo />

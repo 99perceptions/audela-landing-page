@@ -1,4 +1,5 @@
 import React from 'react';
+import { SEO } from '../components/ui/SEO';
 import { Hero } from '../sections/Hero';
 import { Stats } from '../sections/Stats';
 import { Products } from '../sections/Products';
@@ -10,6 +11,11 @@ import { ContactForm } from '../sections/ContactForm';
 export const Home = () => {
   return (
     <>
+      <SEO
+        title="Specialized AI for Industries Where It Matters Most"
+        description="Audela builds specialized AI solutions for industries where decisions have consequences — healthcare, finance, logistics, retail and more. Purpose-built, not adapted from a generic platform."
+        path="/"
+      />
       <Hero />
       <Stats />
       <CompanyStatement />

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { SEO } from '../components/ui/SEO';
 import { AnimatedSection } from '../components/ui/AnimatedSection';
 import { ContactForm } from '../sections/ContactForm';
 import '../sections/ProductPage.css';
@@ -136,6 +137,11 @@ const ScreenshotRow = ({ item, index }) => {
 export const Shift = () => {
   return (
     <>
+      <SEO
+        title="Shift™ — Workforce Intelligence & Scheduling"
+        description="Shift delivers demand-aware scheduling, dynamic workforce optimisation and constraint-aware planning — built for any industry."
+        path="/shift"
+      />
       {/* Breadcrumb */}
       <nav className="pp-breadcrumb" aria-label="Breadcrumb">
         <div className="container pp-breadcrumb-inner">

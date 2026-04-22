@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { SEO } from '../components/ui/SEO';
 import { AnimatedSection } from '../components/ui/AnimatedSection';
 import { ContactForm } from '../sections/ContactForm';
 import '../sections/ProductPage.css';
@@ -81,6 +82,11 @@ export const Lens = () => {
 
   return (
     <>
+      <SEO
+        title="Lens™ — Field Workforce Quality AI"
+        description="Lens uses smart glasses to capture field workforce activity in real time. AI scores performance against service standards, delivering instant quality intelligence."
+        path="/lens"
+      />
       {/* Breadcrumb */}
       <nav className="pp-breadcrumb" aria-label="Breadcrumb">
         <div className="container pp-breadcrumb-inner">

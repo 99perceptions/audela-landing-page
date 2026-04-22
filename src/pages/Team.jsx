@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { SEO } from '../components/ui/SEO';
 import { AnimatedSection } from '../components/ui/AnimatedSection';
 import { ContactForm } from '../sections/ContactForm';
 import './Team.css';
@@ -89,6 +90,11 @@ const MemberCard = ({ member, index }) => (
 export const Team = () => {
   return (
     <>
+      <SEO
+        title="Our Team — The Minds Behind Audela"
+        description="Meet the strategists, scientists and operators building Audela's specialized AI solutions — a team with experience spanning Harvard, Oxford, RAND, NHS, UPS and more."
+        path="/team"
+      />
       {/* Hero */}
       <section className="team-hero">
         <HeroGeo />

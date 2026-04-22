@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { SEO } from '../components/ui/SEO';
 import './Legal.css';
 
 const easeOut = [0.22, 1, 0.36, 1];
@@ -73,6 +74,11 @@ const sections = [
 export const Terms = () => {
   return (
     <div className="legal-page">
+      <SEO
+        title="Terms of Use"
+        description="Read the terms and conditions governing your use of the Audela website and services."
+        path="/terms"
+      />
       <section className="legal-hero">
         <div className="container">
           <motion.p

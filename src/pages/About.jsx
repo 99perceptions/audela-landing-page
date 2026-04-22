@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { SEO } from '../components/ui/SEO';
 import { AnimatedSection } from '../components/ui/AnimatedSection';
 import './About.css';
 
@@ -76,6 +77,11 @@ export const About = () => {
 
   return (
     <>
+      <SEO
+        title="About Audela — Specialized AI Company"
+        description="Audela is an AI company building specialized solutions for industries where decisions have consequences. Learn about our mission, principles, and the team behind the work."
+        path="/about"
+      />
       {/* Hero */}
       <section className="about-hero">
         <HeroGeo />
