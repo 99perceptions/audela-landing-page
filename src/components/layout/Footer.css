@@ -117,6 +117,24 @@
   align-items: center;
 }
 
+.footer-bottom-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-bottom-link {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--color-3);
+  opacity: 0.5;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.footer-bottom-link:hover {
+  opacity: 0.85;
+}
+
 .footer-copy {
   font-family: var(--font-body);
   font-size: 0.8rem;

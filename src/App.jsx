@@ -9,6 +9,8 @@ import { Shift } from './pages/Shift';
 import { Team } from './pages/Team';
 import { Contact } from './pages/Contact';
 import { About } from './pages/About';
+import { PrivacyPolicy } from './pages/PrivacyPolicy';
+import { Terms } from './pages/Terms';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,8 @@ const router = createBrowserRouter([
       { path: 'team', element: <Team /> },
       { path: 'contact', element: <Contact /> },
       { path: 'about', element: <About /> },
+      { path: 'privacy', element: <PrivacyPolicy /> },
+      { path: 'terms', element: <Terms /> },
     ],
   },
 ]);

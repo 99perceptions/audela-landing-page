@@ -68,7 +68,8 @@ export const Footer = () => {
               <li><Link to="/contact" className="footer-link">Contact Sales</Link></li>
               <li><Link to="/contact" className="footer-link">Request Demo</Link></li>
               <li><span className="footer-link footer-link-muted">Partner Program</span></li>
-              <li><span className="footer-link footer-link-muted">Privacy Policy</span></li>
+              <li><Link to="/privacy" className="footer-link">Privacy Policy</Link></li>
+              <li><Link to="/terms" className="footer-link">Terms of Use</Link></li>
             </ul>
           </div>
 
@@ -76,6 +77,10 @@ export const Footer = () => {
 
         <div className="footer-bottom">
           <p className="footer-copy">&copy; 2026 Audela. All rights reserved.</p>
+          <div className="footer-bottom-links">
+            <Link to="/privacy" className="footer-bottom-link">Privacy Policy</Link>
+            <Link to="/terms" className="footer-bottom-link">Terms of Use</Link>
+          </div>
           <p className="footer-tagline">Intelligence That Evolves With You</p>
         </div>
       </div>
