@@ -7,6 +7,7 @@ const featured = [
   {
     path: '/clara',
     logoFile: 'Clara-logo.svg',
+    abstractImg: 'clara.bg-image.jpg',
     category: 'Finance · Operations',
     desc: 'End-to-end AI automation of AP, AR, reconciliation and financial close. Faster cycles, fewer errors, zero manual bottlenecks.',
     span: 'wide',
