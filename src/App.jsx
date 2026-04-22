@@ -1,55 +1,34 @@
-import React, { useEffect } from 'react';
-import Lenis from 'lenis';
-import { Navbar } from './components/layout/Navbar';
-import { Footer } from './components/layout/Footer';
-import { Hero } from './sections/Hero';
-import { Stats } from './sections/Stats';
-import { Products } from './sections/Products';
-import { WhyAudella } from './sections/WhyAudella';
-import { Platform } from './sections/Platform';
-import { Industries } from './sections/Industries';
-import { ContactForm } from './sections/ContactForm';
+import React from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Layout } from './components/layout/Layout';
+import { Home } from './pages/Home';
+import { Clara } from './pages/Clara';
+import { Reven } from './pages/Reven';
+import { Lens } from './pages/Lens';
+import { Shift } from './pages/Shift';
+import { Team } from './pages/Team';
+import { Contact } from './pages/Contact';
+import { About } from './pages/About';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      { index: true, element: <Home /> },
+      { path: 'clara', element: <Clara /> },
+      { path: 'reven', element: <Reven /> },
+      { path: 'lens', element: <Lens /> },
+      { path: 'shift', element: <Shift /> },
+      { path: 'team', element: <Team /> },
+      { path: 'contact', element: <Contact /> },
+      { path: 'about', element: <About /> },
+    ],
+  },
+]);
 
 function App() {
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
-      direction: 'vertical',
-      gestureDirection: 'vertical',
-      smooth: true,
-      mouseMultiplier: 1,
-      smoothTouch: false,
-      touchMultiplier: 2,
-      infinite: false,
-    });
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    return () => {
-      lenis.destroy();
-    };
-  }, []);
-
-  return (
-    <>
-      <Navbar />
-      <main>
-        <Hero />
-        <Stats />
-        <Products />
-        <WhyAudella />
-        <Platform />
-        <Industries />
-        <ContactForm />
-      </main>
-      <Footer />
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

@@ -32,9 +32,8 @@
 }
 
 .stat-num.text-small {
-  font-size: 2rem;
-  line-height: 1.5;
-  font-family: var(--font-body);
+  font-size: 2.4rem;
+  line-height: 1.2;
 }
 
 .stat-label {
@@ -48,6 +47,7 @@
 }
 
 @media (max-width: 768px) {
+  .stats-section { margin-top: 0; }
   .stats-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;

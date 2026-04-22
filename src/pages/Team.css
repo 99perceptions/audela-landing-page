@@ -1,0 +1,313 @@
+/* ── Team page ─────────────────────────────────────────── */
+
+/* ── Hero ──────────────────────────────────────────────── */
+.team-hero {
+  background:
+    linear-gradient(
+      to right,
+      rgba(20, 22, 28, 0.92) 0%,
+      rgba(20, 22, 28, 0.72) 55%,
+      rgba(20, 22, 28, 0.55) 100%
+    ),
+    url('/Brand-Assets/team-bg.jpg') center / cover no-repeat;
+  padding: clamp(5rem, 9vw, 7rem) 0 clamp(4rem, 7vw, 6rem);
+  position: relative;
+  overflow: hidden;
+  margin-top: var(--navbar-h, 68px);
+}
+
+.team-hero-geo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--color-4);
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+.team-hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+}
+
+.team-hero-tag {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-3);
+  margin-bottom: 1.5rem;
+}
+
+.team-hero-headline {
+  font-family: var(--font-title);
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 700;
+  color: var(--color-5);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0 0 1.75rem 0;
+}
+.team-hero-headline em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-4);
+}
+
+.team-hero-desc {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  color: var(--color-3);
+  line-height: 1.78;
+  max-width: 580px;
+  margin: 0;
+}
+
+/* ── Sections ──────────────────────────────────────────── */
+.team-section {
+  background: #fff;
+  padding: clamp(3.5rem, 6vw, 5rem) 0;
+}
+
+.team-section-alt {
+  background: var(--color-5);
+}
+
+.team-section-label {
+  margin-bottom: clamp(2rem, 3.5vw, 2.75rem);
+}
+
+.team-group-tag {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-3);
+  padding-left: 0;
+  border-bottom: 1px solid rgba(37, 39, 44, 0.12);
+  padding-bottom: 0.75rem;
+}
+
+/* ── Cards grid ────────────────────────────────────────── */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.team-grid > * {
+  height: 100%;
+}
+
+/* ── Card ──────────────────────────────────────────────── */
+.team-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 2.25rem 2rem;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  height: 100%;
+  box-sizing: border-box;
+}
+.team-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(37, 39, 44, 0.1);
+}
+
+.team-card-dark {
+  background: var(--color-1);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.team-card-light {
+  background: #fff;
+  border-color: rgba(37, 39, 44, 0.08);
+}
+
+.team-section-alt .team-card-light {
+  background: var(--color-5);
+  border-color: rgba(37, 39, 44, 0.08);
+}
+
+/* ── Card top ──────────────────────────────────────────── */
+.team-card-top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.team-card-role {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.team-card-dark .team-card-role  { color: var(--color-3); }
+.team-card-light .team-card-role { color: var(--color-3); }
+
+.team-card-name {
+  font-family: var(--font-title);
+  font-size: clamp(1.3rem, 2.2vw, 1.65rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0;
+}
+.team-card-dark .team-card-name  { color: var(--color-5); }
+.team-card-light .team-card-name { color: var(--color-1); }
+
+/* ── Credentials ───────────────────────────────────────── */
+.team-card-credentials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.team-credential {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 0.22rem 0.65rem;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.team-card-dark .team-credential {
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--color-4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.team-card-light .team-credential {
+  background: rgba(37, 39, 44, 0.05);
+  color: var(--color-2);
+  border: 1px solid rgba(37, 39, 44, 0.08);
+}
+
+/* ── Bio ───────────────────────────────────────────────── */
+.team-card-bio {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  margin: 0;
+  flex: 1;
+}
+.team-card-dark .team-card-bio  { color: var(--color-3); }
+.team-card-light .team-card-bio { color: var(--color-2); }
+
+/* ── CTA strip ─────────────────────────────────────────── */
+.team-cta {
+  background: var(--color-1);
+  padding: clamp(3.5rem, 6vw, 5rem) 0;
+}
+
+.team-cta-inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: center;
+}
+
+.team-cta-title {
+  font-family: var(--font-title);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 700;
+  color: var(--color-5);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0 0 0.75rem 0;
+}
+.team-cta-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-4);
+}
+
+.team-cta-desc {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-3);
+  line-height: 1.72;
+  max-width: 480px;
+  margin: 0;
+}
+
+.team-cta-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.team-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.85rem 1.75rem;
+  background: var(--color-5);
+  color: var(--color-1);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+}
+.team-btn-primary:hover { background: var(--color-4); }
+
+.team-btn-ghost {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--color-3);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(142, 158, 184, 0.35);
+  padding-bottom: 0.1rem;
+  transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+.team-btn-ghost:hover {
+  color: var(--color-5);
+  border-color: rgba(238, 241, 242, 0.5);
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .team-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .team-cta-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .team-cta-actions {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+  .team-cta-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .team-btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+}

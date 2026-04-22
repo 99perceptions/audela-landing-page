@@ -10,12 +10,12 @@ export const Platform = () => {
           
           <div className="platform-text">
             <AnimatedSection yOffset={20}>
-              <div className="tag">The Audella Platform</div>
+              <div className="tag">The Audela Platform</div>
               <h2 style={{ textAlign: "left", marginBottom: "1.5rem" }}>
                 One AI Core.<br/><i>Infinite Possibilities.</i>
               </h2>
               <p className="platform-sub">
-                Every Audella product is powered by a shared intelligence layer — real-time data pipelines, ML model orchestration, and an adaptive learning engine.
+                Every Audela product is powered by a shared intelligence layer — real-time data pipelines, ML model orchestration, and an adaptive learning engine.
               </p>
             </AnimatedSection>
             
