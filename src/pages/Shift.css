@@ -1,0 +1,206 @@
+/* ── Shift hero — photo background ────────────────────── */
+.shift-hero {
+  position: relative;
+  background:
+    linear-gradient(
+      to right,
+      rgba(20, 22, 28, 0.92) 0%,
+      rgba(20, 22, 28, 0.72) 55%,
+      rgba(20, 22, 28, 0.55) 100%
+    ),
+    url('/Brand-Assets/Shift-hero-bg.jpg') center / cover no-repeat;
+}
+
+/* Keep geo pattern barely visible over the photo */
+.shift-hero .pp-hero-geo { opacity: 0.06; }
+
+/* White text on the photo background */
+.shift-hero .pp-hero-desc  { color: rgba(255, 255, 255, 0.82); }
+.shift-hero .pp-kpi-desc   { color: rgba(255, 255, 255, 0.65); }
+
+/* ── Shift product page — screenshot feature rows ─────── */
+
+.shift-features-section { padding-bottom: clamp(3rem, 5vw, 5rem); }
+
+.shift-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3.5rem, 6vw, 5rem);
+}
+
+/* ── Featured first screenshot — large centered card ───── */
+.shift-featured-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.shift-featured-header {
+  margin-bottom: 1.75rem;
+}
+
+.shift-featured-header .shift-feature-num {
+  display: block;
+  font-family: var(--font-title);
+  font-size: 4rem;
+  font-weight: 700;
+  color: rgba(37, 39, 44, 0.06);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.shift-featured-title {
+  font-family: var(--font-title);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 700;
+  color: var(--color-1);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.shift-featured-img-wrap {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow:
+    0 8px 32px rgba(37, 39, 44, 0.08),
+    0 32px 80px rgba(37, 39, 44, 0.12),
+    0 1px 0 rgba(255, 255, 255, 0.8) inset;
+  border: 1px solid rgba(37, 39, 44, 0.07);
+  background: var(--color-5);
+}
+
+.shift-featured-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+}
+
+.shift-featured-desc {
+  margin-top: 2rem;
+  font-family: var(--font-body);
+  font-size: clamp(0.92rem, 1.4vw, 1rem);
+  color: var(--color-2);
+  line-height: 1.75;
+  max-width: 680px;
+}
+
+/* ── Feature row ───────────────────────────────────────── */
+.shift-feature-row {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+.shift-row-reverse {
+  grid-template-columns: 1.35fr 1fr;
+}
+.shift-row-reverse .shift-feature-text { order: 2; }
+.shift-row-reverse .shift-screenshot-wrap { order: 1; }
+
+/* ── Text side ─────────────────────────────────────────── */
+.shift-feature-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.shift-feature-num {
+  font-family: var(--font-title);
+  font-size: 4rem;
+  font-weight: 700;
+  color: rgba(37, 39, 44, 0.06);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.shift-feature-title {
+  font-family: var(--font-title);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-weight: 600;
+  color: var(--color-1);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.shift-feature-desc {
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 1.4vw, 1rem);
+  color: var(--color-2);
+  line-height: 1.75;
+  max-width: 460px;
+}
+
+/* ── Screenshot side ───────────────────────────────────── */
+.shift-screenshot-wrap {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 4px 16px rgba(37, 39, 44, 0.06),
+    0 16px 48px rgba(37, 39, 44, 0.1),
+    0 1px 0 rgba(255, 255, 255, 0.8) inset;
+  border: 1px solid rgba(37, 39, 44, 0.08);
+  background: var(--color-5);
+}
+
+.shift-screenshot-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    transparent 60%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.shift-screenshot {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.shift-screenshot-wrap:hover .shift-screenshot {
+  transform: scale(1.02);
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .shift-featured-title { font-size: clamp(1.25rem, 5vw, 1.6rem); }
+  .shift-featured-img-wrap { border-radius: 14px; }
+  .shift-featured-img { border-radius: 14px; }
+
+  .shift-feature-row,
+  .shift-row-reverse {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .shift-row-reverse .shift-feature-text { order: 1; }
+  .shift-row-reverse .shift-screenshot-wrap { order: 2; }
+
+  .shift-feature-num { font-size: 3rem; }
+
+  .shift-feature-desc { max-width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .shift-screenshot-wrap {
+    border-radius: 12px;
+  }
+  .shift-screenshot {
+    border-radius: 12px;
+  }
+}

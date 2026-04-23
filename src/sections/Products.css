@@ -1,0 +1,273 @@
+/* ── Section ───────────────────────────────────────────── */
+.products-section {
+  background: var(--color-5);
+}
+
+/* ── Tier 1 — Featured bento ───────────────────────────── */
+.feat-bento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 1.25rem;
+  margin-bottom: 3.5rem;
+}
+
+/* Row 1: Clara (wide = col 1–2) + Reven (narrow = col 3) */
+/* Row 2: Lens  (narrow = col 1)  + Shift (wide = col 2–3) */
+.feat-wide   { grid-column: span 2; }
+.feat-narrow { grid-column: span 1; }
+
+/* ── Featured card ─────────────────────────────────────── */
+.feat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  min-height: 320px;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border-radius: 16px;
+  border: 1px solid rgba(37, 39, 44, 0.1);
+  background: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1);
+}
+
+.feat-card:hover {
+  border-color: var(--color-3);
+  box-shadow: 0 12px 48px rgba(37, 39, 44, 0.1);
+  transform: translateY(-3px);
+}
+
+/* Abstract background image */
+.feat-abstract {
+  position: absolute;
+  bottom: -5%;
+  right: -5%;
+  width: 55%;
+  height: 85%;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 35%);
+  mask-image: linear-gradient(to right, transparent 0%, black 35%);
+  z-index: 0;
+}
+
+.feat-abstract img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom right;
+  opacity: 0.9;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.feat-card:hover .feat-abstract img {
+  transform: scale(1.04) translate(-8px, -8px);
+}
+
+/* Card body — sits above abstract */
+.feat-body {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  max-width: 58%;
+}
+
+/* Narrow cards don't need text constraint */
+.feat-narrow .feat-body { max-width: 100%; }
+
+.feat-top {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.feat-category {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-3);
+}
+
+/* Product logo — prominent */
+.feat-logo {
+  height: 36px;
+  display: flex;
+  align-items: center;
+}
+
+.feat-logo img {
+  height: 100%;
+  max-width: 180px;
+  width: auto;
+  object-fit: contain;
+  object-position: left center;
+  filter: brightness(0);
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.feat-card:hover .feat-logo img { opacity: 1; }
+
+.feat-desc {
+  font-family: var(--font-body);
+  font-size: clamp(0.85rem, 1.4vw, 0.95rem);
+  color: var(--color-2);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* CTA row */
+.feat-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding: 0.65rem 1.25rem;
+  background: var(--color-1);
+  color: var(--color-5);
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  width: fit-content;
+  transition: background 0.2s ease;
+}
+
+.feat-card:hover .feat-cta { background: var(--color-2); }
+
+.feat-cta-arrow {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s ease;
+}
+
+.feat-card:hover .feat-cta-arrow { transform: translateX(3px); }
+
+/* ── Tier 2 — Coming soon divider ──────────────────────── */
+.soon-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.soon-rule {
+  flex: 1;
+  height: 1px;
+  background: rgba(37, 39, 44, 0.1);
+}
+
+.soon-label {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-3);
+  white-space: nowrap;
+}
+
+/* ── Tier 2 — Coming soon cards ────────────────────────── */
+.soon-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.85rem;
+  align-items: stretch;
+}
+
+/* Make AnimatedSection wrappers fill row height */
+.soon-grid > * { height: 100%; }
+
+.soon-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.1rem 1rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(37, 39, 44, 0.08);
+  background: rgba(37, 39, 44, 0.025);
+  cursor: default;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.soon-logo {
+  height: 26px;
+  display: flex;
+  align-items: center;
+}
+
+.soon-logo img {
+  height: 100%;
+  max-width: 130px;
+  width: auto;
+  object-fit: contain;
+  object-position: left;
+  filter: brightness(0);
+  opacity: 0.45;
+}
+
+.soon-desc {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-3);
+  line-height: 1.4;
+  margin: 0;
+  flex: 1;
+}
+
+.soon-pill {
+  display: inline-block;
+  width: fit-content;
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--color-3);
+  background: rgba(37, 39, 44, 0.07);
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  margin-top: 0.25rem;
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .feat-bento {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .feat-wide   { grid-column: span 2; }
+  .feat-narrow { grid-column: span 1; }
+  .feat-body   { max-width: 65%; }
+  .feat-narrow .feat-body { max-width: 100%; }
+
+  .soon-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .feat-bento {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .feat-wide, .feat-narrow { grid-column: span 1; }
+
+  .feat-card { min-height: 260px; }
+  .feat-body { max-width: 100%; }
+
+  .feat-abstract { display: none; }
+
+  .soon-grid { grid-template-columns: repeat(2, 1fr); }
+  .soon-label { font-size: 0.65rem; }
+}
+
+@media (max-width: 480px) {
+  .soon-grid { grid-template-columns: repeat(2, 1fr); }
+}

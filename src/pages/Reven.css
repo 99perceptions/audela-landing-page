@@ -1,0 +1,19 @@
+/* ── Reven hero — photo background ─────────────────────── */
+.reven-hero {
+  position: relative;
+  background:
+    linear-gradient(
+      to right,
+      rgba(20, 22, 28, 0.92) 0%,
+      rgba(20, 22, 28, 0.72) 55%,
+      rgba(20, 22, 28, 0.55) 100%
+    ),
+    url('/Brand-Assets/Reven-bg.jpg') center / cover no-repeat;
+}
+
+/* Keep geo pattern barely visible over the photo */
+.reven-hero .pp-hero-geo { opacity: 0.06; }
+
+/* White text on the photo background */
+.reven-hero .pp-hero-desc { color: rgba(255, 255, 255, 0.82); }
+.reven-hero .pp-kpi-desc  { color: rgba(255, 255, 255, 0.65); }
