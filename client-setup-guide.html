@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audela Client Setup Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Google+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --color-1: #25272C;
+      --color-2: #404E63;
+      --color-3: #8E9EB8;
+      --color-4: #C3D1DF;
+      --color-5: #EEF1F2;
+      --font-title: 'Playfair Display', serif;
+      --font-body: 'Google Sans', sans-serif;
+    }
+
+    /* SVG Icons */
+    .icon {
+      display: inline-block;
+      width: 1.2em;
+      height: 1.2em;
+      vertical-align: -0.25em;
+      margin-right: 0.4rem;
+    }
+
+    .icon-sm {
+      width: 1em;
+      height: 1em;
+    }
+
+    .logo-mark {
+      display: inline-block;
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+
+    .logo-mark-sm {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: var(--font-body);
+    }
+
+    body {
+      background: #ffffff;
+      color: var(--color-1);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Print styles */
+    @page {
+      size: letter;
+      margin: 0.75in 1in;
+    }
+
+    @media print {
+      html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        height: auto;
+        width: 100%;
+      }
+      .page-break {
+        page-break-after: always;
+        page-break-inside: avoid;
+        margin: 0;
+        padding: 0;
+      }
+      .cover {
+        page-break-after: always;
+        page-break-inside: avoid;
+        margin: 0;
+        padding: 3rem 2rem;
+        width: 100%;
+      }
+      .page {
+        page-break-inside: avoid;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
+      .page-content {
+        padding: 2rem;
+        margin: 0;
+      }
+      a { color: var(--color-2); text-decoration: none; }
+    }
+
+    /* Cover page */
+    .cover {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 3rem 2.5rem;
+      background: linear-gradient(135deg, var(--color-1) 0%, var(--color-2) 100%);
+      color: #fff;
+      overflow: hidden;
+      page-break-after: always;
+      margin: 0;
+    }
+
+    .cover::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><defs><pattern id="geo" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse"><circle cx="40" cy="40" r="28" fill="none" stroke="white" stroke-width="0.5" opacity="0.1"/><circle cx="40" cy="40" r="16" fill="none" stroke="white" stroke-width="0.35" opacity="0.08"/></pattern></defs><rect width="400" height="400" fill="url(%23geo)"/></svg>');
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    .cover-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cover-logo {
+      font-family: var(--font-title);
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      letter-spacing: -0.02em;
+    }
+
+    .cover h1 {
+      font-family: var(--font-title);
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .cover p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.8);
+      max-width: 500px;
+      margin-bottom: 3rem;
+    }
+
+    .cover-meta {
+      display: flex;
+      gap: 3rem;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* Standard pages */
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 3rem 3rem;
+      position: relative;
+      page-break-inside: avoid;
+      margin: 0;
+    }
+
+    .page::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(135deg, var(--color-5) 0%, rgba(238,241,242,0) 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page-content {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      margin: 0;
+    }
+
+    .page-header {
+      margin: 0 0 2rem 0;
+      border-bottom: 2px solid var(--color-4);
+      padding: 0 0 1.5rem 0;
+    }
+
+    .page-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-3);
+      margin-bottom: 0.5rem;
+    }
+
+    .page h2 {
+      font-family: var(--font-title);
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--color-1);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+
+    /* Section blocks */
+    .section {
+      margin: 0 0 2.5rem 0;
+      padding: 0;
+      page-break-inside: avoid;
+    }
+
+    .section-title {
+      font-family: var(--font-title);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--color-1);
+      margin-bottom: 1rem;
+      padding-left: 0;
+      border-left: 3px solid var(--color-2);
+      padding-left: 1rem;
+    }
+
+    .section p {
+      font-size: 0.95rem;
+      color: var(--color-2);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    /* Steps */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .step {
+      display: flex;
+      gap: 1.25rem;
+      page-break-inside: avoid;
+    }
+
+    .step-number {
+      flex-shrink: 0;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background: var(--color-1);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-title);
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .step-content h4 {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-1);
+      margin-bottom: 0.4rem;
+    }
+
+    .step-content p {
+      font-size: 0.9rem;
+      color: var(--color-2);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .step-content code {
+      display: inline-block;
+      background: rgba(196, 209, 223, 0.15);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      color: var(--color-2);
+    }
+
+    /* Info boxes */
+    .info-box {
+      background: rgba(238, 241, 242, 0.6);
+      border-left: 3px solid var(--color-4);
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+      border-radius: 4px;
+      page-break-inside: avoid;
+    }
+
+    .info-box h5 {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--color-1);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .info-box p {
+      font-size: 0.88rem;
+      color: var(--color-2);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* Two column layout */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .two-col > * {
+      page-break-inside: avoid;
+    }
+
+    /* Key info */
+    .key-info {
+      background: var(--color-5);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+      page-break-inside: avoid;
+    }
+
+    .key-info dt {
+      font-family: var(--font-body);
+      font-weight: 600;
+      color: var(--color-1);
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .key-info dt:first-child {
+      margin-top: 0;
+    }
+
+    .key-info dd {
+      color: var(--color-2);
+      margin: 0.5rem 0 0 0;
+      font-size: 0.9rem;
+      font-family: 'Courier New', monospace;
+      background: rgba(255,255,255,0.5);
+      padding: 0.4rem 0.6rem;
+      border-radius: 3px;
+    }
+
+    /* Footer */
+    .page-footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(196, 209, 223, 0.3);
+      font-size: 0.8rem;
+      color: var(--color-3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .page-footer-content {
+      flex: 1;
+    }
+
+    .page-footer-logo {
+      flex-shrink: 0;
+    }
+
+    /* Page number */
+    .page-number {
+      position: absolute;
+      bottom: 2rem;
+      right: 3rem;
+      font-size: 0.85rem;
+      color: var(--color-3);
+    }
+
+    /* Highlight */
+    .highlight {
+      color: var(--color-2);
+      font-weight: 600;
+    }
+
+    /* Table */
+    .comparison-table {
+      width: 100%;
+      margin: 1.5rem 0;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .comparison-table th {
+      background: var(--color-5);
+      padding: 0.75rem;
+      text-align: left;
+      font-weight: 600;
+      color: var(--color-1);
+      border-bottom: 2px solid var(--color-4);
+    }
+
+    .comparison-table td {
+      padding: 0.75rem;
+      border-bottom: 1px solid rgba(196, 209, 223, 0.3);
+      color: var(--color-2);
+    }
+
+    .comparison-table tr:hover {
+      background: rgba(238, 241, 242, 0.4);
+    }
+
+    /* CTA */
+    .cta-box {
+      background: var(--color-1);
+      color: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+      text-align: center;
+      page-break-inside: avoid;
+    }
+
+    .cta-box h4 {
+      font-family: var(--font-title);
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .cta-box p {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    /* Checklist */
+    .checklist {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .checklist li {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+      color: var(--color-2);
+    }
+
+    .checklist li::before {
+      content: '';
+      display: inline-block;
+      width: 1.2rem;
+      height: 1.2rem;
+      flex-shrink: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23404E63" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>') no-repeat center;
+      background-size: contain;
+    }
+  </style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover page-break">
+  <div class="cover-content">
+    <div class="cover-logo" style="margin-bottom: 3rem; width: 300px;">
+      <svg viewBox="0 0 871.01 263.96" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <style>
+            .logo-text { fill: #ffffff; }
+          </style>
+        </defs>
+        <g>
+          <path class="logo-text" d="M640.11,216.99c-3.75,8.16-8.16,14.67-13.23,19.52-5.08,4.86-10.58,8.32-16.54,10.42-5.95,2.1-12.23,3.14-18.86,3.14-8.38,0-16.48-2.81-24.31-8.43-7.83-5.63-14.17-13.84-19.02-24.64-4.85-10.8-7.28-23.7-7.28-38.7,0-3.97.1-7.94.33-11.91.18-3.32.45-6.4.79-9.26h103.4c0-24.92-5.46-43.27-16.37-55.07-10.92-11.8-26.08-17.7-45.49-17.7-14.99,0-28.11,3.81-39.36,11.41s-19.97,18.42-26.13,32.42c-3.15,7.13-5.48,14.97-7.03,23.5h-25.04V0c-4.85,1.55-10.21,2.71-16.04,3.48-5.85.78-11.96,1.16-18.36,1.16s-13.45-.33-20.51-1v6.95c9.7,0,16.32,2.37,19.85,7.11,3.53,4.75,5.29,12.07,5.29,22v63.79c-3.09-5.3-7.22-9.37-12.4-12.2-8.49-4.63-17.59-6.95-27.29-6.95-13.23,0-25.53,3.31-36.88,9.92-11.36,6.62-20.51,16.6-27.45,29.94-4.14,7.96-7.04,17.12-8.71,27.47h-50v-66.34c-4.85,1.55-10.21,2.71-16.04,3.48-5.85.77-11.96,1.16-18.36,1.16s-13.45-.33-20.51-.99v6.95c9.7,0,16.32,2.38,19.85,7.11,3.53,4.75,5.29,12.07,5.29,22v68.47c0,11.25-1.93,21.39-5.79,30.43-3.86,9.04-9.15,16.21-15.88,21.5-6.73,5.29-14.39,7.94-22.99,7.94-7.94,0-13.68-1.76-17.2-5.29-3.53-3.52-5.74-8.15-6.62-13.89-.88-5.73-1.32-12.02-1.32-18.85V85.34c-4.85,1.55-10.21,2.71-16.04,3.48-5.85.77-11.96,1.16-18.36,1.16s-13.45-.33-20.51-.99v6.95c9.7,0,16.32,2.38,19.85,7.11,3.53,4.75,5.29,12.07,5.29,22v83.02c0,10.37.77,19.08,2.32,26.13,1.54,7.06,4.41,12.79,8.6,17.2,3.75,3.97,8.49,7.06,14.23,9.26,5.73,2.2,12.45,3.31,20.18,3.31,10.58,0,20.89-3.04,30.93-9.09,10.03-6.07,17.8-16.26,23.32-30.6v39.03c4.85-1.77,10.2-2.97,16.04-3.63,5.84-.67,11.96-1,18.36-1,6.83,0,13.67.33,20.51,1v-6.95c-9.48,0-16.04-2.37-19.68-7.11-3.64-4.74-5.46-12.07-5.46-22v-66.49h49.24c-.63,5.43-.95,11.16-.95,17.2,0,20.07,2.7,36.72,8.11,49.95,5.4,13.23,13.23,23.15,23.48,29.77s22.21,9.92,35.89,9.92c15.22,0,27.29-4.52,36.22-13.57,4.49-4.54,8.07-10.06,10.75-16.55v29.13c4.85-1.77,10.2-2.98,16.04-3.64,5.84-.66,11.96-1,18.36-1,6.83,0,13.67.33,20.51,1v-6.95c-9.48,0-16.04-2.37-19.68-7.11-3.64-4.73-5.46-12.07-5.46-21.99v-66.16h24.18c-.91,6.66-1.37,13.71-1.37,21.17,0,16.76,3.03,31.59,9.09,44.49,6.07,12.9,14.78,22.99,26.13,30.26,11.36,7.28,24.97,10.92,40.85,10.92,11.03,0,20.73-2.15,29.12-6.45,8.38-4.3,15.32-9.87,20.83-16.71,5.51-6.83,9.48-13.89,11.91-21.17l-6.62-2.65ZM443.97,242.13c-7.5,7.94-15.88,11.91-25.14,11.91s-17.92-2.92-24.64-8.77c-6.73-5.83-11.8-14.66-15.22-26.46-3.42-11.79-5.13-26.63-5.13-44.49-.22-28,4.02-48.73,12.74-62.18,8.71-13.45,19.57-20.18,32.58-20.18,8.82,0,16.48,2.1,22.99,6.28,6.28,4.05,10.96,10.47,14.06,19.24v98.56c-2.2,11.07-6.27,19.77-12.24,26.09ZM555.27,105.85c7.83-10.14,16.82-15.22,26.96-15.22,7.5,0,13.61,2.76,18.36,8.27,4.73,5.52,8.21,12.85,10.42,22,2.2,9.15,3.08,19.13,2.65,29.94h-72.18c1.76-20.35,6.37-35.36,13.79-44.99Z"/>
+          <path class="logo-text" d="M698.65,228.57V0c-4.85,1.55-10.2,2.71-16.04,3.48-5.84.78-11.96,1.16-18.36,1.16s-13.45-.33-20.51-1v6.95c9.7,0,16.32,2.37,19.85,7.11,3.52,4.75,5.29,12.07,5.29,22v188.88c0,9.26-1.93,15.55-5.79,18.85-3.87,3.31-10.31,4.96-19.35,4.96v6.95c3.75-.22,9.48-.49,17.2-.83,7.72-.33,15.33-.49,22.83-.49s15.38.17,22.99.49c7.61.33,13.29.61,17.03.83v-6.95c-9.04,0-15.49-1.65-19.34-4.96-3.87-3.31-5.79-9.6-5.79-18.85Z"/>
+          <path class="logo-text" d="M867.34,243.79c-3.1,2.45-5.71,4.16-7.92,5.3-2.2,1.06-4.57,1.63-6.94,1.63-3.59,0-6.12-1.22-7.83-3.67-1.63-2.37-2.45-6.37-2.45-11.83v-91.98c0-10.61-.9-19.67-2.61-27.34-1.8-7.59-5.55-14.04-11.26-19.34-2.88-2.66-6.23-4.9-10.1-6.73,4.06-3.54,7.6-7.15,10.6-10.9,1.63-1.96,3.1-3.92,4.41-5.88,4.73-7.02,8-13.47,9.71-19.42,1.55-5.14,2.28-10.04,2.28-14.53.08-4.57-1.71-9.06-5.3-13.55-3.18-4-7.18-6.61-12.08-7.92-4.9-1.39-9.79,0-14.77,4-4.33,3.43-6.86,7.51-7.59,12.24-.73,4.65.57,9.14,4,13.47,3.51,4.33,7.51,6.86,12.16,7.67,4.57.82,8.81.33,12.65-1.63.08,6.12-1.8,11.75-5.79,16.89-3.92,5.14-8,9.39-12.32,12.9-.82.65-1.71,1.31-2.53,1.88-.96.71-1.93,1.36-2.89,1.95-6.04-1.78-13.22-2.68-21.44-2.68-9.96,0-18.77,1.22-26.69,3.67-.24,0-.41.08-.65.16-5.55,1.71-10.37,3.75-14.53,5.96-1.88.98-3.59,2.04-5.14,3.1-.16.08-.33.24-.49.41-1.31.82-2.45,1.8-3.59,2.69-2.61,2.2-4.9,4.49-6.86,6.86-2.86,3.51-4.24,8.16-4.24,13.87,0,5.06,1.47,9.71,4.41,13.71,3.02,4.16,7.67,6.12,14.12,6.12,5.47,0,9.96-1.55,13.55-4.73,3.51-3.18,5.31-7.59,5.31-13.06s-1.55-10.04-4.65-13.63c-3.1-3.51-6.77-5.71-10.94-6.61,3.75-4.82,8.73-8,15.1-9.55,6.2-1.55,12.16-2.37,17.63-2.37,5.79,0,10.94.9,15.59,2.53,4.65,1.63,8.32,4.9,11.1,9.71,2.69,4.9,4.08,11.92,4.08,21.22v20.49c0,5.06-2.29,9.14-6.77,12.24-4.49,3.1-10.28,5.79-17.38,8.08-7.02,2.37-14.45,4.73-22.28,7.35-7.84,2.53-15.26,5.63-22.36,9.39-7.02,3.75-12.81,8.73-17.38,14.85-4.49,6.2-6.77,14.12-6.77,23.83,0,8.16,1.71,15.34,5.14,21.55,3.43,6.12,8.49,10.94,15.1,14.36,6.61,3.43,14.45,5.14,23.42,5.14,10.36,0,19.67-2.45,27.99-7.26,8.24-4.9,15.34-12.24,21.3-22.2,0,6.61,1.06,12.08,3.18,16.4,2.04,4.24,5.22,7.51,9.39,9.71,4.24,2.2,9.47,3.35,15.92,3.35,7.02,0,12.65-1.14,16.81-3.51,4.24-2.28,8.65-5.22,13.3-8.73l-3.67-5.63ZM812.41,223.31c-5.06,8.32-10.69,14.61-16.98,18.85-6.28,4.16-13.14,6.28-20.4,6.28-8.16,0-14.61-2.69-19.34-8-4.73-5.22-7.1-12.32-7.1-21.14s1.8-16,5.31-21.46c3.51-5.55,8-10.04,13.39-13.47,5.39-3.35,11.1-6.37,17.06-8.9,5.96-2.53,11.43-5.06,16.49-7.59,5.14-2.53,8.98-5.71,11.59-9.47v64.88Z"/>
+          <path class="logo-text" d="M141.54,249.78c-2.23,1.12-4.57,1.67-7.03,1.67-3.57,0-6.19-1.22-7.86-3.67-1.67-2.45-2.51-6.47-2.51-12.05v-93.02c0-10.71-.89-19.91-2.68-27.61-1.79-7.7-5.58-14.22-11.38-19.57-4.24-4.02-9.59-7.08-16.06-9.21-6.47-2.11-14.28-3.18-23.42-3.18-10.26,0-19.47,1.29-27.6,3.85-8.15,2.57-14.78,5.63-19.91,9.21-4.47,3.12-8.15,6.47-11.04,10.03-2.91,3.57-4.35,8.26-4.35,14.06,0,5.13,1.51,9.76,4.52,13.88,3.01,4.13,7.75,6.19,14.22,6.19,5.58,0,10.15-1.62,13.72-4.85,3.57-3.23,5.35-7.64,5.35-13.21s-1.56-10.15-4.68-13.72c-3.13-3.56-6.81-5.79-11.04-6.69,3.79-4.91,8.87-8.15,15.22-9.71,6.36-1.55,12.33-2.34,17.91-2.34s11.04.84,15.73,2.51c4.69,1.67,8.42,4.97,11.21,9.88,2.79,4.91,4.18,12.04,4.18,21.42v20.75c0,5.13-2.29,9.25-6.86,12.38-4.57,3.12-10.43,5.86-17.57,8.2-7.14,2.34-14.67,4.8-22.59,7.36-7.92,2.57-15.45,5.75-22.59,9.54-7.14,3.79-13,8.82-17.57,15.06-4.57,6.25-6.86,14.28-6.86,24.09,0,8.26,1.73,15.51,5.18,21.75,3.46,6.25,8.53,11.1,15.23,14.55,6.69,3.46,14.61,5.19,23.76,5.19,10.48,0,19.91-2.45,28.27-7.36,8.36-4.9,15.56-12.38,21.58-22.42,0,6.7,1.06,12.22,3.18,16.57,2.12,4.34,5.3,7.64,9.54,9.87,4.23,2.23,9.59,3.35,16.06,3.35,7.14,0,12.82-1.17,17.06-3.51,4.24-2.34,8.7-5.29,13.39-8.87l-3.68-5.68c-3.12,2.45-5.8,4.24-8.03,5.35ZM94.03,223.69c-5.14,8.48-10.88,14.83-17.24,19.07-6.36,4.24-13.21,6.36-20.58,6.36-8.25,0-14.78-2.68-19.57-8.03-4.8-5.36-7.19-12.49-7.19-21.42s1.78-16.17,5.35-21.75c3.57-5.57,8.09-10.09,13.55-13.55,5.46-3.46,11.21-6.47,17.23-9.04,6.03-2.56,11.6-5.12,16.73-7.7,5.13-2.56,9.03-5.74,11.71-9.53v65.59Z"/>
+        </g>
+      </svg>
+    </div>
+    <h1>Client Setup Guide</h1>
+    <p>Complete step-by-step instructions to set up Resend, Supabase, LinkedIn, and Twitter for your Audela integration. Get your email forms, admin CRM, and social accounts connected.</p>
+    <div class="cover-meta">
+      <div><strong>Version</strong><br>1.0 — April 2026</div>
+      <div><strong>Duration</strong><br>30–45 minutes</div>
+    </div>
+  </div>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="page page-break">
+  <div class="page-content">
+    <div class="page-header">
+      <div class="page-eyebrow">Contents</div>
+      <h2>What's Inside</h2>
+    </div>
+
+    <div class="section" style="margin-top: 2rem;">
+      <ol style="margin-left: 2rem; color: var(--color-2); line-height: 1.9; font-size: 0.95rem;">
+        <li><strong>Resend Email Setup</strong> — Configure your email service for form submissions and notifications</li>
+        <li><strong>Supabase Database Setup</strong> — Create your database to store contact form submissions</li>
+        <li><strong>Admin CRM Dashboard</strong> — Access and manage contact submissions and demo requests</li>
+        <li><strong>LinkedIn Company Page Setup</strong> — Set up your company page and connect to Audela</li>
+        <li><strong>Twitter/X Business Account Setup</strong> — Configure your business account for company branding</li>
+      </ol>
+    </div>
+
+    <div class="info-box" style="margin-top: 3rem;">
+      <h5><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="2" fill="currentColor"/><path d="M12 2v6m0 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="4" y="10" width="16" height="4" rx="2" fill="currentColor" opacity="0.3"/></svg>Before You Start</h5>
+      <p>You'll need: Active email address, basic understanding of web accounts, access to your domain (if applicable). Keep all credentials secure — never share API keys. Estimated time: 30–45 minutes total.</p>
+    </div>
+  </div>
+
+  <div class="page-number">1</div>
+</div>
+
+<!-- SECTION 1: RESEND -->
+<div class="page page-break">
+  <div class="page-content">
+    <div class="page-header">
+      <div class="page-eyebrow">Phase 1</div>
+      <h2>Resend Email Service Setup</h2>
+    </div>
+
+    <div class="section">
+      <p><strong>Resend</strong> handles all email sent from your Audela website — form confirmations, contact notifications, and demo request confirmations. It's a modern email API with 3,000 free emails/month.</p>
+    </div>
+
+    <div class="section">
+      <h3 class="section-title">Step-by-Step Setup</h3>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>Create Your Resend Account</h4>
+            <p>Go to <strong>resend.com</strong> and click "Sign Up". Use your company email. Verify your email address via the confirmation link.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>Verify Your Domain (Optional but Recommended)</h4>
+            <p>In Resend dashboard, go to <strong>Domains</strong> → <strong>Add Domain</strong>. Enter your domain (e.g., <code>audela.me</code>). Resend will give you 3 DNS records to add to your domain registrar. Add these records in your domain provider (GoDaddy, Namecheap, CloudFlare, etc.). Wait 5–10 minutes for DNS to propagate.</p>
+            <div class="info-box" style="margin-top: 1rem;">
+              <h5><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 16v-4m0-3v0.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>About Domain Verification</h5>
+              <p><strong>Without verification:</strong> Emails sent from <code>onboarding@resend.dev</code> (test address). Good for testing. <strong>With verification:</strong> Emails sent from your domain (e.g., <code>hello@audela.me</code>). Required for production.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4>Generate Your API Key</h4>
+            <p>In Resend dashboard, go to <strong>API Keys</strong> → <strong>Create Key</strong>. Name it <code>Audela Website</code>. Copy the key — you'll need this next.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h4>Add API Key to Vercel (Production)</h4>
+            <p>Go to your <strong>Vercel project</strong> → <strong>Settings</strong> → <strong>Environment Variables</strong>. Add a new variable: <code>RESEND_API_KEY</code> with your API key as the value. Save.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-info">
+      <dt><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sender Address (Test)</dt>
+      <dd>onboarding@resend.dev</dd>
+      <dt><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sender Address (Production)</dt>
+      <dd>hello@audela.me (after domain verification)</dd>
+      <dt><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Recipient Email</dt>
+      <dd>Your company email (e.g., contact@audela.me)</dd>
+    </div>
+
+    <div class="cta-box">
+      <h4><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: #fff;"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Resend Setup Complete</h4>
+      <p>You can now send transactional emails from your website forms. Move to Phase 2: Supabase.</p>
+    </div>
+  </div>
+
+  <div class="page-number">2</div>
+</div>
+
+<!-- SECTION 2: SUPABASE -->
+<div class="page page-break">
+  <div class="page-content">
+    <div class="page-header">
+      <div class="page-eyebrow">Phase 2</div>
+      <h2>Supabase Database Setup</h2>
+    </div>
+
+    <div class="section">
+      <p><strong>Supabase</strong> is your database. It stores all contact form submissions, demo requests, and visitor information. You'll access this via an admin dashboard to see who contacted you.</p>
+    </div>
+
+    <div class="section">
+      <h3 class="section-title">Step-by-Step Setup</h3>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>Create Your Supabase Account</h4>
+            <p>Go to <strong>supabase.com</strong> and click "Start your project". Sign up with your company email. Verify your email.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>Create a New Project</h4>
+            <p>Click <strong>New Project</strong>. Name it <code>audela-contacts</code>. Choose a region closest to you (e.g., <code>us-east-1</code>). Set a strong database password (save this somewhere secure). Click <strong>Create new project</strong>.</p>
+            <p style="margin-top: 0.75rem;"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity: 0.6;"><path d="M6 2h12v4c0 2-1 4-3 5m0 0c1 1 3 3 3 5v1H6v-1c0-2 2-4 3-5m0 0c-1-1-3-3-3-5V2m6 18h6m-3 2h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><em>Supabase will take 1–2 minutes to set up. Wait for the project to finish initializing.</em></p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4>Create the "contacts" Table</h4>
+            <p>In Supabase, go to <strong>SQL Editor</strong> (left sidebar) → <strong>New Query</strong>. Paste this SQL code:</p>
+            <div style="background: rgba(37,39,44,0.08); padding: 1rem; border-radius: 4px; margin: 0.75rem 0; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto;">
+              <pre style="margin: 0;">CREATE TABLE contacts (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  name TEXT NOT NULL,
+  company TEXT,
+  email TEXT NOT NULL,
+  product TEXT,
+  timing TEXT,
+  message TEXT,
+  contact_type TEXT,
+  created_at TIMESTAMP DEFAULT NOW()
+);</pre>
+            </div>
+            <p>Click <strong>Run</strong>. The table is now created.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h4>Get Your API Keys</h4>
+            <p>Go to <strong>Settings</strong> (bottom left) → <strong>API</strong>. Copy your <code>Project URL</code> and <code>anon key</code>. You'll need these for the website.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h4>Add Keys to Vercel</h4>
+            <p>In Vercel project settings → <strong>Environment Variables</strong>, add:</p>
+            <ul style="list-style: none; margin: 0.5rem 0;">
+              <li><code>SUPABASE_URL</code> = your Project URL</li>
+              <li><code>SUPABASE_ANON_KEY</code> = your anon key</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-info">
+      <dt>✓ Project Name</dt>
+      <dd>audela-contacts</dd>
+      <dt>✓ Table Name</dt>
+      <dd>contacts</dd>
+      <dt>✓ Auto-Generated Fields</dt>
+      <dd>id (UUID), created_at (timestamp)</dd>
+    </div>
+
+    <div class="cta-box">
+      <h4><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: #fff;"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Supabase Ready</h4>
+      <p>Your database is now live. Forms will save submissions automatically. Move to Phase 3 to access your admin dashboard.</p>
+    </div>
+  </div>
+
+  <div class="page-number">3</div>
+</div>
+
+<!-- SECTION 3: ADMIN CRM -->
+<div class="page page-break">
+  <div class="page-content">
+    <div class="page-header">
+      <div class="page-eyebrow">Phase 3</div>
+      <h2>Admin CRM Dashboard</h2>
+    </div>
+
+    <div class="section">
+      <p>Your admin dashboard lets you see all contact submissions, filter by type (demo requests vs. inquiries), export data, and manage responses. It's built into Supabase and accessible via the web.</p>
+    </div>
+
+    <div class="section">
+      <h3 class="section-title">Accessing Your Admin Dashboard</h3>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>Log Into Supabase</h4>
+            <p>Go to <strong>supabase.com</strong> and click <strong>Sign In</strong>. Use your account email and password.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>Open Your Project</h4>
+            <p>Click your <code>audela-contacts</code> project from the dashboard.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4>View the Contacts Table</h4>
+            <p>In the left sidebar, click <strong>Table Editor</strong> → <strong>contacts</strong>. All form submissions appear here as rows.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h4>Filter & Search</h4>
+            <p>Use the filter icon to show only:</p>
+            <ul class="checklist">
+              <li>Demo requests: <code>contact_type = 'demo'</code></li>
+              <li>General inquiries: <code>contact_type = 'contact'</code></li>
+              <li>Last 7 days: <code>created_at > now - interval '7 days'</code></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h4>Export Data</h4>
+            <p>Right-click on any row → <strong>Export</strong> → <strong>CSV</strong> to download submissions for reports or follow-up.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3 class="section-title">What You'll See in Each Submission</h3>
+    </div>
+
+    <div class="comparison-table">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>name</strong></td>
+          <td>Full name of the person who submitted the form</td>
+        </tr>
+        <tr>
+          <td><strong>company</strong></td>
+          <td>Their organization or company name</td>
+        </tr>
+        <tr>
+          <td><strong>email</strong></td>
+          <td>Email address for follow-up</td>
+        </tr>
+        <tr>
+          <td><strong>product</strong></td>
+          <td>Which Audela solution they're interested in (Clara, Reven, etc.)</td>
+        </tr>
+        <tr>
+          <td><strong>timing</strong></td>
+          <td>When they're ready to engage (ASAP, this week, flexible, etc.)</td>
+        </tr>
+        <tr>
+          <td><strong>message</strong></td>
+          <td>Their full inquiry or message</td>
+        </tr>
+        <tr>
+          <td><strong>contact_type</strong></td>
+          <td><code>demo</code> = demo request | <code>contact</code> = general inquiry</td>
+        </tr>
+        <tr>
+          <td><strong>created_at</strong></td>
+          <td>Date and time the form was submitted</td>
+        </tr>
+      </tbody>
+    </div>
+
+    <div class="info-box" style="margin-top: 2rem;">
+      <h5><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2c-4.5 0-8 2.5-8 6 0 2 1 3.8 2 5.2V20c0 1 .9 2 2 2h8c1.1 0 2-.9 2-2v-6.8c1-1.4 2-3.2 2-5.2 0-3.5-3.5-6-8-6z" fill="currentColor" opacity="0.2"/><circle cx="12" cy="21" r="1" fill="currentColor"/></svg>Pro Tip</h5>
+      <p>Set up email alerts in Supabase: Go to <strong>Settings</strong> → <strong>Notifications</strong> to receive an email every time someone submits a form.</p>
+    </div>
+
+    <div class="cta-box">
+      <h4><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: #fff;"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Admin Access Live</h4>
+      <p>You can now monitor all contact submissions in real time. Move to Phase 4 to set up your LinkedIn company page.</p>
+    </div>
+  </div>
+
+  <div class="page-number">4</div>
+</div>
+
+<!-- SECTION 4: LINKEDIN -->
+<div class="page page-break">
+  <div class="page-content">
+    <div class="page-header">
+      <div class="page-eyebrow">Phase 4</div>
+      <h2>LinkedIn Company Page Setup</h2>
+    </div>
+
+    <div class="section">
+      <p>Your LinkedIn company page is the central hub for B2B visibility. It builds credibility, allows followers to stay updated, and can be connected to your Audela website for social sharing.</p>
+    </div>
+
+    <div class="section">
+      <h3 class="section-title">Step-by-Step Setup</h3>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>Go to LinkedIn Company Pages</h4>
+            <p>Go to <strong>linkedin.com</strong> → Log in with your work account. Click <strong>Work</strong> (top left) → <strong>Create a Company Page</strong>.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>Fill Company Information</h4>
+            <p>Enter your company details:</p>
+            <ul class="checklist">
+              <li><strong>Company name:</strong> Audela</li>
+              <li><strong>Website:</strong> audela.me</li>
+              <li><strong>Company size:</strong> 6–50 employees (or your actual size)</li>
+              <li><strong>Industry:</strong> Software Development / Artificial Intelligence</li>
+              <li><strong>Company type:</strong> For-profit</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4>Upload Company Logo & Banner</h4>
+            <p>Use your Audela logo (PNG or JPG). Banner should be 1200×627px. Keep branding consistent with your website.</p>
+            <div class="info-box" style="margin-top: 0.75rem;">
+              <h5><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17" cy="7" r="1" fill="currentColor"/></svg>Logo Requirements</h5>
+              <p>Minimum 200×200px, preferably 400×400px. PNG with transparent background works best.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h4>Write Compelling "About" Section</h4>
+            <p>Example: <em>"Audela builds specialized AI solutions for industries where decisions have consequences. We serve healthcare, finance, logistics, and more with purpose-built, not adapted, AI."</em></p>
+            <p style="margin-top: 0.75rem;">Keep it concise (max 2–3 sentences). Include your mission statement.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h4>Add Specialties</h4>
+            <p>List your core competencies (e.g., "AI Solutions", "Finance Automation", "Healthcare Technology", "Workforce Intelligence").</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">6</div>
+          <div class="step-content">
+            <h4>Verify Your Company</h4>
+            <p>LinkedIn will send a verification link to your company email. Click it to verify ownership. This unlocks more features like LinkedIn ads and analytics.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3 class="section-title">Best Practices for LinkedIn Company Page</h3>
+    </div>
+
+    <ul class="checklist">
+      <li><strong>Post regularly:</strong> 1–2 posts per week keep your page active and visible in the feed</li>
+      <li><strong>Share industry news:</strong> Post about AI trends, industry updates, and company milestones</li>
+      <li><strong>Engage with followers:</strong> Respond to comments and messages promptly</li>
+      <li><strong>Add team members:</strong> Encourage employees to add Audela as their current company on their profiles</li>
+      <li><strong>Use LinkedIn articles:</strong> Write longer-form content on LinkedIn to establish thought leadership</li>
+      <li><strong>Monitor analytics:</strong> Check your Page Analytics to see what content resonates</li>
+    </ul>
+
+    <div class="cta-box">
+      <h4><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: #fff;"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>LinkedIn Ready</h4>
+      <p>Your company page is now live and can be shared from your Audela website. Move to Phase 5 to set up your Twitter/X business account.</p>
+    </div>
+  </div>
+
+  <div class="page-number">5</div>
+</div>
+
+<!-- SECTION 5: TWITTER -->
+<div class="page page-break">
+  <div class="page-content">
+    <div class="page-header">
+      <div class="page-eyebrow">Phase 5</div>
+      <h2>Twitter/X Business Account Setup</h2>
+    </div>
+
+    <div class="section">
+      <p><strong>Twitter/X</strong> is where industry leaders and tech professionals gather. A business account for Audela amplifies your thought leadership, announces product updates, and engages with potential customers.</p>
+    </div>
+
+    <div class="section">
+      <h3 class="section-title">Step-by-Step Setup</h3>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>Create a Twitter/X Account</h4>
+            <p>Go to <strong>twitter.com</strong> and click <strong>Create account</strong>. Use a professional email (e.g., <code>hello@audela.me</code>).</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>Choose Your Username</h4>
+            <p>Recommended: <code>@AudelaAI</code> or <code>@BuildAudela</code>. Keep it short, brandable, and professional.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4>Complete Your Profile</h4>
+            <ul class="checklist">
+              <li><strong>Profile picture:</strong> Your Audela logo</li>
+              <li><strong>Header image:</strong> 1500×500px branded hero image</li>
+              <li><strong>Bio:</strong> "Specialized AI for industries where decisions matter. Building purpose-built AI solutions."</li>
+              <li><strong>Website:</strong> https://audela.me</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h4>Switch to Business Account</h4>
+            <p>Go to <strong>Settings & Privacy</strong> → <strong>Your Account</strong> → <strong>Account Type</strong> → <strong>Switch to Business Account</strong>. This unlocks analytics, verified badge eligibility, and business features.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h4>Apply for Twitter Verification (Optional)</h4>
+            <p>Go to <strong>Settings</strong> → <strong>Verification & Badges</strong> → <strong>Get Verified</strong>. Provide documentation of your company (business registration, website proof). Verification can take 1–4 weeks.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">6</div>
+          <div class="step-content">
+            <h4>Set Up Twitter API Access (Advanced)</h4>
+            <p>If you want to auto-post or track mentions: Go to <strong>developer.twitter.com</strong> → <strong>Apps</strong> → <strong>Create App</strong>. Name it "Audela Website". Get your API keys from the <strong>Keys & Tokens</strong> section.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3 class="section-title">Twitter Content Strategy for Audela</h3>
+    </div>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Content Type</th>
+          <th>Frequency</th>
+          <th>Examples</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Industry News</strong></td>
+          <td>2–3x/week</td>
+          <td>AI trends, healthcare automation news, workflow optimization tips</td>
+        </tr>
+        <tr>
+          <td><strong>Product Updates</strong></td>
+          <td>1–2x/week</td>
+          <td>New feature launches, Clara/Reven/Lens improvements, roadmap sneak peeks</td>
+        </tr>
+        <tr>
+          <td><strong>Team Highlights</strong></td>
+          <td>1x/week</td>
+          <td>Team member spotlights, company culture, hiring announcements</td>
+        </tr>
+        <tr>
+          <td><strong>Customer Stories</strong></td>
+          <td>2x/month</td>
+          <td>Case studies, impact metrics, success stories from clients</td>
+        </tr>
+        <tr>
+          <td><strong>Engagement</strong></td>
+          <td>Daily</td>
+          <td>Reply to mentions, retweet industry leaders, participate in conversations</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="info-box" style="margin-top: 2rem;">
+      <h5><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="6" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg>Growth Tips</h5>
+      <p><strong>1)</strong> Use hashtags: #AI #Automation #FinTech #Healthcare<br><strong>2)</strong> Tag industry influencers and reply thoughtfully<br><strong>3)</strong> Post threads (3–5 tweets) to share deeper insights<br><strong>4)</strong> Share customer wins and milestones<br><strong>5)</strong> Engage 1–2 hours daily for best reach</p>
+    </div>
+
+    <div class="cta-box">
+      <h4><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: #fff;"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Twitter/X Live</h4>
+      <p>Your business account is ready. Start tweeting to build your brand presence and engage your audience.</p>
+    </div>
+  </div>
+
+  <div class="page-number">6</div>
+</div>
+
+<!-- FINAL PAGE: SUMMARY & NEXT STEPS -->
+<div class="page page-break">
+  <div class="page-content">
+    <div class="page-header">
+      <div class="page-eyebrow">Summary</div>
+      <h2>You're All Set!</h2>
+    </div>
+
+    <div class="section" style="margin-top: 2rem;">
+      <p>Congratulations! You've successfully set up all the tools needed for dynamic contact forms, admin monitoring, and social presence. Here's what's now live:</p>
+    </div>
+
+    <div class="two-col" style="margin-top: 2.5rem;">
+      <div>
+        <h4 style="font-family: var(--font-title); font-size: 1.1rem; color: var(--color-1); margin-bottom: 1rem;"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Operational</h4>
+        <ul class="checklist">
+          <li>Contact form submissions go to your inbox via Resend</li>
+          <li>All submissions stored in Supabase database</li>
+          <li>Admin dashboard active at supabase.com</li>
+          <li>LinkedIn company page discoverable</li>
+          <li>Twitter/X business account live</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="font-family: var(--font-title); font-size: 1.1rem; color: var(--color-1); margin-bottom: 1rem;"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 12c0 4.5 2 8 9 8s9-3.5 9-8-2-8-9-8-9 3.5-9 8zm7-2h4v4h-4v-4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Next Steps</h4>
+        <ul class="checklist">
+          <li>Monitor Supabase for daily submissions</li>
+          <li>Publish your first LinkedIn post</li>
+          <li>Tweet your launch to your network</li>
+          <li>Set up email alerts in Supabase</li>
+          <li>Create a follow-up process for leads</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section" style="margin-top: 2.5rem;">
+      <h3 class="section-title">Important: API Keys & Security</h3>
+      <p>You've stored sensitive API keys in Vercel environment variables. <span class="highlight">Never share these keys publicly.</span> If you suspect a key has been compromised, regenerate it immediately in Resend or Supabase.</p>
+    </div>
+
+    <div class="section">
+      <h3 class="section-title">Quick Reference: Dashboard URLs</h3>
+      <div class="key-info">
+        <dt>Admin Dashboard (Forms)</dt>
+        <dd>https://app.supabase.com → Your audela-contacts project</dd>
+        <dt>LinkedIn Company Page</dt>
+        <dd>https://www.linkedin.com/company/audela</dd>
+        <dt>Twitter/X Business Account</dt>
+        <dd>https://twitter.com/AudelaAI</dd>
+        <dt>Resend Email Dashboard</dt>
+        <dd>https://app.resend.com</dd>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3 class="section-title">Need Help?</h3>
+      <p><strong>Questions about your setup?</strong> Reach out to your Audela contact or visit our documentation at <span class="highlight">audela.me/docs</span>.</p>
+      <p style="margin-top: 1rem;"><strong>Issues with Resend?</strong> Visit <span class="highlight">resend.com/docs</span> or contact support.</p>
+      <p style="margin-top: 1rem;"><strong>Supabase questions?</strong> Check <span class="highlight">supabase.com/docs</span> or their community forum.</p>
+    </div>
+
+    <div class="cta-box" style="margin-top: 3rem;">
+      <h4>Welcome to Audela <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: #fff;"><path d="M12 2l2 4h4l-3 3 2 4-4-3-4 3 2-4-3-3h4l2-4z" fill="white"/><path d="M12 16v6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></h4>
+      <p>You're now equipped to capture leads, manage inquiries, and build your brand. Let's grow together.</p>
+    </div>
+
+    <div class="page-footer">
+      <div class="page-footer-content">
+        <p><strong>Audela Client Setup Guide</strong> — Version 1.0 — April 2026</p>
+        <p>This guide is proprietary to Audela AI and intended for authorized clients only.</p>
+      </div>
+      <div class="page-footer-logo">
+        <svg class="logo-mark-sm" viewBox="0 0 230.68 230.68" xmlns="http://www.w3.org/2000/svg">
+          <g>
+            <path d="M166.71,0H63.96C28.69,0,0,28.69,0,63.96v102.75c0,35.27,28.69,63.96,63.96,63.96h102.75c35.27,0,63.96-28.69,63.96-63.96V63.96c0-35.27-28.69-63.96-63.96-63.96ZM224.78,166.71c0,32.02-26.05,58.07-58.07,58.07H63.96c-32.02,0-58.07-26.05-58.07-58.07V63.96C5.89,31.95,31.94,5.89,63.96,5.89h102.75c32.02,0,58.07,26.05,58.07,58.07v102.75Z" fill="#25272C"/>
+            <path d="M156.1,179.77c-1.4.67-2.9,1.04-4.4,1.04-2.28,0-3.89-.78-4.97-2.33-1.04-1.5-1.55-4.04-1.55-7.51v-58.4c0-6.74-.57-12.49-1.66-17.36-1.14-4.82-3.52-8.91-7.15-12.28-1.83-1.69-3.96-3.11-6.42-4.28,2.58-2.25,4.83-4.54,6.73-6.92,1.04-1.24,1.97-2.49,2.8-3.73,3.01-4.46,5.08-8.55,6.17-12.33.98-3.26,1.45-6.37,1.45-9.22.05-2.9-1.09-5.75-3.37-8.6-2.02-2.54-4.56-4.2-7.67-5.03-3.11-.88-6.22,0-9.38,2.54-2.75,2.18-4.35,4.77-4.82,7.77-.47,2.95.36,5.8,2.54,8.55,2.23,2.75,4.77,4.35,7.72,4.87,2.9.52,5.6.21,8.03-1.04.05,3.89-1.14,7.46-3.68,10.73-2.49,3.26-5.08,5.96-7.82,8.19-.52.41-1.09.83-1.61,1.19-.61.45-1.22.86-1.84,1.24-3.84-1.13-8.39-1.7-13.61-1.7-6.32,0-11.92.78-16.95,2.33-.16,0-.26.05-.41.1-3.52,1.09-6.58,2.38-9.22,3.78-1.19.62-2.28,1.3-3.26,1.97-.1.05-.21.16-.31.26-.83.52-1.55,1.14-2.28,1.71-1.66,1.4-3.11,2.85-4.35,4.35-1.81,2.23-2.69,5.18-2.69,8.81,0,3.21.93,6.17,2.8,8.71,1.92,2.64,4.87,3.89,8.96,3.89,3.47,0,6.32-.98,8.6-3.01,2.23-2.02,3.37-4.82,3.37-8.29s-.98-6.37-2.95-8.65c-1.97-2.23-4.3-3.63-6.94-4.2,2.38-3.06,5.54-5.08,9.59-6.06,3.94-.98,7.72-1.5,11.19-1.5,3.68,0,6.94.57,9.9,1.61,2.95,1.04,5.29,3.11,7.05,6.17,1.71,3.11,2.59,7.57,2.59,13.47v13.01c0,3.21-1.45,5.8-4.3,7.77-2.85,1.97-6.53,3.68-11.04,5.13-4.46,1.5-9.17,3.01-14.15,4.66-4.97,1.61-9.69,3.58-14.2,5.96-4.46,2.38-8.14,5.54-11.04,9.43-2.85,3.94-4.3,8.96-4.3,15.13,0,5.18,1.09,9.74,3.26,13.68,2.18,3.89,5.39,6.94,9.59,9.12,4.2,2.18,9.17,3.26,14.87,3.26,6.58,0,12.49-1.55,17.77-4.61,5.23-3.11,9.74-7.77,13.53-14.1,0,4.2.67,7.67,2.02,10.42,1.3,2.69,3.32,4.77,5.96,6.17,2.69,1.4,6.01,2.12,10.1,2.12,4.46,0,8.03-.73,10.67-2.23,2.69-1.45,5.49-3.32,8.45-5.54l-2.33-3.58c-1.97,1.55-3.63,2.64-5.03,3.37ZM126.25,163.39c-3.21,5.29-6.79,9.28-10.78,11.97-3.99,2.64-8.34,3.99-12.96,3.99-5.18,0-9.28-1.71-12.28-5.08-3.01-3.32-4.51-7.82-4.51-13.42s1.14-10.16,3.37-13.63c2.23-3.52,5.08-6.37,8.5-8.55,3.42-2.12,7.05-4.04,10.83-5.65,3.78-1.61,7.25-3.21,10.47-4.82,3.26-1.61,5.7-3.63,7.36-6.01v41.2Z" fill="#25272C"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-number">7</div>
+</div>
+
+</body>
+</html>
