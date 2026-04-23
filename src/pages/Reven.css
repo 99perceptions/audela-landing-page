@@ -17,3 +17,44 @@
 /* White text on the photo background */
 .reven-hero .pp-hero-desc { color: rgba(255, 255, 255, 0.82); }
 .reven-hero .pp-kpi-desc  { color: rgba(255, 255, 255, 0.65); }
+
+/* ── Core Capabilities parallax background ────────────────────── */
+.reven-caps-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.reven-caps-parallax-bg {
+  position: absolute;
+  inset: -25% 0;
+  width: 100%;
+  height: 150%;
+  background: url('/Brand-Assets/reven-paralex-bg.jpg') center / cover no-repeat;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.reven-caps-parallax-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(245, 246, 247, 0.82);
+  pointer-events: none;
+}
+
+.reven-caps-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.reven-caps-section .pp-tag {
+  color: var(--color-2);
+}
+
+.reven-caps-section .pp-section-title {
+  color: var(--color-1);
+}
+
+.reven-caps-section .pp-section-title em {
+  color: var(--color-1);
+}

@@ -87,7 +87,7 @@ export const Contact = () => {
   return (
     <>
       <SEO
-        title="Contact Audela — Request a Demo or Get in Touch"
+        title="Contact"
         description="Have a question or want to see Audela's AI solutions in action? Reach out to our team and we'll get back to you within one business day."
         path="/contact"
       />

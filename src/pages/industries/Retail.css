@@ -1,0 +1,18 @@
+/* ── Retail & Hospitality Industry Page ────────────────────────────────── */
+
+.retail-hero {
+  background: linear-gradient(
+    to right,
+    rgba(20, 22, 28, 0.92) 0%,
+    rgba(20, 22, 28, 0.72) 55%,
+    rgba(20, 22, 28, 0.55) 100%
+  ), url('/Brand-Assets/Retail.jpg') center/cover no-repeat;
+}
+
+.retail-caps-bg {
+  background: url('/Brand-Assets/Facilities-paralex-bg.jpg') center/cover no-repeat;
+}
+
+.retail-caps-overlay {
+  background: rgba(245, 246, 247, 0.82);
+}

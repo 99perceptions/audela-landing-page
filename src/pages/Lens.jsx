@@ -1,8 +1,10 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { SEO } from '../components/ui/SEO';
 import { AnimatedSection } from '../components/ui/AnimatedSection';
+import { CountUp } from '../components/ui/CountUp';
 import { ContactForm } from '../sections/ContactForm';
 import '../sections/ProductPage.css';
 import './Lens.css';
@@ -83,10 +85,60 @@ export const Lens = () => {
   return (
     <>
       <SEO
-        title="Lens™ — Field Workforce Quality AI"
-        description="Lens uses smart glasses to capture field workforce activity in real time. AI scores performance against service standards, delivering instant quality intelligence."
+        title="Lens™ — AI Field Workforce Quality & Compliance Scoring"
+        description="AI scores field workforce performance using smart glasses. 35% quality improvement in 90 days. 60% training cost reduction. Built for distributed field teams."
         path="/lens"
       />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Lens™",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web",
+            "description": "AI-powered field workforce quality management software — captures and scores field worker performance in real time using smart glasses.",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "provider": {
+              "@type": "Organization",
+              "name": "Audela",
+              "url": "https://audela.me"
+            }
+          })}
+        </script>
+      </Helmet>
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://audela.me"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Solutions",
+                "item": "https://audela.me/#products"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Lens™",
+                "item": "https://audela.me/lens"
+              }
+            ]
+          })}
+        </script>
+      </Helmet>
       {/* Breadcrumb */}
       <nav className="pp-breadcrumb" aria-label="Breadcrumb">
         <div className="container pp-breadcrumb-inner">
@@ -97,6 +149,8 @@ export const Lens = () => {
           <span className="pp-breadcrumb-current">Lens™</span>
         </div>
       </nav>
+
+      <h1 className="sr-only">Lens™ — AI Field Workforce Quality & Compliance Scoring</h1>
 
       {/* Hero */}
       <section className="pp-hero lens-hero">
@@ -124,7 +178,7 @@ export const Lens = () => {
           <motion.div className="pp-kpi-col" initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.75, delay: 0.18, ease }}>
             {kpis.map(k => (
               <div key={k.label} className="pp-kpi">
-                <div className="pp-kpi-num">{k.num}</div>
+                <div className="pp-kpi-num"><CountUp value={k.num} /></div>
                 <div className="pp-kpi-label">{k.label}</div>
                 <div className="pp-kpi-desc">{k.desc}</div>
               </div>
@@ -194,7 +248,7 @@ export const Lens = () => {
             <div className="pp-outcomes-grid">
               {outcomes.map(o => (
                 <div key={o.label} className="pp-outcome">
-                  <div className="pp-outcome-num">{o.num}</div>
+                  <div className="pp-outcome-num"><CountUp value={o.num} /></div>
                   <div className="pp-outcome-label">{o.label}</div>
                   <p className="pp-outcome-desc">{o.desc}</p>
                 </div>

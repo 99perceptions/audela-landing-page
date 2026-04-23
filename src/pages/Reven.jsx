@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { SEO } from '../components/ui/SEO';
 import { AnimatedSection } from '../components/ui/AnimatedSection';
+import { CountUp } from '../components/ui/CountUp';
 import { ContactForm } from '../sections/ContactForm';
 import '../sections/ProductPage.css';
 import './Reven.css';
@@ -69,13 +71,70 @@ const related = [
 ];
 
 export const Reven = () => {
+  const capsRef = useRef(null);
+  const { scrollYProgress: capsScroll } = useScroll({
+    target: capsRef,
+    offset: ['start end', 'end start'],
+  });
+  const capsBgY = useTransform(capsScroll, [0, 1], ['0%', '25%']);
+
   return (
     <>
       <SEO
-        title="Reven™ — AI Revenue Cycle Management"
-        description="Reven delivers AI-powered claim submission, denial management, fraud detection and full revenue cycle reconciliation for healthcare organisations."
+        title="Reven™ — AI Revenue Cycle Management & Claim Denial Software"
+        description="AI revenue cycle management software. Reduce claim denials by 45%, detect fraud at 87% accuracy, and achieve 95% clean claim rates. Built for healthcare."
         path="/reven"
       />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Reven™",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web",
+            "description": "AI-powered revenue cycle management software — automates claim submission, denial management, fraud detection and full revenue cycle reconciliation.",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "provider": {
+              "@type": "Organization",
+              "name": "Audela",
+              "url": "https://audela.me"
+            }
+          })}
+        </script>
+      </Helmet>
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://audela.me"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Solutions",
+                "item": "https://audela.me/#products"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Reven™",
+                "item": "https://audela.me/reven"
+              }
+            ]
+          })}
+        </script>
+      </Helmet>
       {/* Breadcrumb */}
       <nav className="pp-breadcrumb" aria-label="Breadcrumb">
         <div className="container pp-breadcrumb-inner">
@@ -86,6 +145,8 @@ export const Reven = () => {
           <span className="pp-breadcrumb-current">Reven™</span>
         </div>
       </nav>
+
+      <h1 className="sr-only">Reven™ — AI Revenue Cycle Management & Claim Denial Software</h1>
 
       {/* Hero */}
       <section className="pp-hero reven-hero">
@@ -113,7 +174,7 @@ export const Reven = () => {
           <motion.div className="pp-kpi-col" initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.75, delay: 0.18, ease }}>
             {kpis.map(k => (
               <div key={k.label} className="pp-kpi">
-                <div className="pp-kpi-num">{k.num}</div>
+                <div className="pp-kpi-num"><CountUp value={k.num} /></div>
                 <div className="pp-kpi-label">{k.label}</div>
                 <div className="pp-kpi-desc">{k.desc}</div>
               </div>
@@ -147,7 +208,16 @@ export const Reven = () => {
       </section>
 
       {/* Core Capabilities */}
-      <section className="pp-section pp-section-alt">
+      <section className="pp-section pp-section-alt reven-caps-section" ref={capsRef}>
+        {/* Parallax background */}
+        <motion.div
+          className="reven-caps-parallax-bg"
+          style={{ y: capsBgY }}
+          aria-hidden="true"
+        />
+        {/* Overlay to keep text readable */}
+        <div className="reven-caps-parallax-overlay" aria-hidden="true" />
+
         <div className="container">
           <AnimatedSection yOffset={24}>
             <div className="pp-section-header">
@@ -181,7 +251,7 @@ export const Reven = () => {
             <div className="pp-outcomes-grid">
               {outcomes.map(o => (
                 <div key={o.label} className="pp-outcome">
-                  <div className="pp-outcome-num">{o.num}</div>
+                  <div className="pp-outcome-num"><CountUp value={o.num} /></div>
                   <div className="pp-outcome-label">{o.label}</div>
                   <p className="pp-outcome-desc">{o.desc}</p>
                 </div>

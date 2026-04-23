@@ -17,3 +17,44 @@
 /* White text on the photo background */
 .clara-hero .pp-hero-desc { color: rgba(255, 255, 255, 0.82); }
 .clara-hero .pp-kpi-desc  { color: rgba(255, 255, 255, 0.65); }
+
+/* ── Core Capabilities parallax background ────────────────────── */
+.clara-caps-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.clara-caps-parallax-bg {
+  position: absolute;
+  inset: -25% 0;
+  width: 100%;
+  height: 150%;
+  background: url('/Brand-Assets/clara-paralex-bg.jpg') center / cover no-repeat;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.clara-caps-parallax-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(245, 246, 247, 0.82);
+  pointer-events: none;
+}
+
+.clara-caps-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.clara-caps-section .pp-tag {
+  color: var(--color-2);
+}
+
+.clara-caps-section .pp-section-title {
+  color: var(--color-1);
+}
+
+.clara-caps-section .pp-section-title em {
+  color: var(--color-1);
+}

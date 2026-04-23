@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { SEO } from '../components/ui/SEO';
 import { AnimatedSection } from '../components/ui/AnimatedSection';
+import { CountUp } from '../components/ui/CountUp';
 import { ContactForm } from '../sections/ContactForm';
 import '../sections/ProductPage.css';
 import './Shift.css';
@@ -135,13 +137,70 @@ const ScreenshotRow = ({ item, index }) => {
 };
 
 export const Shift = () => {
+  const capsRef = useRef(null);
+  const { scrollYProgress: capsScroll } = useScroll({
+    target: capsRef,
+    offset: ['start end', 'end start'],
+  });
+  const capsBgY = useTransform(capsScroll, [0, 1], ['0%', '25%']);
+
   return (
     <>
       <SEO
-        title="Shift™ — Workforce Intelligence & Scheduling"
-        description="Shift delivers demand-aware scheduling, dynamic workforce optimisation and constraint-aware planning — built for any industry."
+        title="Shift™ — AI Workforce Scheduling & Demand-Aware Planning"
+        description="AI workforce scheduling software. 30–50% fewer scheduling inefficiencies. 3× faster schedule generation. Demand-aware planning built for any industry."
         path="/shift"
       />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Shift™",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web",
+            "description": "AI-powered autonomous workforce intelligence system — aligns demand, supply, and performance in real time across any industry.",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "provider": {
+              "@type": "Organization",
+              "name": "Audela",
+              "url": "https://audela.me"
+            }
+          })}
+        </script>
+      </Helmet>
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://audela.me"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Solutions",
+                "item": "https://audela.me/#products"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Shift™",
+                "item": "https://audela.me/shift"
+              }
+            ]
+          })}
+        </script>
+      </Helmet>
       {/* Breadcrumb */}
       <nav className="pp-breadcrumb" aria-label="Breadcrumb">
         <div className="container pp-breadcrumb-inner">
@@ -152,6 +211,8 @@ export const Shift = () => {
           <span className="pp-breadcrumb-current">Shift™</span>
         </div>
       </nav>
+
+      <h1 className="sr-only">Shift™ — AI Workforce Scheduling & Demand-Aware Planning</h1>
 
       {/* Hero */}
       <section className="pp-hero shift-hero">
@@ -179,7 +240,7 @@ export const Shift = () => {
           <motion.div className="pp-kpi-col" initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.75, delay: 0.18, ease }}>
             {kpis.map(k => (
               <div key={k.label} className="pp-kpi">
-                <div className="pp-kpi-num">{k.num}</div>
+                <div className="pp-kpi-num"><CountUp value={k.num} /></div>
                 <div className="pp-kpi-label">{k.label}</div>
                 <div className="pp-kpi-desc">{k.desc}</div>
               </div>
@@ -209,7 +270,16 @@ export const Shift = () => {
       </section>
 
       {/* Core Capabilities */}
-      <section className="pp-section pp-section-alt">
+      <section className="pp-section pp-section-alt shift-caps-section" ref={capsRef}>
+        {/* Parallax background */}
+        <motion.div
+          className="shift-caps-parallax-bg"
+          style={{ y: capsBgY }}
+          aria-hidden="true"
+        />
+        {/* Overlay to keep text readable */}
+        <div className="shift-caps-parallax-overlay" aria-hidden="true" />
+
         <div className="container">
           <AnimatedSection yOffset={24}>
             <div className="pp-section-header">
@@ -243,7 +313,7 @@ export const Shift = () => {
             <div className="pp-outcomes-grid">
               {outcomes.map(o => (
                 <div key={o.label} className="pp-outcome">
-                  <div className="pp-outcome-num">{o.num}</div>
+                  <div className="pp-outcome-num"><CountUp value={o.num} /></div>
                   <div className="pp-outcome-label">{o.label}</div>
                   <p className="pp-outcome-desc">{o.desc}</p>
                 </div>

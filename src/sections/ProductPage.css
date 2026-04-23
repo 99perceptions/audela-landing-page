@@ -209,6 +209,8 @@
 .pp-section-title em { font-style: italic; font-weight: 400; color: var(--color-2); }
 
 .pp-section-dark .pp-section-title { color: var(--color-5); }
+.pp-section-dark .pp-section-title em { color: var(--color-4); }
+.pp-section-dark .pp-section-sub { color: var(--color-4); }
 .pp-section-dark .pp-tag { color: var(--color-3); }
 
 .pp-section-sub {
@@ -281,7 +283,7 @@
 }
 .pp-cap-card:hover { border-top-color: var(--color-2); }
 
-.pp-cap-title {
+.pp-cap-card h3 {
   font-family: var(--font-title);
   font-size: 1rem;
   font-weight: 600;
@@ -303,7 +305,7 @@
   gap: 1.25rem;
 }
 
-.pp-outcome {
+.pp-outcome-card {
   padding: 2rem;
   border: 1px solid rgba(37, 39, 44, 0.08);
   border-radius: 12px;
@@ -350,7 +352,7 @@
   background: var(--color-5);
 }
 
-.pp-uc-title {
+.pp-uc-card h3 {
   font-family: var(--font-title);
   font-size: 1rem;
   font-weight: 600;

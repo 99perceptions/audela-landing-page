@@ -1,0 +1,18 @@
+/* ── Transport & Logistics Industry Page ────────────────────────────────── */
+
+.transport-hero {
+  background: linear-gradient(
+    to right,
+    rgba(20, 22, 28, 0.92) 0%,
+    rgba(20, 22, 28, 0.72) 55%,
+    rgba(20, 22, 28, 0.55) 100%
+  ), url('/Brand-Assets/transport-and-fleet.jpg') center/cover no-repeat;
+}
+
+.transport-caps-bg {
+  background: url('/Brand-Assets/Fleet-paralex-bg.jpg') center/cover no-repeat;
+}
+
+.transport-caps-overlay {
+  background: rgba(245, 246, 247, 0.82);
+}

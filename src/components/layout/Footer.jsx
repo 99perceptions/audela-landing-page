@@ -9,8 +9,6 @@ const activeSolutions = [
   { name: 'Shift™', path: '/shift' },
 ];
 
-const comingSoonSolutions = ['Veloc™', 'AutoVault™', 'Aisle™', 'Flow™', 'Vigil™', 'Care™'];
-
 export const Footer = () => {
   return (
     <footer className="footer">
@@ -42,12 +40,6 @@ export const Footer = () => {
                 </li>
               ))}
             </ul>
-            <p className="footer-soon-label">Coming Soon</p>
-            <ul className="footer-list footer-list-soon">
-              {comingSoonSolutions.map(name => (
-                <li key={name} className="footer-soon-item">{name}</li>
-              ))}
-            </ul>
           </div>
 
           {/* Company */}
@@ -55,9 +47,20 @@ export const Footer = () => {
             <h4 className="footer-col-heading">Company</h4>
             <ul className="footer-list">
               <li><Link to="/team" className="footer-link">Team</Link></li>
-              <li><Link to="/#industries" className="footer-link">Industries</Link></li>
               <li><Link to="/about" className="footer-link">About</Link></li>
-              <li><span className="footer-link footer-link-muted">Careers</span></li>
+            </ul>
+          </div>
+
+          {/* Industries */}
+          <div className="footer-col">
+            <h4 className="footer-col-heading">Industries</h4>
+            <ul className="footer-list">
+              <li><Link to="/industries/healthcare" className="footer-link">Healthcare</Link></li>
+              <li><Link to="/industries/finance" className="footer-link">Finance & Banking</Link></li>
+              <li><Link to="/industries/transport-logistics" className="footer-link">Transport & Logistics</Link></li>
+              <li><Link to="/industries/retail" className="footer-link">Retail & Hospitality</Link></li>
+              <li><Link to="/industries/manufacturing" className="footer-link">Manufacturing & Field Ops</Link></li>
+              <li><Link to="/industries/facilities" className="footer-link">Facilities & Workforce</Link></li>
             </ul>
           </div>
 
@@ -67,9 +70,6 @@ export const Footer = () => {
             <ul className="footer-list">
               <li><Link to="/contact" className="footer-link">Contact Sales</Link></li>
               <li><Link to="/contact" className="footer-link">Request Demo</Link></li>
-              <li><span className="footer-link footer-link-muted">Partner Program</span></li>
-              <li><Link to="/privacy" className="footer-link">Privacy Policy</Link></li>
-              <li><Link to="/terms" className="footer-link">Terms of Use</Link></li>
             </ul>
           </div>
 

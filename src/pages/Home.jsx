@@ -13,7 +13,7 @@ export const Home = () => {
     <>
       <SEO
         title="Specialized AI for Industries Where It Matters Most"
-        description="Audela builds specialized AI solutions for industries where decisions have consequences — healthcare, finance, logistics, retail and more. Purpose-built, not adapted from a generic platform."
+        description="Audela builds purpose-built AI for healthcare, finance, field services and workforce operations — not adapted from a generic platform. Four solutions live."
         path="/"
       />
       <Hero />

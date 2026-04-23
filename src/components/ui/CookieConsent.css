@@ -9,6 +9,13 @@
   backdrop-filter: blur(2px);
 }
 
+/* Main banner backdrop — prevents page interaction */
+.cc-backdrop-main {
+  z-index: 9997;
+  background: rgba(14, 16, 20, 0.45);
+  backdrop-filter: blur(3px);
+}
+
 /* ─── Main banner ──────────────────────────────────────── */
 .cc-banner {
   position: fixed;

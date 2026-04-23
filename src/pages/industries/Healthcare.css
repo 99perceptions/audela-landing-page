@@ -1,0 +1,18 @@
+/* ── Healthcare Industry Page ──────────────────────────────────────────── */
+
+.healthcare-hero {
+  background: linear-gradient(
+    to right,
+    rgba(20, 22, 28, 0.92) 0%,
+    rgba(20, 22, 28, 0.72) 55%,
+    rgba(20, 22, 28, 0.55) 100%
+  ), url('/Brand-Assets/Healthcare.jpg') center/cover no-repeat;
+}
+
+.healthcare-caps-bg {
+  background: url('/Brand-Assets/Healthcare-paralex-bg.jpg') center/cover no-repeat;
+}
+
+.healthcare-caps-overlay {
+  background: rgba(245, 246, 247, 0.82);
+}

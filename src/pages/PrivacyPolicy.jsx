@@ -83,6 +83,7 @@ export const PrivacyPolicy = () => {
         title="Privacy Policy"
         description="Learn how Audela collects, uses, and protects your personal information. We are committed to transparency and your right to privacy."
         path="/privacy"
+        robots="noindex, follow"
       />
       <section className="legal-hero">
         <div className="container">

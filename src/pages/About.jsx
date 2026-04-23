@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { SEO } from '../components/ui/SEO';
 import { AnimatedSection } from '../components/ui/AnimatedSection';
@@ -68,6 +68,8 @@ const values = [
 ];
 
 export const About = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const timelineRef = useRef(null);
   const { scrollYProgress: tlScroll } = useScroll({
     target: timelineRef,
@@ -75,11 +77,19 @@ export const About = () => {
   });
   const tlBgY = useTransform(tlScroll, [0, 1], ['0%', '25%']);
 
+  const handleExploreClick = (e) => {
+    e.preventDefault();
+    navigate('/');
+    setTimeout(() => {
+      document.querySelector('#products')?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
+
   return (
     <>
       <SEO
-        title="About Audela — Specialized AI Company"
-        description="Audela is an AI company building specialized solutions for industries where decisions have consequences. Learn about our mission, principles, and the team behind the work."
+        title="About"
+        description="Audela is a specialized AI company building purpose-built solutions for industries where decisions have consequences. Learn about our mission, principles, and the team behind the work."
         path="/about"
       />
       {/* Hero */}
@@ -229,7 +239,7 @@ export const About = () => {
                   Aisle™, Flow™, Vigil™, and Care™ are on the horizon.
                 </p>
                 <div className="about-solutions-actions">
-                  <Link to="/#products" className="about-btn-primary">Explore Solutions</Link>
+                  <button onClick={handleExploreClick} className="about-btn-primary">Explore Solutions</button>
                   <Link to="/team" className="about-btn-ghost">Meet the Team →</Link>
                 </div>
               </div>

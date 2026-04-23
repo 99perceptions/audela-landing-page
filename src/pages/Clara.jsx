@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { SEO } from '../components/ui/SEO';
 import { AnimatedSection } from '../components/ui/AnimatedSection';
+import { CountUp } from '../components/ui/CountUp';
 import { ContactForm } from '../sections/ContactForm';
 import '../sections/ProductPage.css';
 import './Clara.css';
@@ -72,13 +74,70 @@ const related = [
 ];
 
 export const Clara = () => {
+  const ucRef = useRef(null);
+  const { scrollYProgress: ucScroll } = useScroll({
+    target: ucRef,
+    offset: ['start end', 'end start'],
+  });
+  const ucBgY = useTransform(ucScroll, [0, 1], ['0%', '25%']);
+
   return (
     <>
       <SEO
-        title="Clara™ — AI-Powered Finance Operations"
-        description="Clara automates accounts payable, accounts receivable, reconciliation and financial close end-to-end. Faster cycles, fewer errors, zero manual bottlenecks."
+        title="Clara™ — AI Accounts Payable, AR & Financial Close Automation"
+        description="AI software that automates AP, AR, reconciliation and financial close. 80% faster close cycles. 90%+ automated match rate. Built for mid-market finance teams."
         path="/clara"
       />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Clara™",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web",
+            "description": "AI-powered autonomous finance operations software — automates AP, AR, reconciliation and financial close end-to-end.",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "provider": {
+              "@type": "Organization",
+              "name": "Audela",
+              "url": "https://audela.me"
+            }
+          })}
+        </script>
+      </Helmet>
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://audela.me"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Solutions",
+                "item": "https://audela.me/#products"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Clara™",
+                "item": "https://audela.me/clara"
+              }
+            ]
+          })}
+        </script>
+      </Helmet>
       {/* Breadcrumb */}
       <nav className="pp-breadcrumb" aria-label="Breadcrumb">
         <div className="container pp-breadcrumb-inner">
@@ -89,6 +148,8 @@ export const Clara = () => {
           <span className="pp-breadcrumb-current">Clara™</span>
         </div>
       </nav>
+
+      <h1 className="sr-only">Clara™ — AI Accounts Payable, AR & Financial Close Automation</h1>
 
       {/* Hero */}
       <section className="pp-hero clara-hero">
@@ -116,7 +177,7 @@ export const Clara = () => {
           <motion.div className="pp-kpi-col" initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.75, delay: 0.18, ease }}>
             {kpis.map(k => (
               <div key={k.label} className="pp-kpi">
-                <div className="pp-kpi-num">{k.num}</div>
+                <div className="pp-kpi-num"><CountUp value={k.num} /></div>
                 <div className="pp-kpi-label">{k.label}</div>
                 <div className="pp-kpi-desc">{k.desc}</div>
               </div>
@@ -150,7 +211,16 @@ export const Clara = () => {
       </section>
 
       {/* Core Capabilities */}
-      <section className="pp-section pp-section-alt">
+      <section className="pp-section pp-section-alt clara-caps-section" ref={ucRef}>
+        {/* Parallax background */}
+        <motion.div
+          className="clara-caps-parallax-bg"
+          style={{ y: ucBgY }}
+          aria-hidden="true"
+        />
+        {/* Overlay to keep text readable */}
+        <div className="clara-caps-parallax-overlay" aria-hidden="true" />
+
         <div className="container">
           <AnimatedSection yOffset={24}>
             <div className="pp-section-header">
@@ -184,7 +254,7 @@ export const Clara = () => {
             <div className="pp-outcomes-grid">
               {outcomes.map(o => (
                 <div key={o.label} className="pp-outcome">
-                  <div className="pp-outcome-num">{o.num}</div>
+                  <div className="pp-outcome-num"><CountUp value={o.num} /></div>
                   <div className="pp-outcome-label">{o.label}</div>
                   <p className="pp-outcome-desc">{o.desc}</p>
                 </div>
