@@ -1,0 +1,76 @@
+/* ── Industry Page — Shared Styles ────────────────────────────────────── */
+
+/* Hero section — industry background photo */
+.ip-hero {
+  position: relative;
+  background: linear-gradient(
+    to right,
+    rgba(20, 22, 28, 0.92) 0%,
+    rgba(20, 22, 28, 0.72) 55%,
+    rgba(20, 22, 28, 0.55) 100%
+  );
+  /* Individual [industry]-hero files override with background-image */
+}
+
+.ip-hero .pp-hero-geo { opacity: 0.06; }
+.ip-hero .pp-hero-desc { color: rgba(255, 255, 255, 0.82); }
+.ip-hero .pp-kpi-desc { color: rgba(255, 255, 255, 0.65); }
+
+/* Industry name as large H1 (replaces logo) */
+.ip-hero-name {
+  font-family: var(--font-title);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  margin: 1rem 0 0 0;
+  letter-spacing: -0.02em;
+}
+
+/* ── Core Capabilities parallax background ────────────────────────────── */
+.ip-caps-section {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.ip-caps-parallax-bg {
+  position: absolute;
+  top: -25%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 150%;
+  will-change: transform;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.ip-caps-parallax-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ip-caps-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+.ip-caps-section .pp-tag {
+  color: var(--color-2);
+}
+
+.ip-caps-section .pp-section-title {
+  color: var(--color-1);
+}
+
+.ip-caps-section .pp-section-title em {
+  color: var(--color-1);
+}

@@ -78,6 +78,7 @@ export const Terms = () => {
         title="Terms of Use"
         description="Read the terms and conditions governing your use of the Audela website and services."
         path="/terms"
+        robots="noindex, follow"
       />
       <section className="legal-hero">
         <div className="container">

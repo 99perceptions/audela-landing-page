@@ -1,0 +1,18 @@
+/* ── Manufacturing & Field Operations Industry Page ────────────────────── */
+
+.manufacturing-hero {
+  background: linear-gradient(
+    to right,
+    rgba(20, 22, 28, 0.92) 0%,
+    rgba(20, 22, 28, 0.72) 55%,
+    rgba(20, 22, 28, 0.55) 100%
+  ), url('/Brand-Assets/manufacturing.jpg') center/cover no-repeat;
+}
+
+.manufacturing-caps-bg {
+  background: url('/Brand-Assets/manufacturing-paralex-bg.jpg') center/cover no-repeat;
+}
+
+.manufacturing-caps-overlay {
+  background: rgba(245, 246, 247, 0.82);
+}

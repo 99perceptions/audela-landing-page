@@ -91,7 +91,7 @@ export const Team = () => {
   return (
     <>
       <SEO
-        title="Our Team — The Minds Behind Audela"
+        title="Our Team"
         description="Meet the strategists, scientists and operators building Audela's specialized AI solutions — a team with experience spanning Harvard, Oxford, RAND, NHS, UPS and more."
         path="/team"
       />

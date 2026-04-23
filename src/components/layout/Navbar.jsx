@@ -84,12 +84,12 @@ const comingSoonSolutions = [
 ];
 
 const industries = [
-  { key: 'healthcare',  label: 'Healthcare',        desc: 'Remote care & revenue cycle' },
-  { key: 'logistics',  label: 'Transport & Fleet',  desc: 'Fleet ops & compliance' },
-  { key: 'retail',     label: 'Retail',             desc: 'Demand scheduling & CX' },
-  { key: 'finance',    label: 'Finance',            desc: 'Autonomous finance operations' },
-  { key: 'fieldops',   label: 'Field Operations',   desc: 'Quality AI for field workforces' },
-  { key: 'workforce',  label: 'Workforce',          desc: 'Cross-industry workforce intelligence' },
+  { key: 'healthcare', label: 'Healthcare',               desc: 'Revenue cycle & workforce AI',        path: '/industries/healthcare' },
+  { key: 'finance',    label: 'Finance & Banking',        desc: 'Autonomous finance operations',       path: '/industries/finance' },
+  { key: 'logistics',  label: 'Transport & Logistics',    desc: 'Fleet scheduling & field quality',    path: '/industries/transport-logistics' },
+  { key: 'retail',     label: 'Retail & Hospitality',     desc: 'Demand scheduling & service quality', path: '/industries/retail' },
+  { key: 'fieldops',   label: 'Manufacturing & Field Ops',desc: 'Quality AI for field operations',     path: '/industries/manufacturing' },
+  { key: 'workforce',  label: 'Facilities & Workforce',   desc: 'Multi-site workforce management',     path: '/industries/facilities' },
 ];
 
 export const Navbar = () => {
@@ -143,6 +143,7 @@ export const Navbar = () => {
           </Link>
 
           <ul className="nav-links desktop-only" role="menubar">
+            <li role="none"><Link to="/about"   className="nav-plain">About</Link></li>
             {['solutions', 'industries'].map(menu => (
               <li
                 key={menu}
@@ -228,16 +229,16 @@ export const Navbar = () => {
             <p className="mega-eyebrow">Industries We Serve</p>
             <div className="mega-ind-grid">
               {industries.map(ind => (
-                <a
+                <Link
                   key={ind.key}
-                  href="#industries"
+                  to={ind.path}
                   className="mega-ind-card"
-                  onClick={e => handleSection(e, '#industries')}
+                  onClick={() => setActiveMenu(null)}
                 >
                   <div className="mega-ind-icon"><IndustrySVG type={ind.key} /></div>
                   <span className="mega-ind-name">{ind.label}</span>
                   <span className="mega-ind-desc">{ind.desc}</span>
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -250,6 +251,10 @@ export const Navbar = () => {
       {/* ── Mobile menu ── */}
       <div className={`mobile-menu ${mobileOpen ? 'open' : ''}`} aria-hidden={!mobileOpen}>
         <div className="mobile-inner">
+
+          <div className="mob-section mob-plain-links">
+            <Link to="/about"   className="mob-plain" onClick={() => setMobileOpen(false)}>About</Link>
+          </div>
 
           {['solutions', 'industries'].map(menu => (
             <div key={menu} className="mob-section">
@@ -283,11 +288,11 @@ export const Navbar = () => {
                 <div className="mob-acc-body">
                   <div className="mob-ind-grid">
                     {industries.map(ind => (
-                      <a key={ind.key} href="#industries" className="mob-ind-card"
-                        onClick={e => { handleSection(e, '#industries'); setMobileOpen(false); }}>
+                      <Link key={ind.key} to={ind.path} className="mob-ind-card"
+                        onClick={() => setMobileOpen(false)}>
                         <div className="mob-ind-icon"><IndustrySVG type={ind.key} /></div>
                         <span className="mob-ind-name">{ind.label}</span>
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>

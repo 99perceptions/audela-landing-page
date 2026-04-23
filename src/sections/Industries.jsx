@@ -1,15 +1,16 @@
 import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { useScroll, useTransform, motion } from 'framer-motion';
 import { AnimatedSection } from '../components/ui/AnimatedSection';
 import './Industries.css';
 
 const industriesData = [
-  { name: 'Healthcare', desc: 'Remote care & RCM', img: '/Brand-Assets/Healthcare.jpg' },
-  { name: 'Retail', desc: 'Supermarket & customer service', img: '/Brand-Assets/Retail.jpg' },
-  { name: 'Transport & Fleet', desc: 'Fleet ops & compliance', img: '/Brand-Assets/transport-and-fleet.jpg' },
-  { name: 'Manufacturing', desc: 'Bottling & production lines', img: '/Brand-Assets/manufacturing.jpg' },
-  { name: 'Facilities', desc: 'Large-scale service ops', img: '/Brand-Assets/facilities.jpg' },
-  { name: 'Enterprise', desc: 'Cross-functional workforce', img: '/Brand-Assets/Enterprise.jpg' },
+  { name: 'Healthcare',               desc: 'Revenue cycle & workforce AI',        img: '/Brand-Assets/Healthcare.jpg',          path: '/industries/healthcare' },
+  { name: 'Finance & Banking',        desc: 'Autonomous finance operations',        img: '/Brand-Assets/Enterprise.jpg',           path: '/industries/finance' },
+  { name: 'Transport & Logistics',    desc: 'Fleet scheduling & field quality',     img: '/Brand-Assets/transport-and-fleet.jpg', path: '/industries/transport-logistics' },
+  { name: 'Retail & Hospitality',     desc: 'Demand scheduling & service quality',  img: '/Brand-Assets/Retail.jpg',              path: '/industries/retail' },
+  { name: 'Manufacturing & Field Ops',desc: 'Quality AI for field operations',      img: '/Brand-Assets/manufacturing.jpg',       path: '/industries/manufacturing' },
+  { name: 'Facilities & Workforce',   desc: 'Multi-site workforce management',      img: '/Brand-Assets/facilities.jpg',          path: '/industries/facilities' },
 ];
 
 export const Industries = () => {
@@ -49,7 +50,7 @@ export const Industries = () => {
         <div className="ind-grid">
           {industriesData.map((ind, idx) => (
             <AnimatedSection key={idx} delay={0.05 * idx} yOffset={30}>
-              <div className="ind-card">
+              <Link to={ind.path} className="ind-card">
                 <div className="ind-img-wrap">
                   <img src={ind.img} alt={ind.name} className="ind-img" loading="lazy" />
                 </div>
@@ -57,7 +58,7 @@ export const Industries = () => {
                   <h4 className="ind-name">{ind.name}</h4>
                   <p className="ind-desc">{ind.desc}</p>
                 </div>
-              </div>
+              </Link>
             </AnimatedSection>
           ))}
         </div>

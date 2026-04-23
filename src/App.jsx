@@ -11,6 +11,12 @@ import { Contact } from './pages/Contact';
 import { About } from './pages/About';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { Terms } from './pages/Terms';
+import { Healthcare } from './pages/industries/Healthcare';
+import { Finance } from './pages/industries/Finance';
+import { TransportLogistics } from './pages/industries/TransportLogistics';
+import { Retail } from './pages/industries/Retail';
+import { Manufacturing } from './pages/industries/Manufacturing';
+import { Facilities } from './pages/industries/Facilities';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +33,12 @@ const router = createBrowserRouter([
       { path: 'about', element: <About /> },
       { path: 'privacy', element: <PrivacyPolicy /> },
       { path: 'terms', element: <Terms /> },
+      { path: 'industries/healthcare', element: <Healthcare /> },
+      { path: 'industries/finance', element: <Finance /> },
+      { path: 'industries/transport-logistics', element: <TransportLogistics /> },
+      { path: 'industries/retail', element: <Retail /> },
+      { path: 'industries/manufacturing', element: <Manufacturing /> },
+      { path: 'industries/facilities', element: <Facilities /> },
     ],
   },
 ]);

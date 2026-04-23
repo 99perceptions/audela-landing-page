@@ -204,3 +204,44 @@
     border-radius: 12px;
   }
 }
+
+/* ── Core Capabilities parallax background ────────────────────── */
+.shift-caps-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.shift-caps-parallax-bg {
+  position: absolute;
+  inset: -25% 0;
+  width: 100%;
+  height: 150%;
+  background: url('/Brand-Assets/shift-paralex-bg.jpg') center / cover no-repeat;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.shift-caps-parallax-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(245, 246, 247, 0.5);
+  pointer-events: none;
+}
+
+.shift-caps-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.shift-caps-section .pp-tag {
+  color: var(--color-2);
+}
+
+.shift-caps-section .pp-section-title {
+  color: var(--color-1);
+}
+
+.shift-caps-section .pp-section-title em {
+  color: var(--color-1);
+}

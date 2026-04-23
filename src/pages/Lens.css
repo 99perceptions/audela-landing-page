@@ -27,6 +27,18 @@
   z-index: 2;
 }
 
+.lens-caps-section .pp-tag {
+  color: var(--color-2);
+}
+
+.lens-caps-section .pp-section-title {
+  color: var(--color-1);
+}
+
+.lens-caps-section .pp-section-title em {
+  color: var(--color-1);
+}
+
 /* ── Lens hero — photo background ──────────────────────── */
 .lens-hero {
   position: relative;
