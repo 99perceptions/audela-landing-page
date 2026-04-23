@@ -24,3 +24,9 @@ dist-ssr
 *.sw?
 
 .vercel
+
+# Project-specific
+builds/
+plans/
+website/node_modules/
+website/.vercel/
