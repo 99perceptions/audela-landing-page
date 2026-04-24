@@ -30,7 +30,7 @@ export const ContactForm = () => {
             </p>
             <div className="contact-direct">
               <p>Or send us an email directly at:</p>
-              <a href="mailto:hello@audella.ai">hello@audella.ai</a>
+              <a href="mailto:info@audela.me">info@audela.me</a>
             </div>
           </AnimatedSection>
           
