@@ -39,7 +39,8 @@ export const CookieConsent = () => {
   const [prefs, setPrefs] = useState(defaultPrefs);
 
   useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
+    let saved = null;
+    try { saved = localStorage.getItem(STORAGE_KEY); } catch (_) {}
     if (!saved) {
       const timer = setTimeout(() => setVisible(true), 1200);
       return () => clearTimeout(timer);
@@ -47,7 +48,7 @@ export const CookieConsent = () => {
   }, []);
 
   const save = (consent) => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(consent));
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(consent)); } catch (_) {}
     setVisible(false);
     setShowPrefs(false);
   };
@@ -66,7 +67,7 @@ export const CookieConsent = () => {
         <>
           {/* Main banner backdrop */}
           <motion.div
-            className="cc-backdrop cc-backdrop-main"
+            className="aud-cp-veil"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -77,7 +78,7 @@ export const CookieConsent = () => {
           <AnimatePresence>
             {showPrefs && (
               <motion.div
-                className="cc-backdrop"
+                className="aud-cp-shade"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -90,47 +91,47 @@ export const CookieConsent = () => {
           <AnimatePresence>
             {showPrefs && (
               <motion.div
-                className="cc-prefs-panel"
+                className="aud-cp-drawer"
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 24 }}
                 transition={{ duration: 0.4, ease }}
               >
-                <div className="cc-prefs-header">
+                <div className="aud-cp-drawer-head">
                   <div>
-                    <p className="cc-prefs-eyebrow">Cookie Preferences</p>
-                    <h3 className="cc-prefs-title">Manage your consent</h3>
+                    <p className="aud-cp-eyebrow">Cookie Preferences</p>
+                    <h3 className="aud-cp-drawer-title">Manage your consent</h3>
                   </div>
-                  <button className="cc-prefs-close" onClick={() => setShowPrefs(false)} aria-label="Close">
+                  <button className="aud-cp-drawer-close" onClick={() => setShowPrefs(false)} aria-label="Close">
                     <svg viewBox="0 0 16 16" fill="none">
                       <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
                     </svg>
                   </button>
                 </div>
 
-                <div className="cc-categories">
+                <div className="aud-cp-categories">
                   {categories.map(cat => (
-                    <div key={cat.key} className="cc-category">
-                      <div className="cc-category-info">
-                        <span className="cc-category-label">{cat.label}</span>
-                        <p className="cc-category-desc">{cat.desc}</p>
+                    <div key={cat.key} className="aud-cp-item">
+                      <div className="aud-cp-item-info">
+                        <span className="aud-cp-item-label">{cat.label}</span>
+                        <p className="aud-cp-item-desc">{cat.desc}</p>
                       </div>
                       <button
-                        className={`cc-toggle ${prefs[cat.key] ? 'cc-toggle-on' : ''} ${cat.locked ? 'cc-toggle-locked' : ''}`}
+                        className={`aud-cp-switch ${prefs[cat.key] ? 'aud-cp-switch-on' : ''} ${cat.locked ? 'aud-cp-switch-locked' : ''}`}
                         onClick={() => !cat.locked && toggle(cat.key)}
                         aria-pressed={prefs[cat.key]}
                         aria-label={`Toggle ${cat.label}`}
                         disabled={cat.locked}
                       >
-                        <span className="cc-toggle-thumb" />
+                        <span className="aud-cp-switch-knob" />
                       </button>
                     </div>
                   ))}
                 </div>
 
-                <div className="cc-prefs-actions">
-                  <button className="cc-btn-primary" onClick={savePrefs}>Save Preferences</button>
-                  <button className="cc-btn-ghost" onClick={acceptAll}>Accept All</button>
+                <div className="aud-cp-drawer-actions">
+                  <button className="aud-cp-save" onClick={savePrefs}>Save Preferences</button>
+                  <button className="aud-cp-accept-drawer" onClick={acceptAll}>Accept All</button>
                 </div>
               </motion.div>
             )}
@@ -138,7 +139,7 @@ export const CookieConsent = () => {
 
           {/* Main banner */}
           <motion.div
-            className="cc-banner"
+            className="aud-cp-bar"
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 32 }}
@@ -147,8 +148,8 @@ export const CookieConsent = () => {
             aria-label="Cookie consent"
           >
             {/* Left — copy */}
-            <div className="cc-copy">
-              <div className="cc-icon" aria-hidden="true">
+            <div className="aud-cp-copy">
+              <div className="aud-cp-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none">
                   <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.4"/>
                   <circle cx="8.5" cy="10" r="1.2" fill="currentColor"/>
@@ -158,8 +159,8 @@ export const CookieConsent = () => {
                 </svg>
               </div>
               <div>
-                <p className="cc-title">We use cookies</p>
-                <p className="cc-desc">
+                <p className="aud-cp-title">We use cookies</p>
+                <p className="aud-cp-desc">
                   We use cookies to improve your experience, analyse site usage, and
                   support our communications. You can manage your preferences at any time.
                 </p>
@@ -167,14 +168,14 @@ export const CookieConsent = () => {
             </div>
 
             {/* Right — actions */}
-            <div className="cc-actions">
-              <button className="cc-btn-manage" onClick={() => setShowPrefs(true)}>
+            <div className="aud-cp-actions">
+              <button className="aud-cp-manage" onClick={() => setShowPrefs(true)}>
                 Manage Preferences
               </button>
-              <button className="cc-btn-reject" onClick={rejectAll}>
+              <button className="aud-cp-reject" onClick={rejectAll}>
                 Reject All
               </button>
-              <button className="cc-btn-accept" onClick={acceptAll}>
+              <button className="aud-cp-accept" onClick={acceptAll}>
                 Accept All
               </button>
             </div>
