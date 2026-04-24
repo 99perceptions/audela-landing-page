@@ -1,7 +1,7 @@
 /* ─── Cookie Consent ───────────────────────────────────── */
 
 /* Backdrop */
-.cc-backdrop {
+.aud-cp-shade {
   position: fixed;
   inset: 0;
   z-index: 9998;
@@ -10,14 +10,14 @@
 }
 
 /* Main banner backdrop — prevents page interaction */
-.cc-backdrop-main {
+.aud-cp-veil {
   z-index: 9997;
   background: rgba(14, 16, 20, 0.45);
   backdrop-filter: blur(3px);
 }
 
 /* ─── Main banner ──────────────────────────────────────── */
-.cc-banner {
+.aud-cp-bar {
   position: fixed;
   bottom: 1.5rem;
   left: 50%;
@@ -36,7 +36,7 @@
 }
 
 /* Left — icon + copy */
-.cc-copy {
+.aud-cp-copy {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
@@ -44,7 +44,7 @@
   min-width: 0;
 }
 
-.cc-icon {
+.aud-cp-icon {
   width: 32px;
   height: 32px;
   flex-shrink: 0;
@@ -53,12 +53,12 @@
   margin-top: 2px;
 }
 
-.cc-icon svg {
+.aud-cp-icon svg {
   width: 100%;
   height: 100%;
 }
 
-.cc-title {
+.aud-cp-title {
   font-family: var(--font-title);
   font-size: 1rem;
   font-weight: 600;
@@ -66,7 +66,7 @@
   margin: 0 0 0.25rem 0;
 }
 
-.cc-desc {
+.aud-cp-desc {
   font-family: var(--font-body);
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.55);
@@ -75,14 +75,14 @@
 }
 
 /* Right — buttons */
-.cc-actions {
+.aud-cp-actions {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   flex-shrink: 0;
 }
 
-.cc-btn-manage {
+.aud-cp-manage {
   font-family: var(--font-body);
   font-size: 0.8rem;
   font-weight: 500;
@@ -96,12 +96,12 @@
   white-space: nowrap;
 }
 
-.cc-btn-manage:hover {
+.aud-cp-manage:hover {
   color: rgba(255, 255, 255, 0.85);
   border-color: rgba(255, 255, 255, 0.28);
 }
 
-.cc-btn-reject {
+.aud-cp-reject {
   font-family: var(--font-body);
   font-size: 0.8rem;
   font-weight: 500;
@@ -115,12 +115,12 @@
   white-space: nowrap;
 }
 
-.cc-btn-reject:hover {
+.aud-cp-reject:hover {
   background: rgba(255, 255, 255, 0.12);
   color: #fff;
 }
 
-.cc-btn-accept {
+.aud-cp-accept {
   font-family: var(--font-body);
   font-size: 0.8rem;
   font-weight: 600;
@@ -134,12 +134,12 @@
   white-space: nowrap;
 }
 
-.cc-btn-accept:hover {
+.aud-cp-accept:hover {
   background: rgba(255, 255, 255, 0.88);
 }
 
 /* ─── Preferences panel ────────────────────────────────── */
-.cc-prefs-panel {
+.aud-cp-drawer {
   position: fixed;
   bottom: 1.5rem;
   left: 50%;
@@ -154,7 +154,7 @@
   box-shadow: 0 16px 64px rgba(0, 0, 0, 0.45), 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
-.cc-prefs-header {
+.aud-cp-drawer-head {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -162,7 +162,7 @@
   margin-bottom: 1.75rem;
 }
 
-.cc-prefs-eyebrow {
+.aud-cp-eyebrow {
   font-family: var(--font-body);
   font-size: 0.7rem;
   font-weight: 600;
@@ -173,7 +173,7 @@
   margin: 0 0 0.3rem 0;
 }
 
-.cc-prefs-title {
+.aud-cp-drawer-title {
   font-family: var(--font-title);
   font-size: 1.25rem;
   font-weight: 600;
@@ -181,7 +181,7 @@
   margin: 0;
 }
 
-.cc-prefs-close {
+.aud-cp-drawer-close {
   width: 32px;
   height: 32px;
   flex-shrink: 0;
@@ -196,25 +196,25 @@
   transition: background 0.2s ease, color 0.2s ease;
 }
 
-.cc-prefs-close:hover {
+.aud-cp-drawer-close:hover {
   background: rgba(255, 255, 255, 0.12);
   color: #fff;
 }
 
-.cc-prefs-close svg {
+.aud-cp-drawer-close svg {
   width: 14px;
   height: 14px;
 }
 
 /* ─── Categories ───────────────────────────────────────── */
-.cc-categories {
+.aud-cp-categories {
   display: flex;
   flex-direction: column;
   gap: 0;
   margin-bottom: 1.75rem;
 }
 
-.cc-category {
+.aud-cp-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -223,21 +223,21 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.cc-category:first-child {
+.aud-cp-item:first-child {
   padding-top: 0;
 }
 
-.cc-category:last-child {
+.aud-cp-item:last-child {
   border-bottom: none;
   padding-bottom: 0;
 }
 
-.cc-category-info {
+.aud-cp-item-info {
   flex: 1;
   min-width: 0;
 }
 
-.cc-category-label {
+.aud-cp-item-label {
   display: block;
   font-family: var(--font-body);
   font-size: 0.88rem;
@@ -246,7 +246,7 @@
   margin-bottom: 0.2rem;
 }
 
-.cc-category-desc {
+.aud-cp-item-desc {
   font-family: var(--font-body);
   font-size: 0.77rem;
   color: rgba(255, 255, 255, 0.45);
@@ -255,7 +255,7 @@
 }
 
 /* ─── Toggle switch ────────────────────────────────────── */
-.cc-toggle {
+.aud-cp-switch {
   position: relative;
   width: 44px;
   height: 26px;
@@ -268,16 +268,16 @@
   padding: 0;
 }
 
-.cc-toggle.cc-toggle-on {
+.aud-cp-switch.aud-cp-switch-on {
   background: var(--color-4, #8ba5be);
 }
 
-.cc-toggle.cc-toggle-locked {
+.aud-cp-switch.aud-cp-switch-locked {
   cursor: default;
   opacity: 0.55;
 }
 
-.cc-toggle-thumb {
+.aud-cp-switch-knob {
   position: absolute;
   top: 3px;
   left: 3px;
@@ -289,17 +289,17 @@
   pointer-events: none;
 }
 
-.cc-toggle.cc-toggle-on .cc-toggle-thumb {
+.cc-toggle.cc-toggle-on .aud-cp-switch-knob {
   transform: translateX(18px);
 }
 
 /* ─── Prefs actions ────────────────────────────────────── */
-.cc-prefs-actions {
+.aud-cp-drawer-actions {
   display: flex;
   gap: 0.75rem;
 }
 
-.cc-btn-primary {
+.aud-cp-save {
   flex: 1;
   font-family: var(--font-body);
   font-size: 0.85rem;
@@ -313,11 +313,11 @@
   transition: background 0.2s ease;
 }
 
-.cc-btn-primary:hover {
+.aud-cp-save:hover {
   background: rgba(255, 255, 255, 0.88);
 }
 
-.cc-btn-ghost {
+.aud-cp-accept-drawer {
   font-family: var(--font-body);
   font-size: 0.85rem;
   font-weight: 500;
@@ -331,14 +331,14 @@
   white-space: nowrap;
 }
 
-.cc-btn-ghost:hover {
+.aud-cp-accept-drawer:hover {
   background: rgba(255, 255, 255, 0.12);
   color: #fff;
 }
 
 /* ─── Mobile ───────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .cc-banner {
+  .aud-cp-bar {
     flex-direction: column;
     align-items: flex-start;
     gap: 1.25rem;
@@ -352,17 +352,17 @@
     padding: 1.5rem 1.25rem;
   }
 
-  .cc-actions {
+  .aud-cp-actions {
     width: 100%;
     flex-direction: row;
     justify-content: flex-end;
   }
 
-  .cc-btn-manage {
+  .aud-cp-manage {
     margin-right: auto;
   }
 
-  .cc-prefs-panel {
+  .aud-cp-drawer {
     bottom: 0;
     left: 0;
     right: 0;
