@@ -31,3 +31,6 @@ plans/
 website/node_modules/
 website/.vercel/
 .env*.local
+
+# Claude Code local agent settings
+.claude/
