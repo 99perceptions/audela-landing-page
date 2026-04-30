@@ -12,7 +12,7 @@ const sections = [
   {
     title: '1. Acceptance of Terms',
     body: [
-      'By accessing or using the Audela website at audela.me (the "Site"), you agree to be bound by these Terms of Use. If you do not agree to these terms, please do not use the Site.',
+      'By accessing or using the Audelà website at audela.me (the "Site"), you agree to be bound by these Terms of Use. If you do not agree to these terms, please do not use the Site.',
       'These Terms of Use apply to all visitors, users, and others who access or use the Site. We reserve the right to update these terms at any time, and your continued use of the Site following any changes constitutes acceptance of those changes.',
     ],
   },
@@ -26,14 +26,14 @@ const sections = [
   {
     title: '3. Intellectual Property',
     body: [
-      'The Site and its entire contents, features, and functionality — including but not limited to all text, graphics, logos, product names, and software — are owned by Audela AI and are protected by applicable intellectual property laws.',
+      'The Site and its entire contents, features, and functionality — including but not limited to all text, graphics, logos, product names, and software — are owned by Audelà AI and are protected by applicable intellectual property laws.',
       'You are granted a limited, non-exclusive, non-transferable licence to access and use the Site for your personal, non-commercial purposes. You must not reproduce, distribute, modify, create derivative works of, publicly display, or exploit any part of the Site without our prior written consent.',
     ],
   },
   {
     title: '4. Product Information',
     body: [
-      'The products and solutions described on this Site — including Clara™, Reven™, Lens™, Shift™, and others — are proprietary AI solutions developed by Audela AI. Descriptions are for informational purposes only and do not constitute a binding offer or guarantee of availability.',
+      'The products and solutions described on this Site — including Clara™, Reven™, Lens™, Shift™, and others — are proprietary AI solutions developed by Audelà AI. Descriptions are for informational purposes only and do not constitute a binding offer or guarantee of availability.',
       'Product capabilities, availability, and pricing are subject to change. Contact us directly for current information relevant to your specific needs.',
     ],
   },
@@ -41,20 +41,20 @@ const sections = [
     title: '5. Disclaimer of Warranties',
     body: [
       'The Site is provided on an "as is" and "as available" basis, without any warranties of any kind, either express or implied. We do not warrant that the Site will be uninterrupted, error-free, or free of viruses or other harmful components.',
-      'To the fullest extent permitted by law, Audela AI disclaims all warranties, express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, and non-infringement.',
+      'To the fullest extent permitted by law, Audelà AI disclaims all warranties, express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, and non-infringement.',
     ],
   },
   {
     title: '6. Limitation of Liability',
     body: [
-      'To the fullest extent permitted by applicable law, Audela AI shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of, or inability to use, the Site or any content thereon.',
+      'To the fullest extent permitted by applicable law, Audelà AI shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of, or inability to use, the Site or any content thereon.',
       'In no event shall our total liability to you for all claims arising from your use of the Site exceed the amount you paid us, if any, in the twelve months preceding the claim.',
     ],
   },
   {
     title: '7. Third-Party Links',
     body: [
-      'The Site may contain links to third-party websites or services that are not owned or controlled by Audela AI. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites.',
+      'The Site may contain links to third-party websites or services that are not owned or controlled by Audelà AI. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites.',
       'We strongly advise you to read the terms and privacy policy of any third-party site you visit.',
     ],
   },
@@ -68,7 +68,7 @@ const sections = [
     title: '9. Contact Us',
     body: [
       'If you have any questions about these Terms of Use, please contact us at:',
-      'Audela AI · legal@audela.me',
+      'Audelà AI · legal@audela.me',
     ],
   },
 ];
@@ -83,7 +83,7 @@ export const TermsOfUse = () => {
     <>
       <SEO
         title="Terms of Use"
-        description="Read the terms and conditions governing your use of the Audela website and services."
+        description="Read the terms and conditions governing your use of the Audelà website and services."
         path="/terms"
         robots="noindex, follow"
       />
@@ -122,7 +122,7 @@ export const TermsOfUse = () => {
           <div className="container legal-container">
             <div className="legal-intro">
               <p>
-                These Terms of Use govern your access to and use of the Audela AI website and any
+                These Terms of Use govern your access to and use of the Audelà AI website and any
                 related content or services. By using the Site, you confirm that you have read,
                 understood, and agree to be bound by these terms.
               </p>

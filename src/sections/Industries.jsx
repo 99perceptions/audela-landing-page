@@ -42,7 +42,7 @@ export const Industries = () => {
             <div className="tag">Industries</div>
             <h2>Transforming Every Sector<br/><i>We Touch</i></h2>
             <p className="section-subtitle">
-              Audela solutions are deployed across high-complexity, high-stakes industries where operational excellence is non-negotiable.
+              Audelà solutions are deployed across high-complexity, high-stakes industries where operational excellence is non-negotiable.
             </p>
           </div>
         </AnimatedSection>

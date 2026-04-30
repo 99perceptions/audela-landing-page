@@ -62,8 +62,9 @@ export const Landing = () => {
     <>
       <SEO
         title="Specialized AI for Industries Where It Matters Most"
-        description="Audela builds specialized AI solutions for the industries where decisions have consequences — purpose-built, not adapted from a generic platform."
+        description="Audelà builds specialized AI solutions for the industries where decisions have consequences — purpose-built, not adapted from a generic platform."
         path="/"
+        robots="index, follow"
       />
       <LandingNavbar />
       <main className="landing-main">

@@ -50,7 +50,7 @@ export const Hero = () => {
             transition={{ duration: 0.7, ease: easeOut }}
           >
             <div className="hero-pulse-dot" />
-            <span>Audela — Specialized AI</span>
+            <span>Audelà — Specialized AI</span>
           </motion.div>
 
           <motion.h1
@@ -70,7 +70,7 @@ export const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.28, ease: easeOut }}
           >
-            Audela builds specialized AI solutions for the industries where decisions
+            Audelà builds specialized AI solutions for the industries where decisions
             have consequences — each one purpose-built, not adapted from a generic platform.
           </motion.p>
 

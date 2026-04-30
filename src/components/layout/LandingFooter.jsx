@@ -5,7 +5,7 @@ import './LandingFooter.css';
 export const LandingFooter = () => (
   <footer className="landing-footer">
     <div className="container landing-footer-inner">
-      <p className="landing-footer-copy">&copy; 2026 Audela. All rights reserved.</p>
+      <p className="landing-footer-copy">&copy; 2026 Audelà. All rights reserved.</p>
       <div className="landing-footer-links">
         <Link to="/privacy" className="landing-footer-link">Privacy Policy</Link>
         <Link to="/terms" className="landing-footer-link">Terms of Use</Link>

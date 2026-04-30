@@ -2,10 +2,14 @@ import { Helmet } from 'react-helmet-async';
 
 const BASE_URL = 'https://audela.me';
 const DEFAULT_IMAGE = `${BASE_URL}/Brand-Assets/Og-Image/Audela-Og-Image.jpg`;
-const SITE_NAME = 'Audela';
+const SITE_NAME = 'Audelà';
 
-export const SEO = ({ title, description, path = '', image = DEFAULT_IMAGE, robots = 'index, follow' }) => {
-  const fullTitle = title ? `${title} — Audela` : 'Audela — Specialized AI for Industries Where It Matters Most';
+// Default to `noindex, nofollow` — the legacy multi-page site at /full/* is
+// not for public consumption right now, and SEO calls there shouldn't have to
+// remember to opt out of indexing. Public pages (Landing, etc.) pass
+// `robots="index, follow"` explicitly.
+export const SEO = ({ title, description, path = '', image = DEFAULT_IMAGE, robots = 'noindex, nofollow' }) => {
+  const fullTitle = title ? `${title} — Audelà` : 'Audelà — Specialized AI for Industries Where It Matters Most';
   const url = `${BASE_URL}${path}`;
 
   return (
@@ -21,7 +25,7 @@ export const SEO = ({ title, description, path = '', image = DEFAULT_IMAGE, robo
       <meta property="og:image" content={image} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content="Audela — Specialized AI Solutions" />
+      <meta property="og:image:alt" content="Audelà — Specialized AI Solutions" />
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_GB" />

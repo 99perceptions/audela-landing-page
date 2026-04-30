@@ -9,7 +9,7 @@ export const WhyAudella = () => {
         
         <AnimatedSection yOffset={30}>
           <div className="section-header">
-            <div className="tag">Why Audela</div>
+            <div className="tag">Why Audelà</div>
             <h2>Built Different.<br/><i>Built for What's Next.</i></h2>
           </div>
         </AnimatedSection>
@@ -27,7 +27,7 @@ export const WhyAudella = () => {
             <div className="why-card">
               <div className="why-index">02</div>
               <h3 className="why-title">Vertical-Deep, Never Generic</h3>
-              <p className="why-desc">Each Audela solution is built with deep industry expertise — purpose-built for its vertical, not retrofitted from a generic platform. Specialized intelligence that a horizontal product can never match.</p>
+              <p className="why-desc">Each Audelà solution is built with deep industry expertise — purpose-built for its vertical, not retrofitted from a generic platform. Specialized intelligence that a horizontal product can never match.</p>
             </div>
           </AnimatedSection>
 
@@ -35,7 +35,7 @@ export const WhyAudella = () => {
             <div className="why-card">
               <div className="why-index">03</div>
               <h3 className="why-title">Real-Time, Every Time</h3>
-              <p className="why-desc">From fleet assignments to staff deployments to patient monitoring — Audela makes decisions at machine speed. Not batch. Not scheduled. Real-time AI at every touchpoint.</p>
+              <p className="why-desc">From fleet assignments to staff deployments to patient monitoring — Audelà makes decisions at machine speed. Not batch. Not scheduled. Real-time AI at every touchpoint.</p>
             </div>
           </AnimatedSection>
         </div>

@@ -73,7 +73,7 @@ const sections = [
     title: '10. Contact Us',
     body: [
       'If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us at:',
-      'Audela AI · privacy@audela.me',
+      'Audelà AI · privacy@audela.me',
     ],
   },
 ];
@@ -88,7 +88,7 @@ export const Privacy = () => {
     <>
       <SEO
         title="Privacy Policy"
-        description="Learn how Audela collects, uses, and protects your personal information. We are committed to transparency and your right to privacy."
+        description="Learn how Audelà collects, uses, and protects your personal information. We are committed to transparency and your right to privacy."
         path="/privacy"
         robots="noindex, follow"
       />
@@ -127,7 +127,7 @@ export const Privacy = () => {
           <div className="container legal-container">
             <div className="legal-intro">
               <p>
-                Audela AI ("Audela", "we", "us", or "our") is committed to protecting your privacy.
+                Audelà AI ("Audelà", "we", "us", or "our") is committed to protecting your privacy.
                 This Privacy Policy explains how we collect, use, disclose, and safeguard your
                 information when you visit our website at <strong>audela.me</strong> or interact with
                 our services. Please read this policy carefully.

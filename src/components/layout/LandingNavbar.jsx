@@ -69,7 +69,7 @@ export const LandingNavbar = () => {
       <header className={`landing-nav ${scrolled ? 'scrolled' : ''}`}>
         <div className="container landing-nav-inner">
           <a href="#top" className="landing-nav-logo" onClick={handleLogo}>
-            <img src="/Brand-Assets/Audella-ai-logo.svg.svg" alt="Audela" />
+            <img src="/Brand-Assets/Audella-ai-logo.svg.svg" alt="Audelà" />
           </a>
 
           <ul className="landing-nav-links desktop-only">

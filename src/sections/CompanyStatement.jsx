@@ -19,7 +19,7 @@ export const CompanyStatement = () => {
             </div>
             <div className="cs-right">
               <p className="cs-description">
-                Every Audela solution is purpose-built for a specific vertical —
+                Every Audelà solution is purpose-built for a specific vertical —
                 not a horizontal tool stretched to fit. We go deep, not wide.
                 That is why our results look different.
               </p>
