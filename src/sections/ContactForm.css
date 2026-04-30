@@ -199,6 +199,163 @@ textarea[aria-invalid="true"]:focus {
   background: transparent;
 }
 
+/* ─── Custom country select (replaces native <select>) ──────── */
+
+.cc-select {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.cc-select-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.45rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+
+.cc-select-trigger:hover,
+.cc-select-trigger:focus-visible {
+  background: rgba(37, 39, 44, 0.05);
+  outline: none;
+}
+
+.cc-select-trigger[disabled] {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.cc-select-flag .PhoneInputCountryIcon,
+.cc-select-item-flag .PhoneInputCountryIcon {
+  width: 1.6em;
+  height: 1.2em;
+  box-shadow: 0 0 0 1px rgba(37, 39, 44, 0.1);
+}
+
+.cc-select-chevron {
+  width: 10px;
+  height: 7px;
+  color: var(--text-muted);
+  transition: transform 0.2s ease;
+}
+
+.cc-select-trigger[aria-expanded="true"] .cc-select-chevron {
+  transform: rotate(180deg);
+}
+
+.cc-select-panel {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  z-index: 50;
+  width: 320px;
+  max-width: 90vw;
+  background: var(--bg-primary);
+  border: 1px solid rgba(37, 39, 44, 0.12);
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(37, 39, 44, 0.15), 0 2px 6px rgba(37, 39, 44, 0.06);
+  overflow: hidden;
+  animation: cc-fade-in 0.16s ease-out;
+}
+
+@keyframes cc-fade-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.cc-select-search-wrap {
+  padding: 0.6rem;
+  border-bottom: 1px solid rgba(37, 39, 44, 0.06);
+  background: var(--bg-secondary);
+}
+
+.cc-select-search {
+  width: 100%;
+  background: var(--bg-primary);
+  border: 1px solid rgba(37, 39, 44, 0.1);
+  border-radius: 8px;
+  padding: 0.55rem 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.cc-select-search:focus {
+  outline: none;
+  border-color: var(--color-2);
+  box-shadow: 0 0 0 3px rgba(195, 209, 223, 0.3);
+}
+
+.cc-select-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.4rem 0;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.cc-select-list::-webkit-scrollbar { width: 8px; }
+.cc-select-list::-webkit-scrollbar-track { background: transparent; }
+.cc-select-list::-webkit-scrollbar-thumb {
+  background: rgba(37, 39, 44, 0.18);
+  border-radius: 4px;
+}
+
+.cc-select-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.5rem 0.85rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.12s ease;
+}
+
+.cc-select-item.is-highlighted,
+.cc-select-item:hover {
+  background: rgba(64, 78, 99, 0.08);
+}
+
+.cc-select-item.is-selected {
+  background: rgba(64, 78, 99, 0.1);
+  font-weight: 500;
+}
+
+.cc-select-item-flag {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+}
+
+.cc-select-item-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cc-select-empty {
+  padding: 1.2rem 1rem;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 600px) {
+  .cc-select-panel { width: 280px; }
+}
+
 /* ─── Success panel ─────────────────────────────────────────── */
 
 .contact-success {

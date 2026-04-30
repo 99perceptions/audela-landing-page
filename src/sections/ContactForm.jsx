@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
+import { CountrySelect } from './CountrySelect';
 import { AnimatedSection } from '../components/ui/AnimatedSection';
 import './ContactForm.css';
 
@@ -58,22 +59,46 @@ export const ContactForm = () => {
     if (errors.phone) setErrors((er) => ({ ...er, phone: undefined }));
   };
 
+  const validateField = (name, value) => {
+    switch (name) {
+      case 'firstName':
+        return value.trim() ? '' : 'First name is required.';
+      case 'email':
+        if (!value.trim()) return 'Email is required.';
+        if (!EMAIL_RE.test(value.trim())) return 'Please enter a valid email address.';
+        return '';
+      case 'phone':
+        if (!value) return '';
+        if (!isValidPhoneNumber(value)) {
+          return 'Please enter a valid phone number including the country code.';
+        }
+        return '';
+      case 'message':
+        if (!value.trim()) return 'Please tell us a bit about what you need.';
+        if (value.trim().length < 10) return 'Your message is a little short — a sentence or two helps.';
+        return '';
+      default:
+        return '';
+    }
+  };
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    const msg = validateField(name, value);
+    setErrors((er) => ({ ...er, [name]: msg || undefined }));
+  };
+
+  const handlePhoneBlur = () => {
+    const msg = validateField('phone', formData.phone);
+    setErrors((er) => ({ ...er, phone: msg || undefined }));
+  };
+
   const validate = () => {
     const next = {};
-    if (!formData.firstName.trim()) next.firstName = 'First name is required.';
-    if (!formData.email.trim()) {
-      next.email = 'Email is required.';
-    } else if (!EMAIL_RE.test(formData.email.trim())) {
-      next.email = 'Please enter a valid email address.';
-    }
-    if (formData.phone && !isValidPhoneNumber(formData.phone)) {
-      next.phone = 'Please enter a valid phone number including the country code.';
-    }
-    if (!formData.message.trim()) {
-      next.message = 'Please tell us a bit about what you need.';
-    } else if (formData.message.trim().length < 10) {
-      next.message = 'Your message is a little short — a sentence or two helps.';
-    }
+    ['firstName', 'email', 'phone', 'message'].forEach((field) => {
+      const msg = validateField(field, formData[field]);
+      if (msg) next[field] = msg;
+    });
     return next;
   };
 
@@ -190,6 +215,7 @@ export const ContactForm = () => {
                       autoComplete="given-name"
                       value={formData.firstName}
                       onChange={handleChange}
+                      onBlur={handleBlur}
                       aria-invalid={!!errors.firstName}
                     />
                     {errors.firstName && <p className="form-error">{errors.firstName}</p>}
@@ -219,6 +245,7 @@ export const ContactForm = () => {
                       inputMode="email"
                       value={formData.email}
                       onChange={handleChange}
+                      onBlur={handleBlur}
                       aria-invalid={!!errors.email}
                     />
                     {errors.email && <p className="form-error">{errors.email}</p>}
@@ -233,6 +260,8 @@ export const ContactForm = () => {
                       autoComplete="tel"
                       value={formData.phone}
                       onChange={handlePhoneChange}
+                      onBlur={handlePhoneBlur}
+                      countrySelectComponent={CountrySelect}
                       aria-invalid={!!errors.phone}
                       className="phone-input"
                     />
@@ -261,6 +290,7 @@ export const ContactForm = () => {
                     rows="4"
                     value={formData.message}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     aria-invalid={!!errors.message}
                   />
                   {errors.message && <p className="form-error">{errors.message}</p>}
