@@ -86,7 +86,6 @@ export const Hero = () => {
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </a>
-            <a href="#cta" className="hero-cta-ghost">Request a Demo</a>
           </motion.div>
 
           <motion.div
