@@ -1,0 +1,67 @@
+.onepager-team-section {
+  background: var(--bg-primary, #ffffff);
+}
+
+.onepager-people-subhead {
+  font-family: var(--font-title, 'Playfair Display', serif);
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 600;
+  color: var(--text-primary, #25272c);
+  margin: 2.5rem 0 1.5rem;
+  letter-spacing: -0.01em;
+}
+
+.onepager-people-subhead-advisors {
+  margin-top: 4rem;
+}
+
+.onepager-people-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.onepager-person-card {
+  background: var(--bg-secondary, #f5f6f7);
+  border: 1px solid rgba(37, 39, 44, 0.06);
+  border-radius: 14px;
+  padding: 2rem 1.75rem;
+  height: 100%;
+  min-width: 0;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.onepager-person-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(37, 39, 44, 0.08);
+  border-color: rgba(37, 39, 44, 0.12);
+}
+
+.onepager-person-name {
+  font-family: var(--font-title, 'Playfair Display', serif);
+  font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+  font-weight: 700;
+  color: var(--text-primary, #25272c);
+  margin: 0 0 0.85rem;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.onepager-person-bio {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary, #404e63);
+  margin: 0;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 960px) {
+  .onepager-people-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .onepager-people-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .onepager-person-card { padding: 1.5rem 1.25rem; }
+  .onepager-people-subhead-advisors { margin-top: 3rem; }
+}

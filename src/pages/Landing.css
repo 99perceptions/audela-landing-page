@@ -1,0 +1,31 @@
+.landing-main {
+  /* Hero is its own viewport-style section; subsequent sections handle their own padding via .section-padding */
+}
+
+/* Disable navigation on Industries and Products cards on the landing — they remain visible but inert.
+   The corresponding routes live under /full and are not exposed from the one-pager. */
+#industries .ind-card,
+#products .feat-card {
+  pointer-events: none;
+  cursor: default;
+}
+
+#industries .ind-card:hover,
+#products .feat-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+#products .feat-cta {
+  display: none;
+}
+
+/* Subtle tint behind the contact form so it stands apart from neighbouring sections. */
+#contact .contact-section {
+  background-color: #f5f6f7;
+}
+
+#top {
+  position: absolute;
+  top: 0;
+}

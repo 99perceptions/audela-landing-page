@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import './Hero.css';
 
@@ -87,7 +86,7 @@ export const Hero = () => {
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </a>
-            <Link to="/contact" className="hero-cta-ghost">Request a Demo</Link>
+            <a href="#cta" className="hero-cta-ghost">Request a Demo</a>
           </motion.div>
 
           <motion.div

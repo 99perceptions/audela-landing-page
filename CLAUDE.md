@@ -4,102 +4,67 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Audela is a modern B2B SaaS landing page for a company offering multiple AI-powered products (Clara, Reven, Lens, Shift). Built with React + Vite, it features smooth animations, responsive design, and per-product marketing pages.
+Audela is a B2B SaaS marketing site for a company offering AI-powered products (Clara, Reven, Lens, Shift). React 19 + Vite 8, with per-product and per-industry pages, smooth scroll, and per-page SEO.
 
-## Quick Start Commands
+## Commands
 
-All commands are run from the `website/` directory:
+Run from the **repository root** (where `package.json` lives — not from `website/`).
 
-- **Development**: `npm run dev` → Start Vite dev server on http://localhost:5173
-- **Build**: `npm run build` → Production build to `dist/` directory
-- **Preview**: `npm run preview` → Preview the production build locally
-- **Lint**: `npm run lint` → Run ESLint on all files
+- `npm run dev` — Vite dev server on http://localhost:5173 (auto-opens browser per `vite.config.js`)
+- `npm run build` — production build to `dist/`
+- `npm run preview` — preview the built bundle
+- `npm run lint` — ESLint over the repo (no test runner is configured)
 
-## Tech Stack
+## Repository Layout — important gotcha
 
-- **React 19** with React Router 7 for client-side routing
-- **Vite 8** for fast build tooling and HMR
-- **Framer Motion** for component animations and transitions
-- **Lenis** for smooth scroll behavior (see variables.css for required CSS setup)
-- **Lucide React** for consistent icon usage
-- **react-helmet-async** for managing meta tags and SEO per-page
-- **Custom CSS** with CSS variables for theming (no Tailwind or CSS-in-JS framework)
+Two parallel trees exist:
 
-## Directory Structure
+- **Root** (`/src`, `/public`, `/package.json`, `/index.html`) — the actual development tree. All `npm` commands and edits go here.
+- **`website/`** — a separate copy/submodule that mirrors the project. Per `BUILD-PATTERNS.md`, the GitHub repo `99perceptions/audela-landing-page` is wired so Vercel watches the `website/` folder. Recent commits (e.g. "update: website submodule with email change") show the workflow is: change root, then sync `website/`. Don't make edits only in `website/` — root is the source of truth, and divergence between the two has caused deploy/content mismatches.
 
-```
-website/
-├── src/
-│   ├── pages/          # Route-level components (Home, Clara, Reven, Lens, Shift, Team, Contact, About, PrivacyPolicy, Terms)
-│   ├── sections/       # Reusable page sections (Hero, Products, Industries, Stats, Platform, CompanyStatement, ContactForm, etc.)
-│   ├── components/
-│   │   ├── layout/     # Layout wrapper, Navbar, Footer (shared across all pages)
-│   │   └── ui/         # Utility components (AnimatedSection, SEO meta handler, CookieConsent)
-│   ├── assets/         # Images and SVGs
-│   ├── variables.css   # Design system: colors, typography, spacing (CSS custom properties)
-│   ├── index.css       # Global styles and utility classes
-│   ├── App.jsx         # Router configuration
-│   └── main.jsx        # React entry point
-├── public/             # Static assets and brand files
-├── dist/               # Production build output
-└── package.json        # Dependencies and scripts
-```
+Other top-level dirs:
+- `Brand-Assets/` — versioned brand PDFs/logos
+- `builds/v1-v5/` — archived prior builds (read-only history)
+- `plans/` — planning docs
 
-## Architecture & Patterns
+## Architecture
 
-### Routing Structure
-React Router is configured in `App.jsx` with a single `<Layout />` wrapper component. All routes are nested under a shared layout (Navbar + Footer). Routes include:
-- `/` → Home page with multiple sections
-- `/clara`, `/reven`, `/lens`, `/shift` → Individual product showcase pages
-- `/team`, `/about`, `/contact` → Company pages
-- `/privacy`, `/terms` → Legal pages
+### Routing (`src/App.jsx`)
+Single `createBrowserRouter` with everything nested under `<Layout />` (Navbar + Footer + CookieConsent). Routes:
+- `/` Home, `/clara`, `/reven`, `/lens`, `/shift` product pages
+- `/team`, `/about`, `/contact`, `/privacy`, `/terms`
+- `/industries/{healthcare,finance,transport-logistics,retail,manufacturing,facilities}` — industry pages live under `src/pages/industries/`
 
-### Component Organization
-- **Pages** are route-level components that compose multiple sections
-- **Sections** are reusable, self-contained page areas (e.g., Hero, Products grid, Contact form)
-- **Layout components** wrap the entire app (Navbar, Footer, Layout)
-- **UI components** are small, focused utilities
-- Each component has co-located CSS (e.g., `Hero.jsx` + `Hero.css`)
+`vercel.json` rewrites all paths to `/index.html` for client-side routing.
 
-### Styling Approach
-Uses **CSS custom properties** defined in `variables.css`:
-- Color palette mapped to semantic variables (`--text-primary`, `--bg-primary`, `--accent-color`)
-- Fluid typography using `clamp()` for responsive sizing (e.g., `clamp(2rem, 8vw, 6rem)`)
-- Fluid spacing with `--padding-section`, `--padding-card`, `--gap-grid` 
-- Global utility classes: `.container`, `.section-padding`, `.btn`, `.btn-primary`, `.btn-secondary`, `.tag`, `.glass-panel`
-- Fonts: Playfair Display (headings), Google Sans (body text)
-- **Lenis smooth scroll** is initialized in the codebase; CSS in `variables.css` is required for it to function properly
+### Component layers
+- `src/pages/` — route components, compose sections
+- `src/sections/` — page-area components (`Hero`, `Products`, `Industries`, `Stats`, `Platform`, `CompanyStatement`, `ContactForm`, `WhyAudella`); product pages share `ProductPage.css`
+- `src/components/layout/` — `Layout`, `Navbar`, `Footer`
+- `src/components/ui/` — `AnimatedSection`, `SEO`, `CookieConsent`
+- Each component co-locates its CSS file (`Foo.jsx` + `Foo.css`)
 
-### Animation & Motion
-- **Framer Motion** is used for component-level animations (check `sections/` for `motion.*` usage)
-- **Lenis** provides smooth scroll behavior globally
-- CSS transitions are used for button hover states and simple transitions
+### Styling system
+- `src/variables.css` is the design system source of truth: color tokens (`--text-primary`, `--bg-primary`, `--accent-color`), fluid typography via `clamp()`, fluid spacing (`--padding-section`, `--padding-card`, `--gap-grid`), and the **CSS rules required for Lenis smooth scroll** — don't remove those.
+- `src/index.css` defines global utility classes: `.container`, `.section-padding`, `.btn`, `.btn-primary`, `.btn-secondary`, `.tag`, `.glass-panel`
+- Fonts: Playfair Display (headings), Google Sans (body)
+- No Tailwind/CSS-in-JS despite `tailwind-merge` and `clsx` being in `package.json`
 
-### SEO & Meta Tags
-- `react-helmet-async` wrapper in `Layout.jsx` allows per-page meta tag customization
-- `<SEO />` component (in `components/ui/SEO.jsx`) abstracts common meta tag setup
-- Product pages and legal pages should define their own meta tags for proper social sharing and search engine indexing
+### Animation
+Framer Motion for component animations; Lenis for global smooth scroll (initialized in code; CSS in `variables.css` is required for it to function).
 
-### Cookie Consent
-- `<CookieConsent />` component handles cookie disclosure
-- Should be placed in the Layout component to persist across all pages
+### SEO
+`react-helmet-async` is wired through `Layout.jsx`. Use the `<SEO />` component (`src/components/ui/SEO.jsx`) on every page — product, industry, and legal pages each need their own title/description/OG tags.
 
-## Key Considerations
+## Conventions from BUILD-PATTERNS.md
 
-1. **CSS Custom Properties are foundational** — the entire design system runs on variables in `variables.css`. Changes to colors, spacing, or typography should be made there first.
+- **Favicon cache-busting**: when changing `favicon.svg`, bump the version query in `index.html` (`/favicon.svg?v=N`). Product favicon SVGs use brand color `#25272C` on paths.
+- **Mobile overflow**: flex children holding text need `min-width: 0` to prevent horizontal overflow; the global `overflow-wrap: break-word` rule must include `div`, `span`, `li`, `a`.
+- **Floating navbar collisions**: mobile sections need ~`6rem` `padding-top`; section anchors need `scroll-margin-top` so deep links don't hide under the pill nav.
+- **Mobile grids**: collapse to single column below ~600px (stats, bento) to avoid clipping.
+- **Product naming sync**: Footer product names, `Products.jsx`, and logo files must agree (e.g., Shift™, Aisle™). Drift here is a recurring bug.
 
-2. **Responsive design uses fluid values** — breakpoints are minimal; use `clamp()` and viewport-relative units (vw) instead of fixed breakpoints where possible.
+## Vercel / deploy
 
-3. **Lenis requires its CSS setup** — smooth scroll won't work without the CSS rules in `variables.css`. If adding smooth scroll elsewhere, ensure these rules are included.
-
-4. **Per-page SEO is required** — each page should define its own meta tags (title, description, OG tags) using react-helmet-async for proper search engine and social media presence.
-
-5. **Animation performance** — Framer Motion animations should use `will-change` and GPU-accelerated properties for smooth 60fps performance on lower-end devices.
-
-6. **Product pages follow a template** — Clara, Reven, Lens, Shift all likely share a similar structure (`ProductPage.css` suggests a shared layout component or styling pattern).
-
-## Build & Deployment Notes
-
-- Production builds output to `website/dist/`
-- The `public/` folder contains static assets (brand PDFs, logos, videos) that are copied as-is to dist
-- Brand assets are versioned and stored in `/Brand-Assets/` alongside old build archives (`/builds/v1-v5/`)
+- Build output must be `dist/` (set in `vite.config.js` — don't change without updating Vercel config).
+- Vercel watches the `website/` folder of the GitHub repo, so a deploy requires syncing `website/` with root after changes (see "Repository Layout" gotcha above).

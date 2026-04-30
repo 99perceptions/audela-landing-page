@@ -72,10 +72,10 @@ const IndustrySVG = ({ type }) => {
 };
 
 const activeSolutions = [
-  { name: 'Clara™', path: '/clara', logo: '/Brand-Assets/Product-Logos/Clara-logo.svg', desc: 'Autonomous Finance Operations' },
-  { name: 'Reven™', path: '/reven', logo: '/Brand-Assets/Product-Logos/Reven-logo.svg', desc: 'Intelligent Revenue Cycle Engine' },
-  { name: 'Lens™', path: '/lens', logo: '/Brand-Assets/Product-Logos/Lens-logo.svg', desc: 'Smart Field Quality AI' },
-  { name: 'Shift™', path: '/shift', logo: '/Brand-Assets/Product-Logos/Shift-logo.svg', desc: 'Workforce Intelligence System' },
+  { name: 'Clara™', path: 'clara', logo: '/Brand-Assets/Product-Logos/Clara-logo.svg', desc: 'Autonomous Finance Operations' },
+  { name: 'Reven™', path: 'reven', logo: '/Brand-Assets/Product-Logos/Reven-logo.svg', desc: 'Intelligent Revenue Cycle Engine' },
+  { name: 'Lens™', path: 'lens', logo: '/Brand-Assets/Product-Logos/Lens-logo.svg', desc: 'Smart Field Quality AI' },
+  { name: 'Shift™', path: 'shift', logo: '/Brand-Assets/Product-Logos/Shift-logo.svg', desc: 'Workforce Intelligence System' },
 ];
 
 const comingSoonSolutions = [
@@ -84,12 +84,12 @@ const comingSoonSolutions = [
 ];
 
 const industries = [
-  { key: 'healthcare', label: 'Healthcare',               desc: 'Revenue cycle & workforce AI',        path: '/industries/healthcare' },
-  { key: 'finance',    label: 'Finance & Banking',        desc: 'Autonomous finance operations',       path: '/industries/finance' },
-  { key: 'logistics',  label: 'Transport & Logistics',    desc: 'Fleet scheduling & field quality',    path: '/industries/transport-logistics' },
-  { key: 'retail',     label: 'Retail & Hospitality',     desc: 'Demand scheduling & service quality', path: '/industries/retail' },
-  { key: 'fieldops',   label: 'Manufacturing & Field Ops',desc: 'Quality AI for field operations',     path: '/industries/manufacturing' },
-  { key: 'workforce',  label: 'Facilities & Workforce',   desc: 'Multi-site workforce management',     path: '/industries/facilities' },
+  { key: 'healthcare', label: 'Healthcare',               desc: 'Revenue cycle & workforce AI',        path: 'industries/healthcare' },
+  { key: 'finance',    label: 'Finance & Banking',        desc: 'Autonomous finance operations',       path: 'industries/finance' },
+  { key: 'logistics',  label: 'Transport & Logistics',    desc: 'Fleet scheduling & field quality',    path: 'industries/transport-logistics' },
+  { key: 'retail',     label: 'Retail & Hospitality',     desc: 'Demand scheduling & service quality', path: 'industries/retail' },
+  { key: 'fieldops',   label: 'Manufacturing & Field Ops',desc: 'Quality AI for field operations',     path: 'industries/manufacturing' },
+  { key: 'workforce',  label: 'Facilities & Workforce',   desc: 'Multi-site workforce management',     path: 'industries/facilities' },
 ];
 
 export const Navbar = () => {
@@ -100,7 +100,7 @@ export const Navbar = () => {
   const closeTimer = useRef(null);
   const location   = useLocation();
   const navigate   = useNavigate();
-  const isHome     = location.pathname === '/';
+  const isHome     = location.pathname === '/full' || location.pathname === '/full/';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -129,7 +129,7 @@ export const Navbar = () => {
     if (isHome) {
       document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' });
     } else {
-      navigate('/' + hash);
+      navigate('/full/' + hash);
     }
   };
 
@@ -138,12 +138,12 @@ export const Navbar = () => {
       {/* ── Full-width top bar ── */}
       <header className={`navbar-bar ${scrolled ? 'scrolled' : ''}`}>
         <div className="navbar-inner container">
-          <Link to="/" className="nav-logo">
+          <Link to="." className="nav-logo">
             <img src="/Brand-Assets/Audella-ai-logo.svg.svg" alt="Audela" className="nav-logo-img" />
           </Link>
 
           <ul className="nav-links desktop-only" role="menubar">
-            <li role="none"><Link to="/about"   className="nav-plain">About</Link></li>
+            <li role="none"><Link to="about"   className="nav-plain">About</Link></li>
             {['solutions', 'industries'].map(menu => (
               <li
                 key={menu}
@@ -160,11 +160,11 @@ export const Navbar = () => {
                 </button>
               </li>
             ))}
-            <li role="none"><Link to="/team"    className="nav-plain">Team</Link></li>
-            <li role="none"><Link to="/contact" className="nav-plain">Contact</Link></li>
+            <li role="none"><Link to="team"    className="nav-plain">Team</Link></li>
+            <li role="none"><Link to="contact" className="nav-plain">Contact</Link></li>
           </ul>
 
-          <Link to="/contact" className="btn btn-primary nav-cta desktop-only">Request Demo</Link>
+          <Link to="contact" className="btn btn-primary nav-cta desktop-only">Request Demo</Link>
 
           <button
             className={`hamburger ${mobileOpen ? 'active' : ''}`}
@@ -253,7 +253,7 @@ export const Navbar = () => {
         <div className="mobile-inner">
 
           <div className="mob-section mob-plain-links">
-            <Link to="/about"   className="mob-plain" onClick={() => setMobileOpen(false)}>About</Link>
+            <Link to="about"   className="mob-plain" onClick={() => setMobileOpen(false)}>About</Link>
           </div>
 
           {['solutions', 'industries'].map(menu => (
@@ -301,11 +301,11 @@ export const Navbar = () => {
           ))}
 
           <div className="mob-section mob-plain-links">
-            <Link to="/team"    className="mob-plain" onClick={() => setMobileOpen(false)}>Team</Link>
-            <Link to="/contact" className="mob-plain" onClick={() => setMobileOpen(false)}>Contact</Link>
+            <Link to="team"    className="mob-plain" onClick={() => setMobileOpen(false)}>Team</Link>
+            <Link to="contact" className="mob-plain" onClick={() => setMobileOpen(false)}>Contact</Link>
           </div>
 
-          <Link to="/contact" className="btn btn-primary mob-cta" onClick={() => setMobileOpen(false)}>
+          <Link to="contact" className="btn btn-primary mob-cta" onClick={() => setMobileOpen(false)}>
             Request Demo
           </Link>
         </div>

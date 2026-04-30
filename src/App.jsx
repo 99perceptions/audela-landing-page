@@ -1,6 +1,9 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Layout } from './components/layout/Layout';
+import { Landing } from './pages/Landing';
+import { Privacy } from './pages/Privacy';
+import { TermsOfUse } from './pages/TermsOfUse';
 import { Home } from './pages/Home';
 import { Clara } from './pages/Clara';
 import { Reven } from './pages/Reven';
@@ -19,8 +22,11 @@ import { Manufacturing } from './pages/industries/Manufacturing';
 import { Facilities } from './pages/industries/Facilities';
 
 const router = createBrowserRouter([
+  { path: '/', element: <Landing /> },
+  { path: '/privacy', element: <Privacy /> },
+  { path: '/terms', element: <TermsOfUse /> },
   {
-    path: '/',
+    path: '/full',
     element: <Layout />,
     children: [
       { index: true, element: <Home /> },
