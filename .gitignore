@@ -30,3 +30,4 @@ builds/
 plans/
 website/node_modules/
 website/.vercel/
+.env*.local

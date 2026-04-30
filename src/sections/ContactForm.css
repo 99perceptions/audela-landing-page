@@ -90,6 +90,143 @@ input:focus, textarea:focus {
   margin-top: 1rem;
 }
 
+.submit-btn[disabled] {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* ─── Validation & status messaging ─────────────────────────── */
+
+.form-error {
+  margin: 0.45rem 0 0;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: #b91c1c;
+  line-height: 1.4;
+}
+
+input[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+  border-color: #b91c1c;
+  background: rgba(185, 28, 28, 0.04);
+}
+
+input[aria-invalid="true"]:focus,
+textarea[aria-invalid="true"]:focus {
+  box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.15);
+}
+
+.form-submit-error {
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem;
+  background: rgba(185, 28, 28, 0.06);
+  border: 1px solid rgba(185, 28, 28, 0.25);
+  border-radius: 8px;
+  color: #991b1b;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+/* Honeypot — invisible to users, dimensionless. */
+.contact-honeypot {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+/* ─── Phone input (react-phone-number-input) ────────────────── */
+
+.phone-input.PhoneInput {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 6px 12px;
+  transition: all 0.3s ease;
+}
+
+.phone-input.PhoneInput:focus-within {
+  border-color: var(--color-2);
+  background: var(--bg-primary);
+  box-shadow: 0 0 0 3px rgba(195, 209, 223, 0.3);
+}
+
+.phone-input[aria-invalid="true"].PhoneInput,
+.phone-input.PhoneInput--invalid {
+  border-color: #b91c1c;
+  background: rgba(185, 28, 28, 0.04);
+}
+
+.phone-input .PhoneInputCountry {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0;
+}
+
+.phone-input .PhoneInputCountrySelect {
+  cursor: pointer;
+}
+
+.phone-input .PhoneInputCountryIcon {
+  width: 1.6em;
+  height: 1.2em;
+  box-shadow: 0 0 0 1px rgba(37, 39, 44, 0.1);
+}
+
+.phone-input .PhoneInputInput {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 8px 4px;
+  font-size: 1rem;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  min-width: 0;
+}
+
+.phone-input .PhoneInputInput:focus {
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+/* ─── Success panel ─────────────────────────────────────────── */
+
+.contact-success {
+  text-align: center;
+  padding: 3rem;
+}
+
+.contact-success-title {
+  font-family: var(--font-title);
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 1rem;
+}
+
+.contact-success-body {
+  font-family: var(--font-body);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0 0 2rem;
+}
+
+.contact-success-body a {
+  color: var(--color-2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 @media (max-width: 900px) {
   .contact-grid {
     grid-template-columns: 1fr;

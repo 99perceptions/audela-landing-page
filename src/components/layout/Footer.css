@@ -27,7 +27,7 @@
 .footer-brand-copy {
   font-family: var(--font-body);
   font-size: 0.9rem;
-  color: var(--color-3);
+  color: var(--text-on-dark);
   line-height: 1.7;
   max-width: 280px;
   margin: 0 0 1.5rem 0;
@@ -56,7 +56,7 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-3);
+  color: var(--text-on-dark);
   margin: 0 0 1.25rem 0;
 }
 
@@ -81,7 +81,7 @@
 .footer-link:hover { color: var(--color-5); }
 
 .footer-link-muted {
-  color: var(--color-3);
+  color: var(--text-on-dark);
   opacity: 0.55;
 }
 .footer-link-muted:hover { opacity: 0.9; color: var(--color-4); }
@@ -93,7 +93,7 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-3);
+  color: var(--text-on-dark);
   opacity: 0.45;
   margin: 0.75rem 0 0.65rem 0;
 }
@@ -103,7 +103,7 @@
 .footer-soon-item {
   font-family: var(--font-body);
   font-size: 0.82rem;
-  color: var(--color-3);
+  color: var(--text-on-dark);
   opacity: 0.35;
   cursor: default;
 }
@@ -125,7 +125,7 @@
 .footer-bottom-link {
   font-family: var(--font-body);
   font-size: 0.8rem;
-  color: var(--color-3);
+  color: var(--text-on-dark);
   opacity: 0.5;
   text-decoration: none;
   transition: opacity 0.2s ease;
@@ -138,7 +138,7 @@
 .footer-copy {
   font-family: var(--font-body);
   font-size: 0.8rem;
-  color: var(--color-3);
+  color: var(--text-on-dark);
   opacity: 0.5;
   margin: 0;
 }
@@ -147,7 +147,7 @@
   font-family: var(--font-title);
   font-style: italic;
   font-size: 0.95rem;
-  color: var(--color-3);
+  color: var(--text-on-dark);
   opacity: 0.55;
   margin: 0;
 }

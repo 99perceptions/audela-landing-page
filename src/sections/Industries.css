@@ -20,7 +20,7 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: rgba(238, 241, 242, 0.4);
+  background: rgba(238, 241, 242, 0.82);
   pointer-events: none;
 }
 

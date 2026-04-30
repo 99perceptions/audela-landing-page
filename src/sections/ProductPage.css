@@ -211,7 +211,7 @@
 .pp-section-dark .pp-section-title { color: var(--color-5); }
 .pp-section-dark .pp-section-title em { color: var(--color-4); }
 .pp-section-dark .pp-section-sub { color: var(--color-4); }
-.pp-section-dark .pp-tag { color: var(--color-3); }
+.pp-section-dark .pp-tag { color: var(--text-on-dark); }
 
 .pp-section-sub {
   font-family: var(--font-body);

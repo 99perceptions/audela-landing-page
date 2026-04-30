@@ -5,7 +5,7 @@
   /* Brand Guidelines Palette */
   --color-1: #25272C; /* Darkest */
   --color-2: #404E63; /* Deep Blue */
-  --color-3: #8E9EB8; /* Muted Blue */
+  --color-3: #4A4D54; /* Was #8E9EB8 — darkened for readability; used as muted text in most components */
   --color-4: #C3D1DF; /* Light Blue */
   --color-5: #EEF1F2; /* Off-White */
   
@@ -14,9 +14,10 @@
   --bg-secondary: var(--color-5); /* #EEF1F2 Off-white */
   --bg-glass: rgba(255, 255, 255, 0.6);
   
-  --text-primary: var(--color-1); /* #25272C */
-  --text-secondary: var(--color-2);
-  --text-muted: var(--color-3);
+  --text-primary: var(--color-1);   /* #25272C */
+  --text-secondary: #2F3137;        /* darker, neutral — was #404E63 (too bluish) */
+  --text-muted: #3F4147;             /* dark neutral, just one notch lighter than secondary */
+  --text-on-dark: #B5B9BF;          /* muted body/label text on dark (var(--color-1)) backgrounds — kept light for readability */
 
   --accent-color: var(--color-2);
 

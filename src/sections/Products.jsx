@@ -15,6 +15,7 @@ const featured = [
   {
     path: '/reven',
     logoFile: 'Reven-logo.svg',
+    abstractImg: 'Reven.jpg',
     category: 'Healthcare · Finance',
     desc: 'AI-powered claim submission, denial management, fraud detection and full revenue cycle reconciliation.',
     span: 'narrow',
@@ -73,7 +74,7 @@ export const Products = () => {
             >
               <Link to={p.path} className="feat-card">
                 {p.abstractImg && (
-                  <div className="feat-abstract">
+                  <div className={`feat-abstract feat-abstract-${p.path.slice(1)}`}>
                     <img
                       src={`/Brand-Assets/Product-Imgs/${p.abstractImg}`}
                       alt=""
