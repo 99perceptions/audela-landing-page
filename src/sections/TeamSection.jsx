@@ -31,10 +31,6 @@ const advisors = [
     bio: 'Author of sixteen best-selling McGraw-Hill technology books and a contributor to Harvard Business Review. Guest-lectures at London Business School and helps deliver AI-for-Business courses in LBS Executive Education.',
   },
   {
-    name: 'Zahid Ali',
-    bio: 'Former CIO of the Pakistan Kidney and Liver Institute and founding Executive Director of HL7 Pakistan. Has advised the WHO, USAID, and the Gates Foundation. Recognised as a HIMSS Future50 Health IT Leader and HIMSS Changemaker.',
-  },
-  {
     name: 'Omar Abbas',
     bio: 'Cloud and digital transformation leader with twenty years across the Middle East. Most recently a Professional Services Sales Leader at AWS; prior Territory Executive at IBM Levant, with earlier roles at Injazat and GBM.',
   },
