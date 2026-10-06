@@ -2,6 +2,7 @@ import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Layout } from './components/layout/Layout';
 import { Landing } from './pages/Landing';
+import { Frends } from './pages/Frends';
 import { Privacy } from './pages/Privacy';
 import { TermsOfUse } from './pages/TermsOfUse';
 import { Home } from './pages/Home';
@@ -23,6 +24,7 @@ import { Facilities } from './pages/industries/Facilities';
 
 const router = createBrowserRouter([
   { path: '/', element: <Landing /> },
+  { path: '/frends', element: <Frends /> },
   { path: '/privacy', element: <Privacy /> },
   { path: '/terms', element: <TermsOfUse /> },
   {
