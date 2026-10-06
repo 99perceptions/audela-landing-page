@@ -358,7 +358,31 @@
 
 /* ─── Segments ─────────────────────────────────────────── */
 .fr-segments {
-  background: var(--bg-secondary);
+  position: relative;
+  background-color: var(--bg-secondary);
+  background-image: url('/Brand-Assets/Frends/desert-monoliths-day.jpg');
+  background-size: cover;
+  background-position: center 35%;
+  overflow: hidden;
+}
+
+/* Pale wash so the dunes read as texture behind long copy */
+.fr-segments::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(238, 241, 242, 0.97) 0%,
+    rgba(238, 241, 242, 0.90) 45%,
+    rgba(238, 241, 242, 0.72) 100%
+  );
+  pointer-events: none;
+}
+
+.fr-segments > .container {
+  position: relative;
+  z-index: 1;
 }
 
 .fr-segment-list {
@@ -471,9 +495,33 @@
 
 /* ─── UAE e-Invoicing (dark) ───────────────────────────── */
 .fr-einv {
+  position: relative;
   padding: var(--padding-section) 0;
-  background: var(--color-2);
+  background-color: var(--color-2);
+  background-image: url('/Brand-Assets/Frends/skyline-dunes-dusk.jpg');
+  background-size: cover;
+  background-position: center 60%;
   color: var(--color-5);
+  overflow: hidden;
+}
+
+/* Deep-blue tint keeps the skyline moody and the white copy legible */
+.fr-einv::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(37, 39, 44, 0.90) 0%,
+    rgba(64, 78, 99, 0.84) 50%,
+    rgba(64, 78, 99, 0.62) 100%
+  );
+  pointer-events: none;
+}
+
+.fr-einv > .container {
+  position: relative;
+  z-index: 1;
 }
 
 .fr-tag-on-dark {
@@ -522,8 +570,10 @@
 }
 
 .fr-einv-card {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(37, 39, 44, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 16px;
   padding: 2.25rem;
 }
@@ -661,7 +711,36 @@
 
 /* ─── Team ─────────────────────────────────────────────── */
 .fr-team {
-  background: var(--bg-secondary);
+  position: relative;
+  background-color: var(--bg-secondary);
+  background-image: url('/Brand-Assets/Frends/desert-figure-towers.jpg');
+  background-size: cover;
+  background-position: center 40%;
+  overflow: hidden;
+}
+
+.fr-team::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(238, 241, 242, 0.96) 0%,
+    rgba(238, 241, 242, 0.86) 50%,
+    rgba(238, 241, 242, 0.70) 100%
+  );
+  pointer-events: none;
+}
+
+.fr-team > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.fr-team .fr-person {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .fr-team-grid {
@@ -831,6 +910,13 @@
 }
 
 @media (max-width: 600px) {
+  .fr-segments::before,
+  .fr-team::before {
+    background: rgba(238, 241, 242, 0.93);
+  }
+  .fr-einv::before {
+    background: rgba(44, 53, 68, 0.88);
+  }
   .fr-services-grid { grid-template-columns: 1fr; }
   .fr-team-grid { grid-template-columns: 1fr; }
   .fr-stats { grid-template-columns: 1fr; row-gap: 1.25rem; }
