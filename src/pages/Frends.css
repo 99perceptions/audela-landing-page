@@ -71,20 +71,24 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   width: 100%;
-  min-height: 100vh;
-  padding-top: 2rem;
-  padding-bottom: 3.5rem;
+  min-height: calc(100vh - var(--landing-nav-h, 68px));
+  padding-top: 1rem;
+  padding-bottom: 2.5rem;
   box-sizing: border-box;
-  gap: 3.5rem;
+  gap: 2.5rem;
 }
 
+/* Text block floats in the free space above the stats strip, biased upward */
 .fr-hero-left {
   max-width: 720px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-bottom: 2rem;
 }
 
 .fr-hero-headline {
@@ -884,11 +888,12 @@
   .fr-hero { padding-top: 5rem; align-items: flex-start; }
   .fr-hero-content {
     justify-content: flex-start;
-    padding-top: 4rem;
-    padding-bottom: 3rem;
-    min-height: 100svh;
-    gap: 2.5rem;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    min-height: calc(100svh - 5rem);
+    gap: 2rem;
   }
+  .fr-hero-left { margin-top: 0; padding-bottom: 0.5rem; }
   .fr-hero-headline { font-size: clamp(2.3rem, 10vw, 3.4rem); margin-bottom: 1.25rem; }
   .fr-hero-subtitle { max-width: 100%; }
   .fr-hero-actions { flex-direction: column; align-items: flex-start; gap: 1rem; width: 100%; }
