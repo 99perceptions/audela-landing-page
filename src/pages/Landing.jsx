@@ -63,8 +63,8 @@ export const Landing = () => {
       <SEO
         title="Specialized AI for Industries Where It Matters Most"
         description="Audelà builds specialized AI solutions for the industries where decisions have consequences — purpose-built, not adapted from a generic platform."
-        path="/"
-        robots="index, follow"
+        path="/legacy"
+        robots="noindex, nofollow"
       />
       <LandingNavbar />
       <main className="landing-main">

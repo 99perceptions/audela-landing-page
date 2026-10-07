@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /full/
+Disallow: /legacy
 
 Sitemap: https://audela.me/sitemap.xml

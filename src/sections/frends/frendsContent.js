@@ -13,7 +13,7 @@
  *     air-gapped deployment, CLOUD Act-free European platform.
  */
 
-export const PAGE_PATH = '/frends';
+export const PAGE_PATH = '/';
 export const FRENDS_URL = 'https://frends.com';
 export const CONTACT_EMAIL = 'info@audela.me';
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
+import { PHONE_COUNTRIES } from './phoneCountries';
 import { CountrySelect } from './CountrySelect';
 import { AnimatedSection } from '../components/ui/AnimatedSection';
 import './ContactForm.css';
@@ -256,6 +257,7 @@ export const ContactForm = () => {
                       id="phone"
                       name="phone"
                       international
+                      countries={PHONE_COUNTRIES}
                       defaultCountry="AE"
                       autoComplete="tel"
                       value={formData.phone}

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { LandingNavbar } from '../components/layout/LandingNavbar';
+import { FrendsNavbar } from '../sections/frends/FrendsNavbar';
 import { LandingFooter } from '../components/layout/LandingFooter';
 import { SEO } from '../components/ui/SEO';
 import './Legal.css';
@@ -87,7 +87,7 @@ export const TermsOfUse = () => {
         path="/terms"
         robots="noindex, follow"
       />
-      <LandingNavbar />
+      <FrendsNavbar />
       <main className="legal-page">
         <section className="legal-hero">
           <div className="container">

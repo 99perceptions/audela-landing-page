@@ -31,7 +31,8 @@ export const LandingNavbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const isLanding = location.pathname === '/';
+  const LEGACY_PATH = '/legacy';
+  const isLanding = location.pathname === LEGACY_PATH;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -50,7 +51,7 @@ export const LandingNavbar = () => {
     if (isLanding) {
       scrollToHash(hash);
     } else {
-      navigate('/' + hash);
+      navigate(LEGACY_PATH + hash);
     }
   };
 
@@ -60,7 +61,7 @@ export const LandingNavbar = () => {
     if (isLanding) {
       scrollToTop();
     } else {
-      navigate('/');
+      navigate(LEGACY_PATH);
     }
   };
 
@@ -68,7 +69,7 @@ export const LandingNavbar = () => {
     <>
       <header className={`landing-nav ${scrolled ? 'scrolled' : ''}`}>
         <div className="container landing-nav-inner">
-          <a href="#top" className="landing-nav-logo" onClick={handleLogo}>
+          <a href={LEGACY_PATH} className="landing-nav-logo" onClick={handleLogo}>
             <img src="/Brand-Assets/Audella-ai-logo.svg.svg" alt="Audelà" />
           </a>
 

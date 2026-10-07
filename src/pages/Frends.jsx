@@ -387,7 +387,7 @@ export const Frends = () => {
         title="Official Frends Partner for the GCC & Pakistan"
         description="Audelà is the official Frends partner for the GCC and Pakistan — European enterprise integration, business process automation and AI orchestration at a fraction of the cost, live in weeks."
         path={PAGE_PATH}
-        robots="noindex, nofollow"
+        robots="index, follow"
       />
       <FrendsNavbar />
       <main className="fr-main">

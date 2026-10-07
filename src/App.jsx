@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import { Layout } from './components/layout/Layout';
 import { Landing } from './pages/Landing';
 import { Frends } from './pages/Frends';
@@ -23,8 +23,12 @@ import { Manufacturing } from './pages/industries/Manufacturing';
 import { Facilities } from './pages/industries/Facilities';
 
 const router = createBrowserRouter([
-  { path: '/', element: <Landing /> },
-  { path: '/frends', element: <Frends /> },
+  // Frends partner one-pager is the live site. The original AI-products
+  // landing is kept intact at /legacy as a fallback (git tag
+  // ai-landing-backup-2026-10-07 also preserves it).
+  { path: '/', element: <Frends /> },
+  { path: '/frends', element: <Navigate to="/" replace /> },
+  { path: '/legacy', element: <Landing /> },
   { path: '/privacy', element: <Privacy /> },
   { path: '/terms', element: <TermsOfUse /> },
   {
