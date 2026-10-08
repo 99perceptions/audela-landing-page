@@ -268,7 +268,7 @@ export const team = {
       name: 'Usman Farooq',
       role: 'Fractional CTO',
       bio: 'Leads Audelà’s technical direction — solution architecture, integration delivery and the technology roadmap for Frends implementations.',
-      linkedin: '',
+      linkedin: 'https://www.linkedin.com/in/usman-farooq-769272104/',
     },
   ],
 };
