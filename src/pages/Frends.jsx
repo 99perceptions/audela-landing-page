@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLenis } from '../hooks/useLenis';
 import { SEO } from '../components/ui/SEO';
@@ -201,33 +201,70 @@ const Platform = () => (
   </section>
 );
 
-/* ─── Segments ─────────────────────────────────────────── */
-const Segments = () => (
-  <section id="segments" className="section-padding fr-segments">
-    <div className="container">
-      <AnimatedSection yOffset={30}>
-        <div className="section-header fr-section-header">
-          <div className="tag">{segments.tag}</div>
-          <h2>{segments.headline[0]}<br /><i>{segments.headline[1]}</i></h2>
-        </div>
-      </AnimatedSection>
+/* ─── Segments: use cases by team, one sub-tag per team ── */
+const Segments = () => {
+  const [activeId, setActiveId] = useState(segments.categories[0].id);
+  const active = segments.categories.find((c) => c.id === activeId);
 
-      <div className="fr-segment-list">
-        {segments.items.map((s, i) => (
-          <AnimatedSection yOffset={30} delay={0.08 * i} key={s.index}>
-            <article className="fr-segment">
-              <div className="fr-segment-index">{s.index}</div>
-              <div className="fr-segment-body">
-                <h3 className="fr-segment-title">{s.title}</h3>
-                <p className="fr-segment-desc">{s.desc}</p>
-              </div>
-            </article>
-          </AnimatedSection>
-        ))}
+  return (
+    <section id="segments" className="section-padding fr-segments">
+      <div className="container">
+        <AnimatedSection yOffset={30}>
+          <div className="section-header fr-section-header">
+            <div className="tag">{segments.tag}</div>
+            <h2>{segments.headline[0]}<br /><i>{segments.headline[1]}</i></h2>
+            <p className="section-subtitle">{segments.intro}</p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection yOffset={20} delay={0.1}>
+          <div className="fr-usecase-tags" role="tablist" aria-label="Use cases by team">
+            {segments.categories.map((c) => (
+              <button
+                key={c.id}
+                type="button"
+                role="tab"
+                id={`uc-tab-${c.id}`}
+                aria-selected={c.id === activeId}
+                aria-controls="uc-panel"
+                className={`fr-usecase-tag${c.id === activeId ? ' is-active' : ''}`}
+                onClick={() => setActiveId(c.id)}
+              >
+                {c.label}
+                <span className="fr-usecase-tag-count">{c.useCases.length}</span>
+              </button>
+            ))}
+          </div>
+        </AnimatedSection>
+
+        <div
+          id="uc-panel"
+          role="tabpanel"
+          aria-labelledby={`uc-tab-${active.id}`}
+          className="fr-usecase-panel"
+        >
+          <motion.div
+            key={active.id}
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, ease: easeOut }}
+          >
+            <p className="fr-usecase-summary">{active.summary}</p>
+            <ul className="fr-usecase-grid" data-count={active.useCases.length}>
+              {active.useCases.map((u, i) => (
+                <li className="fr-usecase" key={u.title}>
+                  <span className="fr-usecase-num">{String(i + 1).padStart(2, '0')}</span>
+                  <h3 className="fr-usecase-title">{u.title}</h3>
+                  <p className="fr-usecase-outcome">{u.outcome}</p>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 /* ─── Why Frends ───────────────────────────────────────── */
 const Why = () => (
@@ -385,7 +422,7 @@ export const Frends = () => {
     <>
       <SEO
         title="Official Frends Partner for the GCC & Pakistan"
-        description="Audelà is the official Frends partner for the GCC and Pakistan — European enterprise integration, business process automation and AI orchestration at a fraction of the cost, live in weeks."
+        description="Audelà is the official Frends partner for the GCC and exclusive distribution partner for Pakistan — European enterprise integration, business process automation and AI orchestration at a fraction of the cost, live in weeks."
         path={PAGE_PATH}
         robots="index, follow"
       />

@@ -8,6 +8,10 @@
  *   - Jamal's email "FW: UAE E-Invoicing System" (1 Oct 2026): give UAE
  *     e-Invoicing integration prominence; Frends has solid use cases there.
  *   - Jamal's email "Put him as Audela CEO" (2 Oct 2026): Irsum Khan.
+ *   - Jamal's website feedback (8 Oct 2026): exclusive distribution for
+ *     Pakistan, new hero punchline, use-case tags in "Who it's for" (from
+ *     "30 Frends Use Cases.pdf"), "live in weeks", Dubai Holding e-invoicing
+ *     case study with a POC offer.
  *   - frends.com (public): founded 1988, 6,000+ customers, 16 countries,
  *     Gartner Magic Quadrant 4 consecutive years, hybrid / on-prem /
  *     air-gapped deployment, CLOUD Act-free European platform.
@@ -19,17 +23,18 @@ export const CONTACT_EMAIL = 'cs@audela.me';
 
 /**
  * Reference customers Jamal named (Dubai Holding, DAMAC, Saudi German
- * Hospital). They are Frends' customers, not ours — keep hidden until Frends
- * confirms we may cite them publicly. Flip to `true` to render by name.
+ * Hospital). They are Frends' customers, not ours — keep the list hidden until
+ * Frends confirms we may cite them publicly. Flip to `true` to render by name.
+ * (Dubai Holding is named in the e-invoicing case study at Jamal's request.)
  */
 export const SHOW_REFERENCE_NAMES = false;
 export const REFERENCE_NAMES = ['Dubai Holding', 'DAMAC', 'Saudi German Hospital'];
 
 export const hero = {
-  eyebrow: 'Official Frends partner · GCC & Pakistan',
-  headline: ['Enterprise integration, automation and AI.', 'European-built. A fraction of the cost.'],
+  eyebrow: 'Official Frends partner · GCC · Exclusive in Pakistan',
+  headline: ['Tired of expensive, limited integration platforms', '& legacy challenges?'],
   subtitle:
-    'Audelà brings Frends — the European integration platform trusted since 1988 — to the Gulf and Pakistan. One platform for middleware, business process automation and AI orchestration, live in weeks, not quarters.',
+    'Audelà brings Frends — the European integration platform trusted since 1988 — to the Gulf and Pakistan. One platform for middleware, business process automation and AI orchestration at a fraction of the cost, live in weeks, not quarters.',
   primaryCta: { label: 'Talk to us', href: '#contact' },
   secondaryCta: { label: 'Visit frends.com', href: FRENDS_URL },
 };
@@ -43,11 +48,11 @@ export const stats = [
 
 export const partnership = {
   label: 'The partnership',
-  headline: ['Audelà is the official partner', 'for Frends in the GCC and Pakistan.'],
+  headline: ['Audelà is the official partner', 'for Frends in the GCC and exclusive Distribution Partner for Pakistan.'],
   description:
     'Frends is a proven European iPaaS with deep roots in regulated industries. Audelà is its regional partner — the local team that sells, implements, supports and makes the platform succeed inside your organisation.',
   roles: [
-    { num: '01', text: 'Official Distribution Partner' },
+    { num: '01', text: 'Official Distribution Partner and Exclusive Distribution Partner for Pakistan' },
     { num: '02', text: 'Solution Enablement Partner' },
     { num: '03', text: 'Business Success Partner' },
   ],
@@ -75,27 +80,93 @@ export const platform = {
   deploy: 'Cloud, on-premises or fully air-gapped. Same platform, your choice of where it runs.',
 };
 
+/**
+ * "Who it's for" — use cases from Frends' "30 Frends Use Cases" deck, grouped
+ * by the team that feels the problem. Each category renders as a sub-tag.
+ */
 export const segments = {
   tag: "Who it's for",
-  headline: ['Three kinds of organisation', 'find us at the right time.'],
-  items: [
+  headline: ['30 proven use cases,', 'grouped by the teams that feel them.'],
+  intro: 'Real business problems solved with integration and automation. Pick a team to see where Frends fits.',
+  categories: [
     {
-      index: '01',
-      title: 'Enterprises that need European-validated technology',
-      desc:
-        'Governments, banks, hospitals and critical infrastructure that want a platform built and governed in Europe — GDPR-native, EU AI Act-ready and outside the reach of the US CLOUD Act. Frends already runs mission-critical integration for utilities, hospitals and public sector across the Nordics.',
+      id: 'finance',
+      label: 'Finance',
+      summary: 'Get paid faster, bill accurately and close the books with less manual work.',
+      useCases: [
+        { title: 'Order-to-cash automation', outcome: 'A shorter cash cycle and fewer orders stuck between teams.' },
+        { title: 'Purchase-to-pay automation', outcome: 'Supplier invoices approved faster, with fewer mismatches.' },
+        { title: 'Financial close automation', outcome: 'A faster, more predictable month-end.' },
+        { title: 'Billing & subscription management', outcome: 'Fewer billing errors and credit notes.' },
+        { title: 'AI-powered document processing', outcome: 'Less manual data entry and fewer typing errors.' },
+        { title: 'E-invoicing automation', outcome: 'Less invoice handling and faster processing.' },
+      ],
     },
     {
-      index: '02',
-      title: 'Mid-market companies that cannot justify tier-one licence costs',
-      desc:
-        'Per-core middleware licences from the usual vendors run into seven figures before a single integration ships. Frends delivers the same capability — plus automation and AI — at a fraction of the total cost of ownership, with go-live measured in weeks.',
+      id: 'sales',
+      label: 'Sales & marketing',
+      summary: 'Give sales and marketing better data and faster follow-up.',
+      useCases: [
+        { title: 'Customer data enrichment', outcome: 'Sales starts conversations with better context.' },
+        { title: 'Lead scoring & routing', outcome: 'Faster follow-up on the leads that matter most.' },
+        { title: 'Marketing campaign orchestration', outcome: 'Campaign results visible where sales works.' },
+        { title: 'Price & promotion management', outcome: 'Consistent prices and offers across channels.' },
+      ],
     },
     {
-      index: '03',
-      title: 'Teams tired of their current integration vendor',
-      desc:
-        'Every change request is a change order. Customisation costs more than the licence. If that sounds familiar, there is a modern, low-code alternative with AI and process automation built in. Are you tired of these vendors? Talk to us.',
+      id: 'customers',
+      label: 'Customers & partners',
+      summary: 'Serve customers and partners without the back-and-forth.',
+      useCases: [
+        { title: 'Customer support ticketing', outcome: 'Agents spend less time looking for information.' },
+        { title: 'AI order-status assistant', outcome: 'Faster answers, fewer status enquiries for your team.' },
+        { title: 'Partner portal & self-service', outcome: 'Fewer status calls and faster partner orders.' },
+        { title: 'Returns, refunds & claims', outcome: 'Faster resolutions and less work per case.' },
+      ],
+    },
+    {
+      id: 'supply-chain',
+      label: 'Supply chain',
+      summary: 'Keep goods, suppliers and partners moving in step.',
+      useCases: [
+        { title: 'Supplier onboarding automation', outcome: 'New suppliers are ready to trade sooner.' },
+        { title: 'EDI & B2B connectivity', outcome: 'Add trading partners without adding manual work.' },
+        { title: 'Inventory synchronisation', outcome: 'Fewer stockouts and oversold orders.' },
+        { title: 'Supply chain visibility', outcome: 'Earlier warning when deliveries run late.' },
+      ],
+    },
+    {
+      id: 'hr-it',
+      label: 'HR & IT',
+      summary: 'Take routine work off HR and IT.',
+      useCases: [
+        { title: 'Employee data lifecycle', outcome: 'New hires get access sooner; leavers lose it on time.' },
+        { title: 'IT service request automation', outcome: 'Requests close faster with less manual handling.' },
+        { title: 'Failed process recovery', outcome: 'Failed orders and invoices get moving again sooner.' },
+        { title: 'Asset & facility management', outcome: 'Asset records that stay in line with the books.' },
+      ],
+    },
+    {
+      id: 'data',
+      label: 'Data',
+      summary: 'Make your data reliable everywhere it is used.',
+      useCases: [
+        { title: 'Real-time data synchronisation', outcome: 'Teams work from the same customer data.' },
+        { title: 'Master data management', outcome: 'Fewer conflicting records across systems.' },
+        { title: 'Data migration at scale', outcome: 'Retire old systems with less risk of data loss.' },
+        { title: 'Business intelligence & analytics', outcome: 'Dashboards built on current data.' },
+      ],
+    },
+    {
+      id: 'compliance',
+      label: 'Compliance & risk',
+      summary: 'Stay compliant without the spreadsheet scramble.',
+      useCases: [
+        { title: 'Contract lifecycle management', outcome: 'Fewer missed renewals and surprise terms.' },
+        { title: 'Compliance & audit reporting', outcome: 'Audit preparation takes less time.' },
+        { title: 'Regulatory reporting automation', outcome: 'Deadlines met with less manual effort.' },
+        { title: 'Sustainability & ESG reporting', outcome: 'More reliable ESG reports with less data chasing.' },
+      ],
     },
   ],
 };
@@ -126,26 +197,26 @@ export const why = {
     },
     {
       index: '05',
-      title: 'Live in six weeks',
+      title: 'Live in weeks',
       desc: 'Low-code tooling and a local implementation team mean short projects and a short payback period. If cost and time-to-value matter to you, talk to us.',
     },
   ],
 };
 
 export const einvoicing = {
-  tag: 'UAE e-Invoicing',
-  headline: ['e-Invoicing is coming.', 'Your systems are not ready.'],
+  tag: 'E-invoicing case study',
+  headline: ['Dubai Holding.', 'Many systems, one ASP, live in weeks.'],
   body: [
-    'The UAE Federal Tax Authority is rolling out mandatory e-Invoicing. Every invoice will need to be reported digitally — which means every system that issues one (ERP, billing, POS, property management, hospital information systems) has to be connected to the reporting flow.',
-    'For a typical group that is twenty or more systems. Buying a seven-figure integration suite to meet a compliance deadline is the expensive way to do it.',
-    'Frends specialises in exactly this kind of many-to-one integration and already has reference deployments in the region. Audelà implements it locally, on a fixed scope and a fixed timeline.',
+    'The UAE is moving to mandatory e-invoicing. Every invoice has to reach the Federal Tax Authority through an Accredited Service Provider (ASP) — so every system that issues one (ERP, billing, POS, property management, hospital information systems) must be connected.',
+    'Dubai Holding faced exactly that. Frends integrated multiple systems across the group and delivered the integration between them and its ASP within weeks — no seven-figure suite, no year-long project.',
+    'Want to know more, or have your own e-invoicing compliance needs? We can run a quick proof of concept to demo it on your systems.',
   ],
   points: [
-    'Connect every invoicing system to the FTA reporting flow',
+    'Connect every invoicing system to your ASP',
     'Validate, transform and archive in one governed pipeline',
     'Reuse the same platform for the next mandate — not just this one',
   ],
-  cta: { label: 'Discuss e-Invoicing readiness', href: '#contact' },
+  cta: { label: 'Request a quick POC demo', href: '#contact' },
 };
 
 export const services = {
@@ -202,7 +273,7 @@ export const contact = {
     'Whether it is a compliance deadline, a middleware renewal you would rather not sign, or a first AI use case — tell us the objective and we will come back with a scope, a timeline and a number.',
   interests: [
     'Enterprise integration platform',
-    'UAE e-Invoicing integration',
+    'UAE e-Invoicing integration / POC',
     'Replace existing middleware (IBM / Oracle / MuleSoft)',
     'Business process automation',
     'AI orchestration / agentic workflows',
