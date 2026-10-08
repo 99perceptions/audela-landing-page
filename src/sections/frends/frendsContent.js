@@ -244,7 +244,8 @@ export const services = {
 };
 
 /**
- * Team — per Jamal: Irsum Khan as CEO; Asjad Yahya as Co-Founder.
+ * Team — per Jamal: Irsum Khan as CEO; Asjad Yahya as Co-Founder;
+ * Usman Farooq as Fractional CTO (WhatsApp, 8 Oct 2026).
  * Bios are placeholders until Jamal sends profiles (he said he would).
  */
 export const team = {
@@ -261,6 +262,12 @@ export const team = {
       name: 'Asjad Yahya',
       role: 'Co-Founder',
       bio: 'Co-founder of Audelà. Technology and delivery leadership across enterprise platforms in the region.',
+      linkedin: '',
+    },
+    {
+      name: 'Usman Farooq',
+      role: 'Fractional CTO',
+      bio: 'Leads Audelà’s technical direction — solution architecture, integration delivery and the technology roadmap for Frends implementations.',
       linkedin: '',
     },
   ],

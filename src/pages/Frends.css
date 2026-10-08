@@ -836,9 +836,9 @@
 
 .fr-team-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -969,6 +969,7 @@
   .fr-pillars { grid-template-columns: 1fr; gap: 3rem; }
   .fr-ps-inner { grid-template-columns: 1fr; gap: 2rem; }
   .fr-einv-grid { grid-template-columns: 1fr; }
+  .fr-team-grid { grid-template-columns: 1fr; max-width: 560px; }
   .fr-stats { grid-template-columns: repeat(2, 1fr); row-gap: 1.75rem; }
   .fr-stat:nth-child(3) { padding-left: 0; border-left: none; }
 }
