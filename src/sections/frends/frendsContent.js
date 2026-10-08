@@ -15,7 +15,7 @@
 
 export const PAGE_PATH = '/';
 export const FRENDS_URL = 'https://frends.com';
-export const CONTACT_EMAIL = 'info@audela.me';
+export const CONTACT_EMAIL = 'cs@audela.me';
 
 /**
  * Reference customers Jamal named (Dubai Holding, DAMAC, Saudi German

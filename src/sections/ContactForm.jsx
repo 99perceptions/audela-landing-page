@@ -123,7 +123,7 @@ export const ContactForm = () => {
     if (!FORMSPREE_ENDPOINT) {
       setStatus('error');
       setSubmitError(
-        'The form endpoint has not been configured. Please email info@audela.me directly.'
+        'The form endpoint has not been configured. Please email cs@audela.me directly.'
       );
       return;
     }
@@ -172,7 +172,7 @@ export const ContactForm = () => {
             </p>
             <div className="contact-direct">
               <p>Or send us an email directly at:</p>
-              <a href="mailto:info@audela.me">info@audela.me</a>
+              <a href="mailto:cs@audela.me">cs@audela.me</a>
             </div>
           </AnimatedSection>
 
@@ -182,7 +182,7 @@ export const ContactForm = () => {
                 <h3 className="contact-success-title">Thanks — your message is on its way.</h3>
                 <p className="contact-success-body">
                   We'll be in touch shortly. In the meantime, feel free to reach us
-                  directly at <a href="mailto:info@audela.me">info@audela.me</a>.
+                  directly at <a href="mailto:cs@audela.me">cs@audela.me</a>.
                 </p>
                 <button
                   type="button"
