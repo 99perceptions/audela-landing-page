@@ -5,8 +5,33 @@
    globally by the landing page bundle).
    ============================================================ */
 
+/* Frends accent palette (from frends.com). Audelà keeps its neutrals,
+   type and charcoal CTAs; Frends purple is used only as an accent. */
+:root {
+  --fr-purple: #6717FF;       /* Frends --purple-prim */
+  --fr-purple-ink: #4D11BF;   /* Frends --purple-dark-3: accent text on light */
+  --fr-purple-deep: #340C80;  /* Frends --purple-dark-2: dark bands */
+  --fr-purple-night: #280074; /* Frends --purple-dark */
+  --fr-purple-light: #D9C5FF; /* Frends --purple-light: accent text on dark */
+  --fr-purple-wash: #F5F2FE;  /* Frends --purple-bg */
+}
+
 .fr-main {
   position: relative;
+}
+
+.fr-main .tag:not(.fr-tag-on-dark) {
+  background: var(--fr-purple-wash);
+  color: var(--fr-purple-ink);
+  border-color: rgba(103, 23, 255, 0.18);
+}
+
+.fr-hero .hero-pulse-dot {
+  background: var(--fr-purple);
+}
+
+.fr-hero .hero-eyebrow span {
+  color: var(--fr-purple-ink);
 }
 
 #top {
@@ -104,7 +129,7 @@
 .fr-hero-headline em {
   font-style: italic;
   font-weight: 400;
-  color: var(--color-2);
+  color: var(--fr-purple-ink);
 }
 
 .fr-hero-subtitle {
@@ -204,7 +229,7 @@
 .fr-ps-headline em {
   font-style: italic;
   font-weight: 400;
-  color: var(--color-4);
+  color: var(--fr-purple-light);
 }
 
 .fr-ps-right {
@@ -238,7 +263,7 @@
   font-size: 0.78rem;
   font-weight: 700;
   font-style: italic;
-  color: var(--text-on-dark);
+  color: var(--fr-purple-light);
   min-width: 1.5rem;
   flex-shrink: 0;
 }
@@ -256,8 +281,8 @@
   font-family: var(--font-body);
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--color-4);
-  border-bottom: 1px solid rgba(195, 209, 223, 0.35);
+  color: var(--fr-purple-light);
+  border-bottom: 1px solid rgba(217, 197, 255, 0.35);
   padding-bottom: 0.2rem;
   transition: color 0.2s ease, border-color 0.2s ease;
 }
@@ -301,7 +326,7 @@
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--color-1);
+  background: var(--fr-purple);
   transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -314,7 +339,7 @@
   font-family: var(--font-title);
   font-style: italic;
   font-size: 1.6rem;
-  color: var(--color-3);
+  color: var(--fr-purple-ink);
   margin-bottom: 1rem;
 }
 
@@ -348,7 +373,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--color-2);
+  background: var(--fr-purple);
   flex-shrink: 0;
 }
 
@@ -415,18 +440,19 @@
 }
 
 .fr-usecase-tag:hover {
-  border-color: var(--color-1);
+  border-color: var(--fr-purple);
+  color: var(--fr-purple-ink);
 }
 
 .fr-usecase-tag:focus-visible {
-  outline: 2px solid var(--color-1);
+  outline: 2px solid var(--fr-purple);
   outline-offset: 2px;
 }
 
 .fr-usecase-tag.is-active {
-  background: var(--color-1);
-  border-color: var(--color-1);
-  color: var(--text-on-dark);
+  background: var(--fr-purple-deep);
+  border-color: var(--fr-purple-deep);
+  color: #fff;
 }
 
 .fr-usecase-tag-count {
@@ -443,7 +469,7 @@
   font-family: var(--font-title);
   font-style: italic;
   font-size: clamp(1.2rem, 2vw, 1.5rem);
-  color: var(--color-2);
+  color: var(--fr-purple-ink);
   margin: 0 0 2rem;
   max-width: 760px;
 }
@@ -473,7 +499,7 @@
   font-family: var(--font-title);
   font-style: italic;
   font-size: 1.1rem;
-  color: var(--color-3);
+  color: var(--fr-purple-ink);
   margin-bottom: 0.9rem;
 }
 
@@ -527,7 +553,7 @@
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--color-1);
+  background: var(--fr-purple);
   transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -539,7 +565,7 @@
   font-family: var(--font-title);
   font-style: italic;
   font-size: 2.2rem;
-  color: var(--color-3);
+  color: var(--fr-purple-ink);
   margin-bottom: 1.25rem;
   font-weight: 400;
 }
@@ -562,7 +588,7 @@
 .fr-einv {
   position: relative;
   padding: var(--padding-section) 0;
-  background-color: var(--color-2);
+  background-color: var(--fr-purple-deep);
   background-image: url('/Brand-Assets/Frends/skyline-dunes-dusk.jpg');
   background-size: cover;
   background-position: center 60%;
@@ -570,16 +596,16 @@
   overflow: hidden;
 }
 
-/* Deep-blue tint keeps the skyline moody and the white copy legible */
+/* Frends deep-purple tint keeps the skyline moody and the white copy legible */
 .fr-einv::before {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(
     100deg,
-    rgba(37, 39, 44, 0.90) 0%,
-    rgba(64, 78, 99, 0.84) 50%,
-    rgba(64, 78, 99, 0.62) 100%
+    rgba(40, 0, 116, 0.92) 0%,
+    rgba(52, 12, 128, 0.84) 50%,
+    rgba(52, 12, 128, 0.62) 100%
   );
   pointer-events: none;
 }
@@ -591,7 +617,7 @@
 
 .fr-tag-on-dark {
   background: rgba(255, 255, 255, 0.08);
-  color: var(--color-4);
+  color: var(--fr-purple-light);
   border-color: rgba(255, 255, 255, 0.14);
 }
 
@@ -615,14 +641,14 @@
 .fr-einv-headline em {
   font-style: italic;
   font-weight: 400;
-  color: var(--color-4);
+  color: var(--fr-purple-light);
 }
 
 .fr-einv-body {
   font-family: var(--font-body);
   font-size: 1.02rem;
   line-height: 1.75;
-  color: rgba(238, 241, 242, 0.82);
+  color: rgba(245, 242, 254, 0.84);
   margin: 0 0 1.25rem;
   max-width: 600px;
 }
@@ -635,7 +661,7 @@
 }
 
 .fr-einv-card {
-  background: rgba(37, 39, 44, 0.45);
+  background: rgba(40, 0, 116, 0.45);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -649,7 +675,7 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-4);
+  color: var(--fr-purple-light);
   margin: 0 0 1.25rem;
 }
 
@@ -678,7 +704,7 @@
   top: 0.62em;
   width: 10px;
   height: 1px;
-  background: var(--color-4);
+  background: var(--fr-purple-light);
 }
 
 .fr-einv-cta {
@@ -688,8 +714,8 @@
 }
 
 .fr-einv-cta:hover {
-  background: var(--color-5);
-  color: var(--color-1);
+  background: var(--fr-purple-wash);
+  color: var(--fr-purple-deep);
 }
 
 /* ─── Services ─────────────────────────────────────────── */
@@ -859,7 +885,7 @@
 }
 
 .fr-person-li:hover {
-  background: var(--color-2);
+  background: var(--fr-purple-deep);
 }
 
 .fr-person-role {
@@ -868,7 +894,7 @@
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-2);
+  color: var(--fr-purple-ink);
   margin: 0 0 1rem;
 }
 
@@ -910,7 +936,7 @@
 
 .frends-select:focus {
   outline: none;
-  border-color: var(--color-2);
+  border-color: var(--fr-purple);
   background: var(--bg-primary);
   box-shadow: 0 0 0 3px rgba(195, 209, 223, 0.3);
 }
@@ -983,7 +1009,7 @@
     background: rgba(238, 241, 242, 0.93);
   }
   .fr-einv::before {
-    background: rgba(44, 53, 68, 0.88);
+    background: rgba(40, 0, 116, 0.9);
   }
   .fr-services-grid { grid-template-columns: 1fr; }
   .fr-usecase-grid,

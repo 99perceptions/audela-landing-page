@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FRENDS_URL, PAGE_PATH } from './frendsContent';
+import { FrendsLogo } from './FrendsLogo';
 import '../../components/layout/LandingNavbar.css';
 import './FrendsNavbar.css';
 
@@ -70,10 +71,6 @@ export const FrendsNavbar = () => {
         <div className="container landing-nav-inner">
           <a href={PAGE_PATH} className="landing-nav-logo frends-nav-logo" onClick={handleLogo}>
             <img src="/Brand-Assets/Audella-ai-logo.svg.svg" alt="Audelà" />
-            <span className="frends-nav-partner-badge desktop-only">
-              <span className="frends-nav-partner-x">×</span>
-              <span className="frends-nav-partner-name">frends</span>
-            </span>
           </a>
 
           <ul className="landing-nav-links desktop-only">
@@ -90,8 +87,9 @@ export const FrendsNavbar = () => {
               className="frends-nav-external"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Frends — visit frends.com"
             >
-              frends.com
+              <FrendsLogo className="frends-nav-logo-mark" />
               <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
                 <path d="M3 9L9 3M9 3H4.5M9 3v4.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -124,8 +122,14 @@ export const FrendsNavbar = () => {
             </li>
           ))}
           <li>
-            <a href={FRENDS_URL} target="_blank" rel="noopener noreferrer">
-              Visit frends.com ↗
+            <a
+              href={FRENDS_URL}
+              className="frends-nav-mobile-logo"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Frends — visit frends.com"
+            >
+              <FrendsLogo className="frends-nav-logo-mark" /> ↗
             </a>
           </li>
           <li>
