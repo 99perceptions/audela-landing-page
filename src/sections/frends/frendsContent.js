@@ -245,7 +245,8 @@ export const services = {
 
 /**
  * Team — per Jamal: Irsum Khan as CEO; Asjad Yahya as Co-Founder;
- * Usman Farooq as Fractional CTO (WhatsApp, 8 Oct 2026).
+ * Usman Farooq as Fractional CTO (WhatsApp, 8 Oct 2026); Afnan Mansoor
+ * re-added as CFO (Asjad, WhatsApp, 12 Oct 2026), bio from TeamSection.jsx.
  * Bios are placeholders until Jamal sends profiles (he said he would).
  */
 export const team = {
@@ -262,6 +263,12 @@ export const team = {
       name: 'Asjad Yahya',
       role: 'Co-Founder',
       bio: 'Co-founder of Audelà. Technology and delivery leadership across enterprise platforms in the region.',
+      linkedin: '',
+    },
+    {
+      name: 'Afnan Mansoor',
+      role: 'Chief Financial Officer',
+      bio: 'Twenty years across business advisory, financial management, taxation and IT governance. Began his career at PwC Pakistan; most recently led group-level finance, IT and tax at one of Pakistan’s leading textile exporters.',
       linkedin: '',
     },
     {
