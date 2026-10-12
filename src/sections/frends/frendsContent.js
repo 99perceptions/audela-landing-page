@@ -269,7 +269,7 @@ export const team = {
       name: 'Afnan Mansoor',
       role: 'Chief Financial Officer',
       bio: 'Twenty years across business advisory, financial management, taxation and IT governance. Began his career at PwC Pakistan; most recently led group-level finance, IT and tax at one of Pakistan’s leading textile exporters.',
-      linkedin: '',
+      linkedin: 'https://www.linkedin.com/in/afnan-mansoor-fca-cia-57b40656',
     },
     {
       name: 'Usman Farooq',
