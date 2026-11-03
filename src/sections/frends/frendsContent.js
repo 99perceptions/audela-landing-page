@@ -246,7 +246,8 @@ export const services = {
 /**
  * Team — per Jamal: Irsum Khan as CEO; Asjad Yahya as Co-Founder;
  * Usman Farooq as Fractional CTO (WhatsApp, 8 Oct 2026); Afnan Mansoor
- * re-added as CFO (Asjad, WhatsApp, 12 Oct 2026), bio from TeamSection.jsx.
+ * re-added as CFO (Asjad, WhatsApp, 12 Oct 2026), bio from TeamSection.jsx;
+ * Furqan Khan added as Fractional CMO (Furqan, 3 Nov 2026).
  * Bios are placeholders until Jamal sends profiles (he said he would).
  */
 export const team = {
@@ -276,6 +277,12 @@ export const team = {
       role: 'Fractional CTO',
       bio: 'Leads Audelà’s technical direction — solution architecture, integration delivery and the technology roadmap for Frends implementations.',
       linkedin: 'https://www.linkedin.com/in/usman-farooq-769272104/',
+    },
+    {
+      name: 'Furqan Khan',
+      role: 'Fractional CMO',
+      bio: 'Leads Audelà’s marketing direction: positioning, brand and go-to-market for Frends across the GCC and Pakistan.',
+      linkedin: 'https://www.linkedin.com/in/furqankhan/',
     },
   ],
 };
